@@ -1,0 +1,28 @@
+---
+permalink: install/concept_elements_that_reduce_the_usable_space_in_an_array_lun.html 
+sidebar: sidebar 
+keywords: elements, reduce, usable, space, array, lun 
+summary: アレイLUNで使用可能なスペースには、いくつかの要因が影響します。必要なアレイLUNの数とサイズを計画する場合は、使用するチェックサム方式と設定する要素に基づいて、アレイLUNで使用可能なスペースを考慮する必要があります。 
+---
+= アレイLUNの使用可能スペース減少につながる要素
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNで使用可能なスペースには、いくつかの要因が影響します。必要なアレイLUNの数とサイズを計画する場合は、使用するチェックサム方式と設定する要素に基づいて、アレイLUNで使用可能なスペースを考慮する必要があります。
+
+アレイLUNで使用可能なスペースを計算するときは、LUNの使用可能なスペースを減らす次の要因を考慮する必要があります。
+
+* ONTAP用にリザーブされているスペース
+* コアダンプ用のスペース
+* ボリュームレベルのSnapshotリザーブ
+* アグリゲートレベルのSnapshotコピー
+* チェックサム方式（1つの方式を割り当てます）：
++
+** ブロックチェックサム（BCS）
+** アドバンスドゾーンチェックサム（AZCS）
+
+
+

@@ -1,0 +1,71 @@
+---
+permalink: install/concept_planning_summary_for_a_ontap_system_using_array_luns.html 
+sidebar: sidebar 
+keywords: plan, summary, ontap, systems, array, luns 
+summary: ONTAPシステムでアレイLUNを使用する場合は、ストレージアレイとスイッチの管理者に依頼して、ONTAPシステムと連携するようにバックエンドデバイスを設定する必要があります。 
+---
+= アレイLUNを使用するONTAPシステムの計画概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでアレイLUNを使用する場合は、ストレージアレイとスイッチの管理者に依頼して、ONTAPシステムと連携するようにバックエンドデバイスを設定する必要があります。
+
+次の表は、主な計画作業と、各作業に役立つ情報の参照先をまとめたものです。
+
+|===
+| 計画タスク | シヨウホウノサンシヨウセン 
+
+
+ a| 
+ONTAPと連携するようにストレージアレイを設定するための要件を特定する
+ a| 
+* https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["サードパーティ製ストレージ向けのFlexArray仮想化の実装"]
+* https://docs.netapp.com/us-en/ontap-flexarray/implement-e-series/index.html["NetApp E-Seriesストレージ向けのFlexArray仮想化の実装"]
+* https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]
+
+
+
+
+ a| 
+ONTAPでアレイLUNを使用する場合のガイドライン
+ a| 
+xref:concept_planning_for_ontap_use_of_array_luns.adoc[ONTAPでアレイLUNを使用するための計画]
+
+
+
+ a| 
+アレイLUNに関するONTAPの制限の確認
+ a| 
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+
+
+ a| 
+LUNセキュリティ方式の決定、ストレージアレイでのアクセス制御の設定、スイッチを導入する場合はスイッチでのゾーニングの設定
+ a| 
+* xref:concept_planning_for_lun_security_on_storage_arrays.adoc[ストレージ アレイのLUNセキュリティ計画]
+* xref:concept_zoning_for_a_configuration_with_storage_arrays.adoc[ゾーニングの要件]
+
+
+
+
+ a| 
+ONTAPシステムとストレージアレイ間のポート間接続方式を確認する
+ a| 
+* xref:concept_planning_a_port_to_port_connectivity_scheme.adoc[ポート間の接続方法の計画]
+* https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]
+
+
+
+
+ a| 
+どのONTAPシステムがどのアレイLUNを「所有」するかの判別（ディスク所有権）
+ a| 
+* xref:concept_how_array_luns_become_available_for_ontap_storage_use.adoc[アレイLUNをONTAPストレージで使用できるようにする方法]
+* xref:task_assigning_ownership_of_array_luns.adoc[アレイLUNの所有権の割り当て]
+
+
+|===

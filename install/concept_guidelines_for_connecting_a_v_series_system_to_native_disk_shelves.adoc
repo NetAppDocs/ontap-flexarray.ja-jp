@@ -1,0 +1,106 @@
+---
+permalink: install/concept_guidelines_for_connecting_a_v_series_system_to_native_disk_shelves.html 
+sidebar: sidebar 
+keywords: guidelines, connect, v-series, system, native, disk, shelves, fc initiator, ports 
+summary: ネイティブディスクシェルフにVシリーズシステムを接続する場合は、冗長性やその他のガイドラインについてポート間接続の計画で検討する必要があります。 
+---
+= ネイティブディスクシェルフにVシリーズシステムを接続する場合のガイドライン
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ネイティブディスクシェルフにVシリーズシステムを接続する場合は、冗長性やその他のガイドラインについてポート間接続の計画で検討する必要があります。
+
+
+
+== ディスクに必要なFCイニシエータポートの数
+
+Vシリーズシステムをディスクシェルフに接続するために必要なFCイニシエータポートの数は、VシリーズシステムがスタンドアロンシステムかHAペアに含まれているかによって異なります。
+
+[cols="2*"]
+|===
+| 構成 | FCイニシエータポート数 
+
+
+ a| 
+スタンドアロン システム
+ a| 
+* 1つのループを使用している場合：1つのFCイニシエータポート。
+* 2つのループを接続している場合：2つ（各ループに1つ）
+
+
+
+
+ a| 
+HAヘア
+ a| 
+* マルチパスストレージを使用している場合：各ループに2つ
+* マルチパスストレージを使用していない場合：構成内の各ループについて、コントローラごとに1つ
+
+
+|===
+
+
+== Vシリーズシステムとディスク間の接続
+
+ネイティブディスクシェルフにVシリーズシステムをケーブル接続する手順は、FASシステムをネイティブディスクシェルフにケーブル接続する場合と同じです。ポート間接続方式を作成する場合は、このガイドおよび次の表にあるONTAPおよびハードウェアのガイドに、ディスクおよびディスクシェルフのセットアップと管理に関する情報が記載されています。
+
+[cols="2*"]
+|===
+| 必要な情報 | 参照先 
+
+
+ a| 
+ディスクのサポート（サポートされるディスク速度、ディスク容量など）
+ a| 
+https://mysupport.netapp.com/site/global/dashboard["NetAppのサポート"]
+
+
+
+ a| 
+ラックまたはシステムキャビネットへのVシリーズシステムの設置
+ a| 
+新しいシステムでは、通常、このタスクは工場出荷時に実行されます。手順が必要な場合は、キャビネットのガイドを参照してください。
+
+
+
+ a| 
+スタンドアロンのVシリーズシステムへのディスクシェルフの接続
+ a| 
+使用しているプラットフォームのセットアップガイド
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1213632["『 Installation and Setup Instructions 32xx Systems 』"]
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1147995["『Installation and Setup Instructions 62xx Systems』"]
+
+
+
+
+ a| 
+ディスクシェルフへのHAペアの接続
+ a| 
+https://docs.netapp.com/us-en/ontap/high-availability/index.html["ハイアベイラビリティ構成"]
+
+
+
+ a| 
+ディスクシェルフの追加
+ a| 
+ディスクシェルフのタイプに応じたガイド。
+
+
+
+ a| 
+ディスクシェルフの移動
+ a| 
+ディスクシェルフのタイプに応じたガイド。
+
+
+
+ a| 
+ディスク管理
+ a| 
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["ディスクおよびアグリゲートの管理"]
+
+|===

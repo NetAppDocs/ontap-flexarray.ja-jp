@@ -1,0 +1,24 @@
+---
+permalink: install/concept_spare_core_array_lun_requirement_for_core_dumps.html 
+sidebar: sidebar 
+keywords: spare, array, lun, requirement, core, dumps 
+summary: スタンドアロンのONTAPシステムおよびHAペアのノードでは、使用可能なスペアディスクがない場合は、コアダンプを格納できるサイズのスペアアレイLUNを作成する必要があります。 
+---
+= コアダンプ用スペアアレイLUNの要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+スタンドアロンのONTAPシステムおよびHAペアのノードでは、使用可能なスペアディスクがない場合は、コアダンプを格納できるサイズのスペアアレイLUNを作成する必要があります。
+
+ディスクとアレイLUNの両方を使用するシステムでは、スペアディスクがあればコアダンプ用にスペアアレイLUNは必要ありません。スペアアレイLUNもスペアディスクもない場合は、コアをダンプする場所がありません。
+
+コアダンプには、メモリおよびNVRAMの内容が含まれています。システムがパニック状態になると、ONTAPはスペアアレイLUNまたはスペアディスクにコアをダンプします（スペアが存在する場合）。リブート時には、スペアからコアが読み取られて、ルート ファイルシステム上のコア ダンプに保存されます。その後、テクニカルサポートはコアダンプを使用して問題のトラブルシューティングを支援できます。
+
+_LUN_には、各プラットフォームのスペアコアアレイHardware Universeの最小サイズが含まれています。
+
+* 関連情報 *
+
+https://hwu.netapp.com["NetApp Hardware Universe"]

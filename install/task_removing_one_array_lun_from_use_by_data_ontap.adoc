@@ -1,0 +1,25 @@
+---
+permalink: install/task_removing_one_array_lun_from_use_by_data_ontap.html 
+sidebar: sidebar 
+keywords: remove, one, array, lun, use, ontap 
+summary: ストレージアレイ管理者が特定のアレイLUNをONTAPに使用する必要がなくなった場合、別のホストで使用するようにLUNを再設定する前に、ONTAPによってLUNに書き込まれた情報（サイズや所有権など）を削除しておく必要があります。 
+---
+= アレイLUNのONTAPによる使用の中止
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージアレイ管理者が特定のアレイLUNをONTAPに使用する必要がなくなった場合、別のホストで使用するようにLUNを再設定する前に、ONTAPによってLUNに書き込まれた情報（サイズや所有権など）を削除しておく必要があります。
+
+* 必要なもの *
+
+ONTAPでの使用を中止するLUNがアグリゲートに含まれている場合は、この手順を開始する前に、アグリゲートをオフラインにして削除しておく必要があります。アグリゲートをオフラインにして削除すると、データLUNはスペアLUNに変わります。
+
+.ステップ
+. 次のコマンドを入力します。 `storage disk removeowner -disk LUN_name`
++
+_lun_name_は、アレイLUNの名前です。
+
+

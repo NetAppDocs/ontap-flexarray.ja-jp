@@ -1,0 +1,213 @@
+---
+permalink: install/reference_duplicate_lun_ids_on_a_target_port.html 
+sidebar: sidebar 
+keywords: duplicate, lun, ids, target, port, storage, errors, problem, resolution, show, message 
+summary: ストレージアレイの同じターゲットポート上の各アレイLUNには一意のLUN IDを割り当てる必要があります。storage errors showの出力には、同じターゲットポートで同じLUN IDが割り当てられているLUNが表示されます。 
+---
+= ターゲット ポートでLUN IDが重複している
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージアレイの同じターゲットポート上の各アレイLUNには一意のLUN IDを割り当てる必要があります。の出力に `storage errors show` は、同じターゲットポートで同じLUN IDが割り当てられているLUNが示されます。
+
+
+
+== storage errors showのメッセージ
+
+[listing]
+----
+
+NAME (UID), port WWPNx: LUN x occurs more than once.  LUNs cannot be reused on the same array target port.
+----
+
+
+== 説明
+
+通常、ターゲットポートでLUN IDが重複する原因はゾーニングエラーです。ある管理者が、ONTAPシステムの複数のFCイニシエータを別 々 のホストグループに割り当ててストレージアレイに複数のLUNグループを作成したにもかかわらず、別 々 のホストグループのイニシエータが同じターゲットポートにアクセスできるように誤ったゾーニングを設定した場合。
+
+このようなゾーニングエラーがあると `storage array config show` 、の出力には、ターゲットポートが同じ2つのLUNグループが表示されます。
+
+
+
+== 問題のシナリオ
+
+管理者は、4つのLDEV（a、b、c、d）をONTAP用にマッピングしたいと考えています（2つのLUNグループそれぞれに2つのLDEV）。このシナリオでは、ストレージアレイがイニシエータポートにLDEVを提供するとします。イニシエータがストレージアレイにアクセスするターゲットポートは考慮されません。つまり、ホストグループはターゲットポートに固有ではありません。LUNグループの作成には、ゾーニングを使用して各イニシエータがアクセスするターゲットポートを制御する必要があります。
+
+[NOTE]
+====
+HP EVAなどの一部のストレージアレイでは、ホストグループはすべてのターゲットポートで同じです。Hitachiなどの他のストレージアレイでは、ホストグループはターゲットポートに固有です。
+
+====
+管理者は、次のように2つのホストグループを正しく設定して、2つのLUNグループを作成します。
+
+|===
+| ホストグループ | ホストグループ内のFCイニシエータ | LDEVと関連付けられているLUN ID 
+
+
+ a| 
+1
+ a| 
+0a0c
+ a| 
+LDEV A / LUN 1LDEV b / LUN 2
+
+
+
+ a| 
+2
+ a| 
+0b 0d
+ a| 
+LDEV c / LUN 1LDEV d / LUN 2
+
+|===
+ゾーニングは次のように設定する必要があります。
+
+* ホストグループ1のイニシエータ0aと0cをターゲットポートペア1Aと2Aにゾーニングします。
+* ホストグループ2のイニシエータ0bと0dをターゲットポートペア1Bと2Bにゾーニングします。
+
+
+上記の表で、LDEV aとLDEV cのLUN ID（L1）が同じであることに注目してください。同様に、LDEV bとLDEV dのLUN ID（L2）はどちらも同じです。異なるターゲットポートでのLUN IDの再利用はサポートされているため、ゾーニングが正しく設定されていれば、LUN IDの重複は問題になりません。
+
+このシナリオで問題となるのは、次の表に示すように、ゾーニングの設定時に一部のイニシエータが間違ったゾーンに配置されることです。
+
+|===
+| ゾーン | ONTAP システムを入力 |  | ストレージアレイ |  
+
+
+ a| 
+スイッチvnbr200es25
+
+
+
+ a| 
+z1
+ a| 
+vs1
+ a| 
+ポート0a
+ a| 
+コントローラ1
+ a| 
+ポート 1A
+
+
+
+ a| 
+z2
+ a| 
+vs1
+ a| 
+ポート0b
+ a| 
+コントローラ1
+ a| 
+ポート1A（1Bではなく）
+
+
+
+ a| 
+スイッチvnci9124s53
+
+
+
+ a| 
+z3
+ a| 
+vs1
+ a| 
+ポート0c
+ a| 
+コントローラ2
+ a| 
+ポート 2A
+
+
+
+ a| 
+z4
+ a| 
+vs1
+ a| 
+ポート0d
+ a| 
+コントローラ2
+ a| 
+ポート2A（2Bではなく）
+
+|===
+次の図は、ゾーニングエラーの結果を示しています。
+
+image::../media/duplicate_lun_ids_on_a_target_port.gif[この図には説明が付随しています。]
+
+図からわかるように、2つのLUNグループが作成されます。ただし、ゾーニングエラーのため、LUNグループ0とLUNグループ1が同じターゲットポートペア（1Aと2A）に配置されており、各ターゲットポートペアにLUNグループが1つずつ配置されているわけではありません。
+
+ `storage array config show`この例では、の出力に2つのLUNグループが表示されています。問題は、2つのLUNグループのターゲットポートが同じであることです。
+
+[listing]
+----
+
+vs1::> storage array config show
+
+       LUN    LUN
+Node  Group  Count  Array Name   Array Target Ports     Switch Port   Initiator
+----- ----- ------- -----------  -------------------    ----------    ---------
+
+ vs1    0       2   DGC_RAID5_1  20:1A:00:a0:b8:0f:ee:04  vnbr200es25:5  0a
+                                 20:2A:00:a0:b8:0f:ee:04  vnci9124s53:6  0c
+        1       2   DGC_RAID5_1  20:1A:00:a0:b8:0f:ee:04  vnbr200es25:5  0b
+                                 20:2A:00:a0:b8:0f:ee:04  vnci9124s53:6  0d
+
+Warning: Configuration were errors detected.  Use 'storage errors show' for detailed information.
+----
+の出力を次に示します `storage errors show` 。この例では、問題のあるLUNが特定されています。
+
+[listing]
+----
+
+vs1::> storage errors show
+
+Disk: EMC-1.1
+UID: UID-a
+----------
+EMC-1.1 (UID-a), port WWPN1: LUN 1 occurs more than once.  LUNs cannot be reused on the same array target port.
+
+
+Disk: EMC-1.2
+UID: UID-b
+----------
+EMC-1.2 (UID-b), port WWPN1: LUN 2 occurs more than once.  LUNs cannot be reused on the same array target port.
+
+
+Disk: EMC-1.3
+UID: UID-c
+----------
+EMC-1.3 (UID-c), port WWPN2: LUN 1 occurs more than once.  LUNs cannot be reused on the same array target port.
+
+
+Disk: EMC-1.4
+UID: UID-d
+----------
+EMC-1.4 (UID-d), port WWPN2: LUN 2 occurs more than once.  LUNs cannot be reused on the same array target port.
+----
+この `storage errors show` 例では、4つすべてのLDEVのUIDが表示されていますが、一意のLUN IDはLUN 1とLUN 2の2つだけです。 4つではなく。
+
+
+
+== トラブルシューティングと問題解決
+
+ストレージアレイ管理者は、異なるホストグループのイニシエータが同じターゲットポートにアクセスできないようにゾーニングを修正する必要があります。
+
+.  `storage array config`の出力で、同じターゲットポートにアクセスしているイニシエータを探します。
+. エラーの詳細を表示するには、次のコマンドを入力します。 `storage errors show`
+. LUN IDが重複しているLDEVを特定します。
+. 同じONTAPシステムの複数のイニシエータがマッピングされているコントローラ1の各ターゲットポートについて、2つのFCイニシエータが同じターゲットポートに_not_talkingになるようにゾーニングを変更します。
++
+異なるホストグループのイニシエータを同じゾーンに配置することはできないため、この手順を実行します。この手順は、アレイLUNへのパスが常に確保されるように、一度に1つのイニシエータで実行する必要があります。
+
+. コントローラ2で同じ手順を繰り返します。
+. ONTAPにと入力し `storage errors show` 、エラーが修正されたことを確認します。``
+

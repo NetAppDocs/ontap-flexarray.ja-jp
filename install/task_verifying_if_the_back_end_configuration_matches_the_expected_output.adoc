@@ -1,0 +1,93 @@
+---
+permalink: install/task_verifying_if_the_back_end_configuration_matches_the_expected_output.html 
+sidebar: sidebar 
+keywords: verify, back-end, configuration, matches, intended, configuration 
+summary: storage errors showで検出されたバックエンド構成エラーを解決したら、既存のバックエンド構成が想定した構成と一致するかどうかを確認し、不一致がある場合は問題を修正する必要があります。 
+---
+= 想定するバックエンド構成と一致するバックエンド構成の確認
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+で検出されたバックエンド構成エラーを解決したら、 `storage errors show`既存のバックエンド構成が想定した構成と一致するかどうかを確認し、不一致がある場合は問題を修正する必要があります。
+
+.手順
+. 次のコマンドを入力します。 `storage array config show`
++
+次のHAペアの例に示すように、では `storage array config show` 、LUNグループ、LUN数、およびパスに関する情報がストレージアレイ別に出力されます。
+
++
+[listing]
+----
+
+mysystem1::> storage array config show
+             LUN   LUN
+Node         Group Count  Array Name      Array Target Port   Initiator
+------------ ----- ----- ---------------  ------------------  ---------
+mysystem1a    0    10     DGC_RAID5_1      5005076303030124       1a
+                                           5005076303088124       1b
+                                           5005076303130124       1c
+                                           5005076303188124       1d
+mysystem1b    0    10     DGC_RAID5_1      5005076303030124       1a
+                                           5005076303088124       1b
+                                           5005076303130124       1c
+                                           5005076303188124       1d
+8 entries were displayed.
+----
+. 次の表の各問題点の出力を確認し `storage array config show` 、適切な情報を参照して解決してください。
++
+|===
+| 見つかった問題 | 参照する情報 
+
+
+ a| 
+空のLUNグループ
+ a| 
+xref:reference_reasons_for_no_luns_in_the_array_lun_group.adoc[アレイLUNグループにLUNがない理由]
+
+
+
+ a| 
+想定されるストレージアレイが見つからない
+ a| 
+xref:reference_reasons_storage_arrays_are_missing_from_command_output.adoc[想定したストレージアレイが一部表示されない理由]
+
+
+
+ a| 
+アレイLUNグループが想定よりも多い
+ a| 
+xref:reference_reasons_for_more_array_lun_groups_than_expected.adoc[アレイLUNグループが想定よりも多い理由]
+
+
+
+ a| 
+アレイLUNグループが想定よりも少ない
+ a| 
+xref:reference_reasons_for_fewer_array_lun_groups_than_expected.adoc[アレイLUNグループが想定よりも少ない理由]
+
+
+
+ a| 
+アレイLUNグループのLUN数が想定どおりに表示されない
+ a| 
+xref:reference_reasons_for_the_incorrect_number_of_luns_in_array_lun_groups.adoc[アレイLUNグループのLUN数が正しくない理由]
+
+
+
+ a| 
+パスが想定よりも少ない
+ a| 
+xref:reference_fewer_than_two_paths_to_an_array_lun.adoc[アレイLUNへのパスが複数ない]
+
+
+
+ a| 
+パスが想定よりも多い
+ a| 
+xref:reference_reasons_for_more_paths_to_an_array_lun_than_expected.adoc[アレイLUNへのパスが想定よりも多い理由]
+
+|===
+

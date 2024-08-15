@@ -1,0 +1,37 @@
+---
+permalink: implement-third-party/concept_attaching_fc_initiator_port_to_multiple_targets_ports.html 
+sidebar: sidebar 
+keywords: attach, fc initiator, port, multiple targets, ports 
+summary: ONTAPシステムのFCイニシエータポートは、同じファミリー内の異なるストレージアレイの複数のターゲットポートに接続できます。この構成は、ONTAPのMetroCluster構成でサポートされます。 
+---
+= 複数のターゲット ポートへのFCイニシエータ ポートの接続
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムのFCイニシエータポートは、同じファミリー内の異なるストレージアレイの複数のターゲットポートに接続できます。この構成は、ONTAPのMetroCluster構成でサポートされます。
+
+ONTAPでは、HAペアとスタンドアロンシステムの両方で、複数のターゲットポートでのFCイニシエータポートの共有がサポートされます。この構成は、お使いのシステムで実行されているONTAPのリリースのサポート対象としてInteroperability Matrixに記載されているすべてのストレージアレイで使用できます。
+
+[NOTE]
+====
+FCイニシエータポートの複数のターゲットポートでの共有およびゾーニングの詳細については、FlexArray仮想化インストール要件およびリファレンス_
+
+====
+
+
+== 単一のONTAP FCイニシエータポートから別 々 のストレージアレイのターゲットポートに接続
+
+次の例は、単一のONTAP FCイニシエータポートから異なるストレージアレイの複数のターゲットポートに接続するHAペアを示しています。
+
+image::../media/shared_initiator_ports_different_arrays.gif[接続とゾーニングの説明が付随しています。]
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]
+
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["FlexArray仮想化のインストール要件とリファレンス"]
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["ファブリック接続MetroClusterのインストールと設定"]

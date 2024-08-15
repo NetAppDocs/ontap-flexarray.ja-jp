@@ -1,0 +1,43 @@
+---
+permalink: install/concept_implementation_requirements_for_a_multiple_lun_group_configuration.html 
+sidebar: sidebar 
+keywords: implementation, requirements, multiple, lun, group, configuration 
+summary: ストレージ環境に複数LUNグループ構成を実装すると、システムパフォーマンスを向上させることができます。この構成を実装するには、ONTAPシステムとストレージアレイで特定のセットアップタスクを実行する必要があります。 
+---
+= 複数LUNグループ構成の実装要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージ環境に複数LUNグループ構成を実装すると、システムパフォーマンスを向上させることができます。この構成を実装するには、ONTAPシステムとストレージアレイで特定のセットアップタスクを実行する必要があります。
+
+複数LUNグループ構成は、ほとんどのストレージアレイでサポートされます。お使いのストレージアレイでこの構成がサポートされていることを確認するには、_Interoperability Matrix_を参照してください。
+
+複数LUNグループ構成の場合は、ストレージアレイ管理者と協力して_storage array_で次の項目を設定する必要があります。
+
+* ONTAPシステム用に割り当てられたアレイLUNにアクセスできるように、できるだけ多くのポートを使用します。
+* ホストグループ（またはご使用のベンダーの同等機能）を使用して、ONTAPシステムのFCイニシエータポートに提供するアレイLUNグループを定義します。
+
+
+複数LUNグループ構成を実装するには、ONTAPシステムで次の項目を設定します。
+
+* アレイLUNグループごとに1つのFCイニシエータポートペアを使用します。
++
+各FCイニシエータポートペアは、冗長パスを介してストレージアレイ上の異なるLUNグループにアクセスします。
+
+* ONTAP構成で大規模なアグリゲートを作成し、複数のRAIDグループ（パリティグループ）のアレイLUNをそのアグリゲートに追加します。
++
+これにより、I/Oがより多くのディスクに分散されます。複数のRAIDグループにI/Oを分散し、1つの大容量アグリゲートを作成することで、パフォーマンスが大幅に向上します。
+
+
+
+複数LUNグループ構成を実装するには、_switch_で次の項目を設定する必要があります。
+
+* スイッチゾーニングを設定して、ONTAPシステムのFCイニシエータポートが各アレイLUNグループへのアクセスに使用するターゲットポートを定義します。
+
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

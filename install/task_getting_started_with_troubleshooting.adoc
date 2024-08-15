@@ -1,0 +1,67 @@
+---
+permalink: install/task_getting_started_with_troubleshooting.html 
+sidebar: sidebar 
+keywords: get, started, troubleshoot, ontap, configuration, array, luns 
+summary: アレイLUNを使用するONTAP構成のトラブルシューティングでは、体系的なアプローチに従って問題の原因を特定する必要があります。 
+---
+= アレイLUNを使用するONTAP構成のトラブルシューティングの開始
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するONTAP構成のトラブルシューティングでは、体系的なアプローチに従って問題の原因を特定する必要があります。
+
+この手順では、トラブルシューティングを行うための順序を提案します。
+
+[NOTE]
+====
+トラブルシューティングの手順を続行する際は、エスカレーション時にテクニカルサポートにこの情報を提供できるように、問題について収集した情報をすべて保存しておく必要があります。
+
+====
+.手順
+. 問題が_front end_（対応するすべてのプラットフォームに影響するONTAPの問題）であるか、_back end_（スイッチまたはストレージアレイの構成に関する問題）であるかを確認します。
++
+たとえば、ONTAP機能を使用しようとして想定どおりに動作しない場合は、フロントエンドに問題がある可能性があります。
+
+. 問題の性質に応じて、適切に対処します。
++
+|===
+| ONTAP構成の内容 | 操作 
+
+
+ a| 
+フロントエンドの問題
+ a| 
+ONTAPのガイドに記載されている手順に従って、ONTAP機能のトラブルシューティングを進めます。
+
+https://docs.netapp.com/us-en/ontap/index.html["ONTAP 9ドキュメント"^]
+
+
+
+ a| 
+バックエンドの問題
+ a| 
+.. Interoperability Matrixで、構成、ストレージアレイ、ストレージアレイのファームウェア、スイッチ、およびスイッチのファームウェアがサポートされていることを確認します。
++
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"^]
+
+.. コマンドを使用し `storage array config show` て、システムで検出可能な代表的なバックエンド構成エラーの有無を確認します。
++
+ONTAPでバックエンド構成エラーが検出された場合は、コマンドを実行してエラーの詳細を取得する必要があり `storage errors show` ます。
+
+
+
+|===
+. 問題の原因がまだ明確でない場合は、次の参考資料を参照して、システムがストレージアレイと連携するための要件を満たしていることを確認してください。
++
+** xref:concept_verifying_an_installation_with_storage_arrays.adoc[ストレージアレイを含むインストール環境の検証]
+** https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["サードパーティ製ストレージ向けのFlexArray仮想化の実装"]
+** https://docs.netapp.com/us-en/ontap-flexarray/implement-e-series/index.html["NetApp E-Seriesストレージ向けのFlexArray仮想化の実装"]
+** https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"^]
+** https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+
+. それでも問題が解決しない場合は、テクニカルサポートにお問い合わせください。
+

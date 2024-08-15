@@ -1,0 +1,71 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_emc_symmetrix_storage_arrays_with_data_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameter, settings, storage, array, ontap, systems, host, channel, director, configuration, port 
+summary: ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。 
+---
+= ONTAPシステムのストレージアレイの必須パラメータ設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。
+
+
+
+== 必須のホストチャネルディレクタポート設定パラメータ
+
+次の表に、ストレージアレイで設定する必要があるホストチャネルディレクタポート設定パラメータを示します。
+
+|===
+| パラメータ（GUIとCLIで名前が異なる場合があります） | 設定 
+
+
+ a| 
+`Common SN` （Common Serial NumberまたはC-bitパラメータ）
+ a| 
+可能にする
+
+
+
+ a| 
+`PP` （Point-to-Pointパラメータ）
+ a| 
+可能にする
+
+
+
+ a| 
+`SC3` （SCSI-3）
+ a| 
+可能にする
+
+
+
+ a| 
+`SPC-2` （SCS2_Protocol_version、SCSI Primary Command 2パラメータ、または `Allow inquiry data to be compiled to the standard)`
+ a| 
+可能にする
+
+
+
+ a| 
+`UWN` （一意のワールドワイド名）
+ a| 
+可能にする
+
+
+
+ a| 
+`Volume Set Addressing`
+ a| 
+無効化
+
+|===
+パラメータは `Volume Set Addressing` 、LUNのマッピング先のすべてのチャネルディレクタポートで同じように設定する必要があります。設定が異なる場合、ONTAPの出力およびEMSメッセージでLUN IDの不一致として報告され `storage errors show` ます。
+
+* 関連情報 *
+
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["FlexArray仮想化のインストール要件とリファレンス"]

@@ -1,0 +1,45 @@
+---
+permalink: reference_legal_notices.html 
+sidebar: sidebar 
+keywords: legal, notices, copyright, trademarks, patents 
+summary: 法的通知では、著作権に関する声明、商標、特許などにアクセスできます。 
+---
+= 法的通知
+:allow-uri-read: 
+
+
+法的通知では、著作権に関する声明、商標、特許などにアクセスできます。
+
+
+
+== 著作権
+
+http://www.netapp.com/us/legal/copyright.aspx[]
+
+
+
+== 商標
+
+NetApp、NetAppのロゴ、およびNetAppの商標ページに記載されているマークは、NetApp、Inc.の商標です。 その他の会社名および製品名は、それを所有する各社の商標である場合があります。
+
+http://www.netapp.com/us/legal/netapptmlist.aspx[]
+
+
+
+== 特許
+
+NetAppが所有する特許の最新リストは、次のサイトで参照できます。
+
+https://www.netapp.com/us/media/patents-page.pdf[]
+
+
+
+== プライバシーポリシー
+
+https://www.netapp.com/us/legal/privacypolicy/index.aspx[]
+
+
+
+== 機械翻訳
+
+ローカライズされたコンテンツに関する重要な情報については、 link:https://www.netapp.com/company/legal/machine-translation/["netapp.com"]

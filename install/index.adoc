@@ -1,0 +1,12 @@
+---
+permalink: install/index.html 
+sidebar: sidebar 
+keywords: flexarray, virtualization, installation, requirements, reference 
+summary: ONTAP FlexArray情報ライブラリへようこそ。ここでは、クラスタをストレージアレイと連携するように設定する方法について説明します。 
+---
+= FlexArray®仮想化インストール要件およびリファレンス
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+

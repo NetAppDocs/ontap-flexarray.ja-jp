@@ -1,0 +1,79 @@
+---
+permalink: install/concept_back_end_configuration_errors_detected_by_ontap_commands.html 
+sidebar: sidebar 
+keywords: back-end, configuration, errors, detected, ontap, commands, output, examples 
+summary: storage errors showコマンドを使用すると、代表的なバックエンド構成エラーの詳細がアレイLUNレベルで表示されます。storage disk error showコマンドおよびstorage disk show -errorsコマンドを使用してエラーを確認することもできます。 
+---
+= ONTAPコマンドで検出されるバックエンド構成エラー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ `storage errors show`コマンドは、代表的なバックエンド構成エラーの詳細をアレイLUNレベルで表示します。コマンドとコマンドを使用してエラーを確認することもできます `storage disk error show` `storage disk show -errors` 。
+
+これらのコマンドで特定されたバックエンド構成エラーは、アレイLUNと連携するようにONTAPを設定する前に修正しておく必要があります。
+
+[NOTE]
+====
+コマンドではアレイLUNに関連するエラーの詳細のみが表示されますが `storage errors show` 、コマンドとコマンドではアレイLUNとディスクに関連するエラーの詳細が表示され `storage disk error show` `storage disk show -errors` ます。
+
+====
+構成内のデバイスの連携に支障をきたすバックエンド構成エラーがある場合、 `storage array config show` storage errors showを実行してエラーの詳細を取得するように指示されます。
+
+
+
+== バックエンド構成エラーのリスト
+
+ `storage errors show`、 `storage disk error show`、、および `storage disk show -errors` の各コマンドは、次のようなバックエンド構成エラーを特定するのに役立ちます。
+
+* アレイLUNへのパスが複数ない。
+* あるアレイLUNへのパスはすべて同じストレージアレイコントローラに接続されています。
+* 2つのアレイLUNが同じLUN IDで提供されている。
+* LDEVが認識されるすべてのターゲットポートで、同じLDEVのLUN IDが一致しない。
+* アレイLUNがONTAPの最大LUNサイズを超えている。
+* アレイLUNがONTAPの最小LUNサイズを満たしていない。
+* アレイLUNのブロックサイズが無効です。
+* アクセスLUNがONTAPに提供されます。
+
+
+
+
+== バックエンド構成エラーを表示する出力例
+
+ `storage errors show`の出力は、ストレージアレイ別にグループ化されます（ONTAPシステムの背後にストレージアレイが複数ある場合）。該当する場合は、アレイLUNの名前とUnique Identifier（UID；一意の識別子）が表示されます。
+
+次の出力例は、アレイLUNへのパスが1つしかないという1種類のエラーを示しています。ONTAPではアレイLUNへのパスが2つ必要なため、これはエラーです。
+
+[NOTE]
+====
+クラスタ構成では、アレイLUNへの4つのパスがサポートされます。
+
+====
+次の例は、アレイLUNへのパスが1つしか設定されていない場合にコマンドで返されるエラーを示してい `storage errors show` ます。
+
+[listing]
+----
+
+systemf47ab::*> storage errors show
+DGC-1.51         onepath           DGC-1.51 (6006016044d03500ae553e55b09fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.54         onepath           DGC-1.54 (6006016044d03500b4553e55b09fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.55         onepath           DGC-1.55 (6006016044d03500b6553e55b09fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.56         onepath           DGC-1.56 (6006016044d03500b8553e55b09fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.57         onepath           DGC-1.57 (6006016044d03500ba553e55b09fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.58         onepath           DGC-1.58 (6006016044d03500bc553e55b09fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+----
+次の例は、コマンドで返される同様のエラーを示してい `storage disk show -errors` ます。
+
+[listing]
+----
+
+systemf47ab::*> storage disk show -errors
+DGC-1.2          onepath           DGC-1.2 (6006016044d03500e0720e22b59fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.3          onepath           DGC-1.3 (6006016044d03500e2720e22b59fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.4          onepath           DGC-1.4 (6006016044d03500e3720e22b59fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.5          onepath           DGC-1.5 (6006016044d03500e4720e22b59fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.6          onepath           DGC-1.6 (6006016044d03500e5720e22b59fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+DGC-1.7          onepath           DGC-1.7 (6006016044d03500e6720e22b59fe311): This array LUN is only available on one path. Proper configuration requires two paths.
+----

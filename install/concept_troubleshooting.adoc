@@ -1,0 +1,14 @@
+---
+permalink: install/concept_troubleshooting.html 
+sidebar: sidebar 
+keywords: troubleshoot, configurations, storage, arrays 
+summary: 本番環境に導入する前に問題を解決できるように、初回インストール時に構成を検証する必要があります。 
+---
+= ストレージアレイを使用した構成のトラブルシューティング
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+本番環境に導入する前に問題を解決できるように、初回インストール時に構成を検証する必要があります。

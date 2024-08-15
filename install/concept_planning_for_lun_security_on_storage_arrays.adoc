@@ -1,0 +1,22 @@
+---
+permalink: install/concept_planning_for_lun_security_on_storage_arrays.html 
+sidebar: sidebar 
+keywords: plan, lun, security, storage, arrays 
+summary: ONTAPシステムをストレージアレイと一緒に使用している場合は、LUNセキュリティ方式を使用して、ONTAPシステムが所有するアレイLUNがONTAPシステム以外のシステムによって上書きされないようにする（またはその逆）必要があります。 
+---
+= ストレージアレイでのLUNセキュリティの計画
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムをストレージアレイと一緒に使用している場合は、LUNセキュリティ方式を使用して、ONTAPシステムが所有するアレイLUNがONTAPシステム以外のシステムによって上書きされないようにする（またはその逆）必要があります。
+
+LUNセキュリティは、特定のアレイLUNにアクセスできるホストを分離する方法です。LUNセキュリティは、概念的にはスイッチゾーニングに似ていますが、ストレージアレイで実行されます。_lun security_and_lun masking_は、この機能を表す同等の用語です。
+
+[NOTE]
+====
+ONTAPディスク所有権を使用すると、あるONTAPシステムが所有するアレイLUNを別のONTAPシステムが上書きすることを防止できます。ただし、ONTAP以外のホストがアクセスできるアレイLUNをONTAPシステムが上書きしないようにすることはできません。同様に、上書きを防止する手段がなければ、ONTAPシステムで使用されているアレイLUNがONTAP以外のホストによって上書きされる可能性があります。
+
+====

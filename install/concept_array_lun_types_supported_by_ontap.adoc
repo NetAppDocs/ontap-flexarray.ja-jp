@@ -1,0 +1,20 @@
+---
+permalink: install/concept_array_lun_types_supported_by_ontap.html 
+sidebar: sidebar 
+keywords: array, lun, type, supported, ontap 
+summary: ONTAPにマッピングできるのはストレージアレイLUNだけです。LUN 0がストレージタイプのLUNの場合、LUN 0をONTAPにマッピングできます。 
+---
+= ONTAPでサポートされるアレイLUNタイプ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPにマッピングできるのはストレージアレイLUNだけです。LUN 0がストレージタイプのLUNの場合、LUN 0をONTAPにマッピングできます。
+
+一部のストレージアレイでは、nonstorage_command_lunが使用されています。コマンドタイプのLUNをONTAPシステムにマッピングすることはできません。
+
+* 関連情報 *
+
+https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["サードパーティ製ストレージ向けのFlexArray仮想化の実装"]

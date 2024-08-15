@@ -1,0 +1,57 @@
+---
+permalink: install/reference_reasons_for_the_incorrect_number_of_luns_in_array_lun_groups.html 
+sidebar: sidebar 
+keywords: reasons, incorrect, number, luns, array, groups, issue, resolve 
+summary: 構成を検証する際には、storage array config showの出力をチェックして、各LUNグループ内のLUN数が想定どおりであることを確認する必要があります。LUNグループのLUN数が正しくない場合の代表的な原因は、アレイLUNがONTAPシステムにマッピングされていないことです。 
+---
+= アレイLUNグループのLUN数が正しくない理由
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+構成を検証する際には、の出力をチェックして、各LUNグループ内のLUN数が想定どおりであることを確認する必要があり `storage array config show` ます。LUNグループのLUN数が正しくない場合の代表的な原因は、アレイLUNがONTAPシステムにマッピングされていないことです。
+
+
+
+== storage array config showの出力例
+
+各LUNグループ内のアレイLUN数は、次の例のようにの出力に表示されます `storage array config show` 。
+
+[listing]
+----
+mysystem1::> storage array config show
+
+               LUN     LUN
+Node           Group   Count Array Name     Array Target Port  Initiator
+------         ------ ----- -------------- -------------------- ----------
+mysystem1        0      50   DGC_RAID5_1     201A00a0b80fee04     0a
+                                             202A00a0b80fee04     0c
+----
+
+
+== 説明
+
+LUNグループに含まれているはずのアレイLUNが見つからない主な原因は次のとおりです。
+
+* アレイLUNがONTAPシステムにマッピングされていない。
+* マッピングエラーが発生したために、アレイLUNが間違ったLUNグループに含まれていた。
++
+たとえば、ホストグループの設定が間違っている可能性があります。
+
+* ストレージアレイがアレイLUNの初期化中である（一時的な状態）。
+* ONTAP LUNスキャナがまだLUNを検出していません（一時的な状態）。
+
+
+
+
+== 問題の解決
+
+. アレイLUNがONTAPシステムにマッピングされていない場合は、ストレージアレイ管理者がマッピングを行う必要があります。
++
+アレイLUNをホストにマッピングするプロセスは、ストレージアレイによって異なります。
+
+. アレイLUNがONTAPシステムにマッピングされている場合は、ゾーニングとホストグループの設定を確認します。
+. 問題を修正したら、を再度実行して `storage array config show` 問題が解決したことを確認します。
+

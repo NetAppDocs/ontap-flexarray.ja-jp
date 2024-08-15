@@ -1,0 +1,32 @@
+---
+permalink: install/concept_planning_considerations_for_ontap_raid_groups.html 
+sidebar: sidebar 
+keywords: plan, considerations, ontap, raid, groups 
+summary: アレイLUNのONTAP RAIDグループを設定する前に、アグリゲートのサイズ、RAIDグループの数とサイズ、およびアレイLUNのサイズを計画する必要があります。データの要件に最も適したRAIDグループを使用すると、アレイでデータが適切に保護され、その可用性が確保されます。 
+---
+= ONTAP RAIDグループの計画に関する考慮事項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNのONTAP RAIDグループを設定する前に、アグリゲートのサイズ、RAIDグループの数とサイズ、およびアレイLUNのサイズを計画する必要があります。データの要件に最も適したRAIDグループを使用すると、アレイでデータが適切に保護され、その可用性が確保されます。
+
+ONTAP RAIDグループの計画では、次のタスクを実行します。
+
+. データの要件に最も適したアグリゲートのサイズを計画します。
+. アグリゲートのサイズに必要なRAIDグループの数とサイズを計画します。
+. ONTAP RAIDグループで必要なアレイLUNのサイズを計画します。
++
+** パフォーマンスへの影響を回避するには、特定のONTAP RAIDグループに含まれるすべてのアレイLUNのサイズを同じにします。
+** アレイLUNのサイズは、同じアグリゲート内のすべてのRAIDグループで同じにする必要があります。
+
+
+. ストレージアレイ管理者に、アグリゲートに必要なサイズと数のアレイLUNを作成するよう依頼します。
++
+パフォーマンスが向上するようにアレイLUNを最適化するには、ストレージアレイのベンダーから提供されているドキュメントの手順に従ってください。
+
+
+
+ストレージアレイで使用するONTAP RAIDグループの設定に関するその他の推奨事項については、を参照してください https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["_ディスクとアグリゲートの管理_"]。

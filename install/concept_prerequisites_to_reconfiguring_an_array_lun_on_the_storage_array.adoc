@@ -1,0 +1,32 @@
+---
+permalink: install/concept_prerequisites_to_reconfiguring_an_array_lun_on_the_storage_array.html 
+sidebar: sidebar 
+keywords: prerequisites, reconfigure, array. lun, storage, array 
+summary: アレイLUNがすでに（ONTAPで）特定のONTAPシステムに割り当てられている場合、ストレージ管理者がストレージアレイでアレイLUNの再設定を行う前に、ONTAPによってアレイLUNに書き込まれた情報を削除しておく必要があります。 
+---
+= ストレージアレイでアレイLUNを再設定するための前提条件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNがすでに（ONTAPで）特定のONTAPシステムに割り当てられている場合、ストレージ管理者がストレージアレイでアレイLUNの再設定を行う前に、ONTAPによってアレイLUNに書き込まれた情報を削除しておく必要があります。
+
+ストレージアレイがONTAPにアレイLUNを提供すると、ONTAPはそのアレイLUNに関する情報（サイズなど）を収集し、その情報をアレイLUNに書き込みます。ONTAPでは、アレイLUNに書き込んだ情報を動的に更新できません。そのため、ストレージアレイ管理者がアレイLUNを再構成する前に、ONTAPを使用してアレイLUNの状態を_unused_に変更する必要があります。ONTAPから見ると、このアレイLUNは未使用です。
+
+アレイLUNの状態を未使用に変更すると、ONTAPは次の処理を実行します。
+
+* アレイLUNへのI/O処理を終了する
+* RAID構成情報のラベルと永続的予約をアレイLUNから削除する。これにより、アレイLUNはいずれのONTAPシステムにも所有されていない状態になります。
+
+
+この処理が完了すると、アレイLUNにONTAP情報が残っていません。
+
+アレイLUNの状態が未使用に変更されたら、次の処理を実行できます。
+
+* アレイLUNからONTAPへのマッピングを削除し、他のホストで使用できるようにします。
+* アレイLUNのサイズを変更するか、構成を変更します。
+
+
+アレイLUNのサイズや構成を変更したあとにONTAPで使用を再開するには、アレイLUNをONTAPに再度提供し、ONTAPシステムに再度割り当てる必要があります。ONTAPでアレイLUNの新しいサイズまたは構成が認識されます。

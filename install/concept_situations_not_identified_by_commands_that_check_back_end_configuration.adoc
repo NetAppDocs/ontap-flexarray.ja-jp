@@ -1,0 +1,27 @@
+---
+permalink: install/concept_situations_not_identified_by_commands_that_check_back_end_configuration.html 
+sidebar: sidebar 
+keywords: situations, not, identified, commands, check, back end, configuration 
+summary: 問題と思われる状況であっても、システムの動作を妨げるものではないため、ONTAPの観点からはエラーではない場合があります。バックエンド構成をチェックするONTAPコマンドでは、システムの動作を妨げない構成は特定されません。 
+---
+= バックエンド構成をチェックするコマンドで識別されない状況
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+問題と思われる状況であっても、システムの動作を妨げるものではないため、ONTAPの観点からはエラーではない場合があります。バックエンド構成をチェックするONTAPコマンドでは、システムの動作を妨げない構成は特定されません。
+
+、、などのコマンドを実行 `storage errors show` `storage disk error show` `storage disk show -errors` しても、次のような状況は通知されません。
+
+* ベストプラクティス（つまり必須ではない）に従っていない構成
+* 一時的な状態で発生する可能性がある状況
++
+たとえば、あるLUNグループから別のLUNグループへのLUNの移行が完了するまでは、の出力に想定よりも多くのLUNグループが表示されることがあります `storage array config show` 。
+
+* 意図した構成と一致しない状況
++
+たとえば、複数のLUNグループを設定する必要がある場合に1つしか設定されていなくても、単一のLUNグループはサポートされているためONTAPではエラーとみなされません。
+
+

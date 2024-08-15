@@ -1,0 +1,16 @@
+---
+permalink: implement-third-party/concept_alua_support_for_hp_eva_storage_arrays.html 
+sidebar: sidebar 
+keywords: alua, support, hp eva, storage, arrays 
+summary: HP EVAアレイでAsymmetric Logical Unit Access（ALUA；非対称論理ユニットアクセス）がサポートされるようになりました。 
+---
+= HP EVAストレージアレイのALUAサポート
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+HP EVAアレイでAsymmetric Logical Unit Access（ALUA；非対称論理ユニットアクセス）がサポートされるようになりました。
+
+デフォルトでは、ONTAPおよびすべてのHP EVAストレージアレイでALUAのサポートが有効になります。

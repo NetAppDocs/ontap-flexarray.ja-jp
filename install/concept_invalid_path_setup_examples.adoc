@@ -1,0 +1,14 @@
+---
+permalink: install/concept_invalid_path_setup_examples.html 
+sidebar: sidebar 
+keywords: invalid, path, setup, examples 
+summary: 無効なパス設定は、アレイLUNへのパスが冗長でない場合やアレイLUNへのパスの数がONTAPの要件を満たしていない場合に実行できます。 
+---
+= 無効なパス設定例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+無効なパス設定は、アレイLUNへのパスが冗長でない場合やアレイLUNへのパスの数がONTAPの要件を満たしていない場合に実行できます。

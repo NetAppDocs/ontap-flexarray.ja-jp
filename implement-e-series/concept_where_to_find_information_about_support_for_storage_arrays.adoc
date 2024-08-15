@@ -1,0 +1,83 @@
+---
+permalink: implement-e-series/concept_where_to_find_information_about_support_for_storage_arrays.html 
+sidebar: sidebar 
+keywords: non-ontap storage, third-party storage, e-series, arrays, storage 
+summary: サポートされる機能、構成、システムモデル、ストレージアレイモデルは、ONTAPのリリースごとに異なります。導入の計画段階で、ONTAPのサポート情報を確認して、ONTAPのハードウェアとソフトウェアの要件に準拠していることを確認する必要があります。 
+---
+= ストレージアレイに対するONTAPサポートに関する情報の参照先
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+サポートされる機能、構成、システムモデル、ストレージアレイモデルは、ONTAPのリリースごとに異なります。導入の計画段階で、ONTAPのサポート情報を確認して、ONTAPのハードウェアとソフトウェアの要件に準拠していることを確認する必要があります。
+
+次の表に、ONTAPシステムに関連するハードウェア要件とソフトウェア要件の詳細を含む参照先を示します。
+
+[cols="2*"]
+|===
+| 必要な情報 | ここを見てください... 
+
+
+ a| 
+ストレージアレイにONTAPを実装するための次の作業に関する情報
+
+* 実装の計画
+* ONTAPシステムとアレイの接続
+* インストールの確認
+
+ a| 
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["FlexArray仮想化のインストール要件とリファレンス"]
+
+
+
+ a| 
+次のようなデバイスでのONTAPの操作
+
+* サポートされるストレージアレイとストレージアレイファームウェア
+* サポートされるスイッチとスイッチファームウェア
+* ストレージアレイでファームウェアの無停止（ライブ）アップグレードがサポートされるかどうか
+* ストレージアレイでMetroCluster構成がサポートされているかどうか
+
+ a| 
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]
+
+FlexArray仮想化を使用したE-Seriesストレージアレイの高度な機能のサポートに関する情報を確認するには、Interoperability MatrixのVシリーズおよびFlexArrayバックエンドストレージ向けの仮想化ソリューションのページで該当するノートを参照してください。
+
+
+
+ a| 
+リリースとプラットフォームにおけるONTAPの制限に関する情報
+
+* アレイLUNの最小サイズと最大サイズ（ルートボリュームのアレイLUNやスペアコアアレイLUNの最小サイズなど）
+* アレイLUNを含むアグリゲートの最小サイズ
+* サポートされるブロックサイズ
+* 最小容量と最大容量
+* 近隣の制限
+
+ a| 
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+
+
+ a| 
+E-Seriesストレージアレイのセットアップに関する次の情報
+
+* サイトの準備要件
+* ケーブル接続手順
+* SANtricityソフトウェアのインストールと設定の手順
+
+ a| 
+E-Seriesの次のドキュメント
+
+* _ E-Seriesストレージシステムの設置場所の準備ガイド_
+* _ E-Seriesストレージシステムのハードウェアケーブル配線ガイド_
+* SANtricity ES Storage Managerのマニュアル_
+
+
+これらのドキュメントは、NetAppサポートサイトからアクセスできます。
+
+https://mysupport.netapp.com/site/global/dashboard["NetAppのサポート"]
+
+|===

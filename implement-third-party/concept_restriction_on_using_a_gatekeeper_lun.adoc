@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/concept_restriction_on_using_a_gatekeeper_lun.html 
+sidebar: sidebar 
+keywords: restriction, using, gatekeeper, luns 
+summary: Gatekeeper論理デバイス（LUN）が提供されている場合は、ONTAPシステムにマッピングしないでください。ONTAPシステムではGatekeeper LUNは使用できません。Gatekeeper LUNは、SYMAPIまたはControlCenterエージェントがストレージアレイとの通信に使用するSymmetrixの論理デバイスです。 
+---
+= Gatekeeper LUNの使用に関する制限
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Gatekeeper論理デバイス（LUN）が提供されている場合は、ONTAPシステムにマッピングしないでください。ONTAPシステムではGatekeeper LUNは使用できません。Gatekeeper LUNは、SYMAPIまたはControlCenterエージェントがストレージアレイとの通信に使用するSymmetrixの論理デバイスです。

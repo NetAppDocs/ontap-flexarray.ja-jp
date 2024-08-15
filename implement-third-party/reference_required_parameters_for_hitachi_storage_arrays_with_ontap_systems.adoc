@@ -1,0 +1,111 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_hitachi_storage_arrays_with_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameters, hitachi, storage, arrays, ontap, systems, ams, hus, vsp, hus vm, workaround 
+summary: ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。 
+---
+= ONTAPシステムと連携するためのHitachiストレージアレイの必須パラメータ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。
+
+
+
+== AMSおよびHUSストレージアレイの必須のシステムパラメータ
+
+設定する必要があるパラメータを次の表に示します。
+
+|===
+| パラメータ | 設定 
+
+
+ a| 
+`Mapping mode`
+ a| 
+有効
+
+
+
+ a| 
+`Host group security`
+ a| 
+有効
+
+
+
+ a| 
+`Mode Setting > Common Setting`
+ a| 
+標準モード
+
+
+
+ a| 
+`Platform`
+ a| 
+指定なし
+
+
+
+ a| 
+`Middleware`
+ a| 
+指定なし
+
+|===
+
+
+== VSPおよびHUS VMストレージアレイの必須のシステムパラメータ
+
+設定する必要があるパラメータを次の表に示します。
+
+|===
+| パラメータ | 設定 
+
+
+ a| 
+`Host mode`
+ a| 
+standardまたは00
+
+
+
+ a| 
+`Port security`
+ a| 
+有効
+
+
+
+ a| 
+[NOTE]
+====
+イニシエータとターゲットポートのペアごとに、デフォルトのホストグループとは別のホストグループを作成する必要があります。
+
+====
+|===
+ONTAPシステムをHitachiストレージアレイに接続する場合は、スイッチのゾーニングを設定する前に、ストレージアレイパラメータを設定し、LUNをホストグループにマッピングしておく必要があります。
+
+ストレージアレイパラメータの設定およびLUNのホストグループへのマッピングを行う前に、ONTAP FCイニシエータポートがHitachiアレイターゲットポートにゾーニングされていた場合、ONTAPインターフェイスに該当するLUNが一切表示されないことがあります。
+
+この場合、ONTAPは次のいずれかのEMSメッセージを生成します。
+
+[listing]
+----
+[fci.device.login.reject:info] The PLOGI transmitted by port XX was rejected by port_id 0xYYYY with reason code 0x9 'Invalid R_CTL Field', explanation code 0x29 'Insufficient Resources to Support Login'
+----
+[listing]
+----
+[fci.device.login.reject:info]: The PLOGI transmitted by port XX was rejected by port_id 0xYYYY with reason code 0x3 'Nx_Port Not Available, Temporary', explanation code 0x29 'Insufficient Resources to Support Login'
+----
+
+
+== 回避策
+
+パラメータの設定およびLUNのホストグループへのマッピングを行う前にゾーニングの設定が行われた場合にLUNが表示されない問題を解決するには、パスの再初期化を実行して、HitachiストレージアレイからマッピングされたアレイLUNを再検出します。この問題の対処方法については、「HitachiストレージアレイにLUNが表示されない場合の対処方法」を参照してください。
+
+xref:reference_workaround_when_luns_are_not_visible_with_hitachi_storage_arrays.adoc[HitachiストレージアレイにLUNが表示されない場合の対処方法]

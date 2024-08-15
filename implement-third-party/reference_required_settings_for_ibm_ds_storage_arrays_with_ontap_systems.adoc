@@ -1,0 +1,36 @@
+---
+permalink: implement-third-party/reference_required_settings_for_ibm_ds_storage_arrays_with_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, settings, ibm ds, storage, arrays, ontap, systems. host type, ds8xxx, configuring, ds8300 9a2 lpar models 
+summary: ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。 
+---
+= ONTAPシステムと連携するためのIBM DSストレージアレイの必須の設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。
+
+
+
+== DS8xxxストレージアレイの必須のホストタイプ
+
+必要なホストタイプ設定を次の表に示します。
+
+|===
+| パラメータ | 設定 
+
+
+ a| 
+`Host type`
+ a| 
+Nシリーズゲートウェイ
+
+|===
+
+
+== DS8300 9A2 LPARモデルの設定要件
+
+DS8300 9A2 LPAR（システム論理パーティション）モデルをONTAPシステムと連携するように設定する場合は、冗長パスの両方が同じLPARにアクセスするように各アレイLUNへのアクセスを設定する必要があります。

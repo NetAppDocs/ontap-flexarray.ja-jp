@@ -1,0 +1,60 @@
+---
+permalink: install/reference_array_lun_is_marked_foreign_and_has_a_reservation_data_ontap_8_3_and_later.html 
+sidebar: sidebar 
+keywords: array, lun, marked, foreign, reservation, show, message, troubleshoot, resolution, problem 
+summary: アレイLUNでホストされているデータをネイティブ形式のONTAPにインポートできます。foreignとマークされているアレイLUNの内容をインポートするプロセスは、インポート時にアレイLUNに外部ホストが予約されている場合に影響する可能性があります。 
+---
+= アレイLUNがforeignとマークされており、予約されています
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNでホストされているデータをネイティブ形式のONTAPにインポートできます。foreign *とマークされているアレイLUNの内容をインポートするプロセスは、インポート時にアレイLUNに外部ホストが予約されている場合に影響する可能性があります。
+
+
+
+== storage errors showのメッセージ
+
+[listing]
+----
+
+EMC-1.3 (600000e00d1000000010000e00030000): This array LUN is marked foreign and has a reservation.
+----
+
+
+== 説明
+
+このエラーは、ONTAP管理者がインポートプロセスを開始する前に、LUN上の外部ホストアプリケーションによって作成された予約がクリアされない場合に発生します。インポート処理が失敗し、コマンドの出力にメッセージが表示されます `storage errors show` 。
+
+インポート処理を実行するには、予約をクリアする必要があります。
+
+
+
+== トラブルシューティングと問題解決
+
+この問題を解決するには、ストレージアレイ管理者がアレイLUNから永続的予約を削除する必要があります。
+
+永続的予約は、アレイLUNデータにネイティブ形式でアクセスする外部ホストから削除するか、ONTAPコマンドを使用して削除できます。次のONTAPコマンドを使用して予約を削除できます。
+
+. の出力を確認して、予約があるアレイLUNを特定します。次の例を参照して `storage errors show` ください。
++
+[listing]
+----
+
+system1a::> storage errors show
+EMC_SYMMETRIX_1
+--------------------------------------
+EMC-1.3 (600000e00d1000000010000e00030000): This array LUN is marked foreign and has a reservation.
+----
+. _admin_modeにアレイLUNの内容をインポートできないため、コマンドを実行して `set -privilege advanced` _advanced_modeに切り替えます。
+. コマンドを使用し `storage disk -remove-reservation` て、特定されたアレイLUNから永続的予約を削除します。
++
+[listing]
+----
+
+system1a::>* storage disk remove-reservation -disk EMC-1.3
+----
+. コマンドを使用し `lun import start` て、アレイLUNの内容をONTAPにインポートするプロセスを開始します。
+

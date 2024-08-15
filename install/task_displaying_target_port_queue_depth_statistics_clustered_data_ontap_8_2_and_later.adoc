@@ -1,0 +1,80 @@
+---
+permalink: install/task_displaying_target_port_queue_depth_statistics_clustered_data_ontap_8_2_and_later.html 
+sidebar: sidebar 
+keywords: display, target, queue, depth, statistics 
+summary: ターゲットキュー深度の設定が原因でストレージアレイでパフォーマンスの問題が発生している可能性がある場合は、キュー深度に設定されている値とFCイニシエータポートの要求の状態を確認する必要があります。 
+---
+= ターゲットキュー深度の統計の表示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ターゲットキュー深度の設定が原因でストレージアレイでパフォーマンスの問題が発生している可能性がある場合は、キュー深度に設定されている値とFCイニシエータポートの要求の状態を確認する必要があります。
+
+ターゲットポートでの要求の処理に問題があるかどうかを判断するために、さまざまなレベルの詳細情報を参照できます。次の手順は、ターゲットポートキュー深度の現在の設定を確認し、ポートで待機中の要求があるかどうかを確認し、ポートの詳細な統計を表示してポートのワークロードを把握する方法を示しています。
+
+.手順
+. コマンドでパラメータを指定して、 `storage array show` `-instance` ターゲットポートキュー深度の現在の値を表示します。
++
+[listing]
+----
+> set advanced
+> storage array show -instance
+
+Name: HP2
+                 Prefix: HP-2
+                 Vendor: HP
+                  Model: HSV300
+                options:
+          Serial Number: 50014380025d1500
+Target Port Queue Depth: 512
+        LUN Queue Depth: 32
+        Upgrade Pending: false
+    Optimization Policy: eALUA
+               Affinity: aaa
+             Error Text: -
+----
+. コマンドを使用し `storage array port show -fields max-queue-depth` て、ストレージアレイの各ポートのキュー深度の設定を表示します。
++
+[listing]
+----
+> set advanced
+> storage array port show -fields max-queue-depth
+
+name            wwnn             wwpn             max-queue-depth
+--------------- ---------------- ---------------- ---------------
+EMC_SYMMETRIX_1 50060480000001a0 50060480000001a0 -
+EMC_SYMMETRIX_1 50060480000001a1 50060480000001a1 -
+EMC_SYMMETRIX_1 50060480000001b0 50060480000001b0 -
+EMC_SYMMETRIX_1 50060480000001b1 50060480000001b1 256
+----
++
+の値がの場合 `Max Queue Depth` は、特定の最大キュー深度がポートに設定されておらず、ストレージアレイレベルで設定された値がポートで使用されていることを示します。
+
+. コマンドを使用し `storage array port show` て、ストレージアレイのターゲットポートに関するパフォーマンス情報を表示します。
++
+このコマンドの結果は、ポートに関連するパフォーマンスの問題があるかどうかを確認するのに役立ちます。およびの値は、 `%busy` `%waiting` ポートのパフォーマンスの概要を示しています。これらの値が処理を待機している要求の割合が高い場合、またはポートがビジー状態である時間が非常に長い場合は、ポートの状態をさらに調査する必要があります。
+
++
+[listing]
+----
+
+vgv3070f51::*> storage array port show
+
+Array Name: HP2
+WWNN: 50014380025d1500
+WWPN: 50014380025d1508
+Connection Type: fabric
+Switch Port: vgbr300s70:9
+Link Speed: 4   GB/s
+Max Queue Depth: -
+                              LUN                                 Link
+Node       Initiator  Count   IOPS    KB/s    %busy    %waiting   Errs
+---------  ---------  -----  ------  ------  -------  ----------  ----
+vgv51-02       0a     21       2      53        0           0     0
+vgv51-01       0a     21       2      48        1           0     0
+----
+. ポートの詳細情報を取得するには、、、またはの各フィールドを指定してコマンドを実行し `storage array port show -fields` `average-latency-per-iop` `average-pending` `average-waiting` `max-pending` `max-waiting` ます。
+

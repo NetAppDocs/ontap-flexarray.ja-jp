@@ -1,0 +1,58 @@
+---
+permalink: install/concept_pre_cluster_array_lun_name_format.html 
+sidebar: sidebar 
+keywords: pre cluster, array, lun, name, format, ontap, systems 
+summary: ノードがクラスタに追加される前、またはシステムがメンテナンスモードのときのアレイLUN名は、Data ONTAP 8.3より前に使用されていた形式（クラスタ構成前の形式）に従っています。 
+---
+= クラスタ構成前のアレイLUN名の形式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ノードがクラスタに追加される前、またはシステムがメンテナンスモードのときのアレイLUN名は、Data ONTAP 8.3より前に使用されていた形式（_pre-cluster_format）に従っています。
+
+アレイLUNにはパスに基づく名前が付けられ、ONTAPシステムとストレージアレイの間にあるデバイス、使用されているポート、およびSCSI LUN IDで構成されます。SCSI LUN IDは、ホストへのマッピング用にストレージアレイが外部に提供する、パス上のSCSI LUN IDです。
+
+アレイLUNをサポートするONTAPシステムでは、各LUNへのパスが複数存在するため、各アレイLUNに複数の名前が付けられる可能性があります。
+
+
+
+== ONTAPシステムのアレイLUN名の形式
+
+|===
+| 構成 | アレイLUN名の形式 | コンポーネントの説明 
+
+
+ a| 
+直接接続
+ a| 
+`node-name.adapter.idlun-id`
+ a| 
+`node-name` は、クラスタノードの名前です。ONTAPでは、パスに基づく名前がクラスタ内で一意になるように、LUN名の先頭にノード名が付加されます。 adapterは、ONTAPシステム上のアダプタ番号です。
+
+`id` は、ストレージアレイ上のチャネルアダプタポートです。
+
+`lun-id` は、ストレージアレイがホストに提供するアレイLUN番号です。
+
+例： `node1.0a.0L1`
+
+
+
+ a| 
+ファブリック接続
+ a| 
+`node-name:switch-name:port.idlun-id`
+ a| 
+`node-name` はノードの名前です。ONTAPでは、パスに基づく名前がクラスタ内で一意になるように、LUN名の先頭にノード名が付加されます。 `switch-name` は、スイッチの名前です。
+
+`port` は、ターゲットポート（エンドポイント）に接続されているスイッチポートです。
+
+`id` は、デバイスIDです。
+
+`lun-id` は、ストレージアレイがホストに提供するアレイLUN番号です。
+
+例： `node1:brocade3:6.126L1`
+
+|===

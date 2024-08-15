@@ -1,0 +1,41 @@
+---
+permalink: implement-third-party/task_preparing_hp_eva_storage_arrays_for_ndu.html 
+sidebar: sidebar 
+keywords: prepare, hp, eva, storage, arrays, ndu 
+summary: HP EVAストレージアレイでは、ファームウェアのアップグレード中にターゲットポートがオフラインになる傾向があります。ONTAPには、ONTAPの耐障害性を高めるコマンドが用意されているため、ファームウェアのアップグレード中にターゲットポートがオフラインになってもONTAPシステムが中断されることはありません。これらのコマンドは、ONTAPを実行するストレージシステムでのみ使用できます。 
+---
+= HPEVAストレエシアレイノNDUノシユンヒ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+HP EVAストレージアレイでは、ファームウェアのアップグレード中にターゲットポートがオフラインになる傾向があります。ONTAPには、ONTAPの耐障害性を高めるコマンドが用意されているため、ファームウェアのアップグレード中にターゲットポートがオフラインになってもONTAPシステムが中断されることはありません。これらのコマンドは、ONTAPを実行するストレージシステムでのみ使用できます。
+
+ファームウェアのアップグレードは、負荷の推奨事項（HP EVA）に関するガイドラインなど、HPが提供するガイドラインに従う必要があります。HPがサポートしているファームウェアにのみアップグレードできます。この手順は、HP EVAファームウェアアップグレードタイプ_オンラインアップグレード_に関連しています。
+
+[NOTE]
+====
+ファームウェアのアップグレード中に、両方のHP EVAコントローラがリブートされます。
+
+====
+この手順では、ファームウェアのアップグレード中のONTAPの耐障害性を高めるONTAPコマンドを使用します。ファームウェアのアップグレードが完了したら、ONTAPコマンドをもう一度使用して、ポートを通常の動作モードに戻します。
+
+.手順
+. ONTAPシステムで、コマンドセッションの権限レベルをadvancedに設定します *`set -privilege advanced`。*
+. ファームウェアのアップグレードを実行中のHP EVAストレージアレイのパラメータを* true *に設定し `is-upgrade-pending` ます *`storage array modify -name array_name -is-upgrade-pending true`。*
+. ストレージアレイで、ファームウェアのアップグレードを開始します。
+. ファームウェアのアップグレードが完了したら、必要に応じて権限レベルをもう一度advancedに設定してから、ONTAPシステムでパラメータを* false *に設定し `is-upgrade-pending` てストレージアレイポートを通常動作に戻します。 *`storage array modify -name array_name -is-upgrade-pending false`*
++
+手順2でアドバンストモードを終了しなかった場合は、再度アクセスする必要はありません。
+
++
+ `is-upgrade-pending`パラメータには、コマンドを適切に使用するための次の機能が含まれています。
+
++
+** アップグレードの実行中にストレージアレイで* false *に設定しようとすると、 `is-upgrade-pending` コマンドは失敗し、EMSメッセージが返されます。
+** ステータスが* true *に設定されてから60分以内に* false *に戻らなかった場合、 `is-upgrade-pending` が* false *に戻るまでEMSメッセージが1時間ごとに記録されます。 `is-upgrade-pending`
+
+
+

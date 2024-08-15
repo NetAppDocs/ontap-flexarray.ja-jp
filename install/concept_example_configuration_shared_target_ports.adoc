@@ -1,0 +1,62 @@
+---
+permalink: install/concept_example_configuration_shared_target_ports.html 
+sidebar: sidebar 
+keywords: example, configuration, shared, target, ports, multiple, initiator 
+summary: ストレージアレイ上の1つのターゲットポートに最大2つのONTAP FCイニシエータポートを接続できます。 
+---
+= 構成例：共有ターゲット ポート
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージアレイ上の1つのターゲットポートに最大2つのONTAP FCイニシエータポートを接続できます。
+
+ゾーニングのベストプラクティスは、FCイニシエータとターゲット ポートの各ペアを別々のゾーンに配置する構成（1:1）です。
+
+
+
+== 複数のイニシエータポートに接続された共有ターゲットポート
+
+次の図は、異なるONTAPシステムの複数のFCイニシエータポートでターゲットポートを共有するための接続とゾーニングを示しています。
+
+次の図の実線はシステムvs1のFCイニシエータポートからの接続を示し、点線はシステムvs2のFCイニシエータポートからの接続を示しています。
+
+image::../media/shared_target_ports.gif[共有ターゲットポート構成の接続とゾーニングの説明が付随しています。]
+
+次の表は、HAペアのコントローラの2つのFCイニシエータポートを共有する1つのターゲットポートの例に対応する1対1のゾーニング定義を示しています。
+
+|===
+| ゾーン | ONTAPシステムとFCイニシエータポート | ストレージアレイ 
+
+
+ a| 
+* スイッチ 1 *
+
+
+
+ a| 
+z1
+| vs1：0a | コントローラ1：ポート1A 
+
+
+ a| 
+z3
+| vs2：0a |  
+
+
+ a| 
+* スイッチ 2 *
+
+
+
+ a| 
+z2
+| vs1：0c | コントローラ2：ポート2A 
+
+
+ a| 
+z4
+| vs2：0c |  
+|===

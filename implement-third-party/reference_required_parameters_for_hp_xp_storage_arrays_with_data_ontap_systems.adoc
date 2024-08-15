@@ -1,0 +1,67 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_hp_xp_storage_arrays_with_data_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameters, hp, xp, storage, arrays, ontap, workaround 
+summary: このストレージアレイをONTAPシステムで使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。 
+---
+= ONTAPと連携するためのHP XPストレージアレイの必須パラメータ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+このストレージアレイをONTAPシステムで使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。
+
+
+
+== HP XPストレージアレイの必須のシステムパラメータ
+
+必要なパラメータ設定を次の表に示します。
+
+|===
+| パラメータ | 設定 
+
+
+ a| 
+`Host mode`
+ a| 
+standardまたは00
+
+
+
+ a| 
+`Port security`
+ a| 
+有効
+
+
+
+ a| 
+[NOTE]
+====
+イニシエータとターゲットポートのペアごとに、デフォルトのホストグループとは別のホストグループを作成する必要があります。
+
+====
+|===
+ONTAPシステムをHP XPストレージアレイに接続する場合は、スイッチのゾーニングを設定する前に、ストレージアレイパラメータを設定し、LUNをホストグループにマッピングしておく必要があります。
+
+ストレージアレイパラメータの設定およびLUNのホストグループへのマッピングを行う前に、ONTAP FCイニシエータポートがHP XPアレイターゲットポートにゾーニングされていた場合、ONTAPインターフェイスに該当するLUNが一切表示されないことがあります。
+
+この場合、ONTAPは次のいずれかのEMSメッセージを生成します。
+
+[listing]
+----
+[fci.device.login.reject:info] The PLOGI transmitted by port XX was rejected by port_id 0xYYYY with reason code 0x9 'Invalid R_CTL Field', explanation code 0x29 'Insufficient Resources to Support Login'
+----
+[listing]
+----
+[fci.device.login.reject:info]: The PLOGI transmitted by port XX was rejected by port_id 0xYYYY with reason code 0x3 'Nx_Port Not Available, Temporary', explanation code 0x29 'Insufficient Resources to Support Login'
+----
+
+
+== 回避策
+
+パラメータの設定およびLUNのホストグループへのマッピングを行う前にゾーニングの設定が行われた場合にLUNが表示されない問題を解決するには、パスの再初期化を実行して、HP XPストレージアレイからマッピングされたアレイLUNを再検出します。
+
+xref:reference_workaround_when_luns_are_not_visible_with_hp_xp_storage_arrays.adoc[HP XPストレージアレイにLUNが表示されない場合の対処方法]

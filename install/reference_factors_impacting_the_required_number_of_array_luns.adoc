@@ -1,0 +1,34 @@
+---
+permalink: install/reference_factors_impacting_the_required_number_of_array_luns.html 
+sidebar: sidebar 
+keywords: factors, impact, required, number, array, luns 
+summary: ONTAPでアレイLUNを使用する場合は、ONTAP環境で必要なアレイLUNの数に影響する要因として、アレイLUNのサイズ、ONTAPのオーバーヘッド、チェックサム方式などを考慮する必要があります。 
+---
+= 必要なアレイLUN数に影響する要因
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPでアレイLUNを使用する場合は、ONTAP環境で必要なアレイLUNの数に影響する要因として、アレイLUNのサイズ、ONTAPのオーバーヘッド、チェックサム方式などを考慮する必要があります。
+
+必要なアレイLUN数を決定する際は、次の点を考慮してください。
+
+* アレイLUNのサイズが小さいほど、ストレージに必要なLUNの数が多くなります。
++
+特定のストレージアレイRAIDグループから大容量アレイLUNを1つ作成することを推奨します。
+
+* ONTAPシステムに割り当てることができるディスクとアレイLUNの最大数は、デバイスの制限によって定義されます。
++
+_ Hardware Universe _には、デバイス制限に関する情報が含まれています。
+
+* アレイLUNの使用可能スペースが多いほど、必要なアレイLUNの数は少なくなります。
++
+アレイLUNの使用可能なスペースは、ONTAPで必要なスペース、チェックサム方式、およびオプションのSnapshotリザーブに必要なスペースなどのその他の要因によって決まります。
+
+* アプリケーションによって生成される負荷は異なります。
++
+ONTAPシステムへのアレイLUNの割り当てを決定する際には、ストレージの用途、およびさまざまなアプリケーションで生成される可能性が高い要求数を考慮する必要があります。
+
+

@@ -1,0 +1,30 @@
+---
+permalink: install/concept_verifying_an_installation_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: verify, installation, storage, arrays 
+summary: システムを本番環境に導入する前に、バックエンド構成のエラーを検出して解決することが重要です。 
+---
+= ストレージアレイを含むインストール環境の検証
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+システムを本番環境に導入する前に、バックエンド構成のエラーを検出して解決することが重要です。
+
+バックエンド構成を検証する2つの段階は次のとおりです。
+
+. ONTAPとストレージアレイの連携を妨げるバックエンド構成エラーがないか確認します。
++
+これらのエラーは、によってフラグ付けされ `storage errors show`ます。これらのエラーは修正する必要があります。
+
+. 設定が意図したとおりであることを確認しています。
++
+システムの観点からはエラーではなく、意図したとおりではない状況がいくつかあります。たとえば `storage array config show` 、の出力にはLUNグループが2つ表示されていますが、想定しているLUNグループは1つです。この文書では、そのような状況を「意図」に合わない状況と呼んでいます。
+
+
+
+次の図は、最初にシステムの観点から構成エラーがないことを確認し、次に想定どおりにインストールされていることを確認するワークフローを示しています。
+
+image::../media/installation_verification_flowchart.gif[最初にstorage array config showを実行します。指示があった場合,run storage errors show,review the messages and review the documentation. Contact technical support if the problem is not resolved.]

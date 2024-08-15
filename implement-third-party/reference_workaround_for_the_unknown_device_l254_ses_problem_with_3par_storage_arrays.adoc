@@ -1,0 +1,86 @@
+---
+permalink: implement-third-party/reference_workaround_for_the_unknown_device_l254_ses_problem_with_3par_storage_arrays.html 
+sidebar: sidebar 
+keywords: 'Workaround, unknown device (l254/ses), problem, 3PAR, storage, arrays, aggregates, luns, created, ontap system, not' 
+summary: ONTAPシステムを3PARストレージアレイに接続する場合は、スイッチのゾーニングを設定する前に、3PARストレージアレイでホストの定義を作成し、ホストの役割（「ONTAPシステムと連携するための3PARアレイの必須パラメータ」を参照）を設定しておく必要があります。ゾーニングの設定前にホストが定義されていないと、3PARアレイLUNがONTAP 254および製品タイプSESとして検出され、ONTAPで使用できません。 
+---
+= 3PARストレージアレイの不明なデバイス（L254 / SES）の問題に対する対処方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムを3PARストレージアレイに接続する場合は、スイッチのゾーニングを設定する前に、3PARストレージアレイでホストの定義を作成し、ホストの役割（「ONTAPシステムと連携するための3PARアレイの必須パラメータ」を参照）を設定しておく必要があります。ゾーニングの設定前にホストが定義されていないと、3PARアレイLUNがONTAP 254および製品タイプSESとして検出され、ONTAPで使用できません。
+
+xref:reference_required_parameters_for_3par_arrays_with_data_ontap_systems.adoc[ONTAPシステムと連携するための3PARアレイの必須パラメータ]
+
+新しくマッピングした3PARアレイLUNが、ONTAPでLUN 254および製品タイプSESとして検出された場合、ONTAPシステムに3PAR LUNを割り当てることはできません。また、すでにアグリゲートに追加されている3PAR LUNについても、ONTAPでLUN 254とみなされて使用できません。ONTAPでは、LUN 254および製品タイプSESとして検出したLUNについてEMSメッセージを生成し、一部のLUNを不明なデバイスとして報告します。
+
+ホストの定義前にゾーニングの設定が行われた場合に、LUN 254 / SESの不明なデバイスに関する問題を解決するには、3PARストレージアレイからマッピングされたアレイLUNを再検出します。使用する手順は、3PARアレイLUNを含むアグリゲートがONTAPシステムですでに設定されているかどうかによって異なります。（次の手順では、ONTAPノードの名前をNode-1およびNode-2と想定しています）。
+
+
+
+== 3PARアレイLUNを含むアグリゲートがONTAPシステムですでに作成されている場合
+
+. 次のコマンドを実行して、ONTAPシステムでHA構成が有効になっていることを確認し *`cluster ha show`ます。*
++
+次の出力が表示されます。
+
++
+[listing]
+----
+
+High Availability Configured: true
+----
+. 次のコマンドを実行して、ONTAPシステムでストレージフェイルオーバーが設定されていることを確認し *`storage failover show`ます。*
++
+次の出力が表示されます。
+
++
+[listing]
+----
+          Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+Node-1    Node-2    true     Connected to Node-2
+Node-2    Node-1    true     Connected to Node-1
+2 entries were displayed.
+----
+. 次のコマンドを実行して、Node-1に対してテイクオーバー処理を実行します *`storage failover takeover -ofnode Node-1`。*
+. 次のコマンドをもう一度実行して、Node-2がギブバック処理可能な状態になっていることを確認し *`storage failover show`ます。*
++
+次の出力が表示されます。
+
++
+[listing]
+----
+          Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+Node-2    Node-1    false    In takeover, Auto giveback will be
+                                      initiated in 348 seconds
+Node-1    Node-2    -        Waiting for giveback (HA mailboxes)
+2 entries were displayed.
+----
+. 次のコマンドを実行して、Node-1に対してギブバック処理を実行します *`storage failover giveback -ofnode Node-1 -require-partner-waiting true`。*
+. クラスタ内の他のノードについて、手順3~5を繰り返します。
+
+
+
+
+== 3PARアレイLUNを含むアグリゲートがONTAPシステムでまだ作成されていない場合
+
+. 次のコマンドを実行して、3PARストレージアレイに接続されているすべてのONTAP FCイニシエータポートの一覧を表示し *`system node run -node <node name> -command "sysconfig -v"`ます。*
++
+次の例は、特定のノード名を含むコマンドを示してい *`system node run -node Node-1 -command "sysconfig -v"`ます。*
+
+. 次のコマンドを実行して、表示されたすべてのポートをオフラインにします *`system node run -node <node name> -command "priv set advanced;fcadmin offline <adapter>"`。*
++
+次の例は、特定のノード名とアダプタを含むコマンドを示してい *`system node run -node Node-1 -command "priv set advanced;fcadmin offline 0a"`ます。*
+
+. 次のコマンドを実行して、表示されたすべてのポートをオンラインにし *`system node run -node <node name> -command "priv set advanced;fcadmin online <adapter>"`ます。*
++
+次の例は、特定のノード名とアダプタを含むコマンドを示してい *`system node run -node Node-1 -command "priv set advanced;fcadmin online 0a"`ます。*
+
+

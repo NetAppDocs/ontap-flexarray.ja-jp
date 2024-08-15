@@ -1,0 +1,24 @@
+---
+permalink: implement-e-series/concept_single_4_port_array_lun_group_configuration.html 
+sidebar: sidebar 
+keywords: single, 4-port, array, lun, group, configuration 
+summary: 単一の4ポートのLUNグループを含むこの構成では、各ターゲットポートにHAペアの単一のONTAP FCイニシエータポートからアクセスします。ゾーニングにより、各ONTAPシステムから特定のアレイLUNへのパスは2つだけになります。 
+---
+= タンイチノ4ホオトノアレイLUNクルウフコウセイ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+単一の4ポートのLUNグループを含むこの構成では、各ターゲットポートにHAペアの単一のONTAP FCイニシエータポートからアクセスします。ゾーニングにより、各ONTAPシステムから特定のアレイLUNへのパスは2つだけになります。
+
+この構成は、お使いのシステムで実行されているONTAPのリリースのサポート対象としてInteroperability Matrixに記載されているすべてのストレージアレイで使用できます。
+
+この構成を次の図に示します。
+
+image::../media/one_4_port_array_lun_gp.gif[この図には説明が付随しています。]
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

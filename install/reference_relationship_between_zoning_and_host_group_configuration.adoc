@@ -1,0 +1,14 @@
+---
+permalink: install/reference_relationship_between_zoning_and_host_group_configuration.html 
+sidebar: sidebar 
+keywords: relationship, between, zone, host, group, configuration 
+summary: ゾーニング構成のエラーを修正するときに、ホストグループ構成も変更しなければならないことがあります。逆も同様です。 
+---
+= ゾーニング構成とホスト グループ構成の関係
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ゾーニング構成のエラーを修正するときに、ホストグループ構成も変更しなければならないことがあります。逆も同様です。

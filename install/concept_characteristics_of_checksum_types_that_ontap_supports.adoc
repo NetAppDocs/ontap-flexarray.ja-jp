@@ -1,0 +1,40 @@
+---
+permalink: install/concept_characteristics_of_checksum_types_that_ontap_supports.html 
+sidebar: sidebar 
+keywords: characteristics, checksum, types, ontap, supports, block, advanced, zoned 
+summary: ONTAPでは、アレイLUN、ディスク、およびアグリゲート用にブロックチェックサム方式（BCS）とアドバンスドゾーンチェックサム方式（AZCS）がサポートされます。 
+---
+= ONTAPでサポートされるチェックサム方式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPでは、アレイLUN、ディスク、およびアグリゲート用にブロックチェックサム方式（BCS）とアドバンスドゾーンチェックサム方式（AZCS）がサポートされます。
+
+ONTAPでアレイLUNに割り当てられるチェックサム方式は、アレイLUNのパフォーマンスや使用可能スペースに影響することがあります。そのため、アレイLUNに割り当てるチェックサム方式によって、必要なアレイLUNの数とサイズに影響する可能性があります。
+
+
+
+== ブロックチェックサム（BCS）
+
+BCSは、アレイLUNに推奨されるデフォルトのチェックサム方式です。アレイLUNのパフォーマンスは、BCSの方がAZCSよりも優れています。
+
+BCSは、アレイLUNの使用可能スペースに対する影響がAZCSよりも大きくなります。BCSは、アレイLUNの使用可能スペースの12.5%を使用します。
+
+
+
+== アドバンスドゾーンチェックサム（AZCS）
+
+AZCSはBCSの代わりに使用できます。AZCSがアレイLUNの使用可能スペースに与える影響はBCSよりも小さく、デバイス容量の1.56%がAZCSで使用されます。ただし、使用可能なスペースとパフォーマンスのバランスを考慮する必要があります。AZCSを使用すると、アレイLUNでパフォーマンスの問題が発生することがあります。
+
+AZCSは、ハイパフォーマンスランダムワークロード用のアレイLUNには推奨されません。ただし、DR、アーカイブなどのワークロード用のアレイLUNではAZCSを使用できます。
+
+ネイティブディスクにはAZCSによるパフォーマンスへの影響はありません。
+
+チェックサム方式のガイドラインは、ディスクのサイズとタイプによって異なります。詳細については、_TR3838ストレージサブシステム構成ガイド_を参照してください。
+
+* 関連情報 *
+
+https://www.netapp.com/pdf.html?item=/media/19675-tr-3838.pdf["NetAppテクニカルレポート3838：『ストレージサブシステム構成ガイド』"^]

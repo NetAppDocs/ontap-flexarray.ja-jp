@@ -1,0 +1,14 @@
+---
+permalink: install/concept_determining_the_array_luns_for_specific_aggregates.html 
+sidebar: sidebar 
+keywords: determine, array, luns, specific, aggregates 
+summary: アグリゲート内に異なるタイプのストレージを混在させる場合には、いくつかのルールが存在します。これらのルールは、アレイLUNを使用するONTAPシステムに固有のものです。どのアレイLUNおよびディスクをどのアグリゲートに追加するかを計画する際には、これらのルールを理解しておく必要があります。 
+---
+= 特定のアグリゲートに使用するアレイLUNの決定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アグリゲート内に異なるタイプのストレージを混在させる場合には、いくつかのルールが存在します。これらのルールは、アレイLUNを使用するONTAPシステムに固有のものです。どのアレイLUNおよびディスクをどのアグリゲートに追加するかを計画する際には、これらのルールを理解しておく必要があります。

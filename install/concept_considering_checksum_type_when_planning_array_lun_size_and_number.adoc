@@ -1,0 +1,16 @@
+---
+permalink: install/concept_considering_checksum_type_when_planning_array_lun_size_and_number.html 
+sidebar: sidebar 
+keywords: consider, checksum, type, plan, array, lun, size, number 
+summary: ONTAPで必要なアレイLUNの数とサイズを計画する場合は、アレイLUNで使用可能なスペースにチェックサム方式が及ぼす影響を考慮する必要があります。チェックサム方式は、ONTAPシステムに割り当てるアレイLUNごとに指定する必要があります。 
+---
+= アレイLUNのサイズと数を計画する際のチェックサム方式の検討
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPで必要なアレイLUNの数とサイズを計画する場合は、アレイLUNで使用可能なスペースにチェックサム方式が及ぼす影響を考慮する必要があります。チェックサム方式は、ONTAPシステムに割り当てるアレイLUNごとに指定する必要があります。
+
+ストレージアレイ上のアレイLUNをONTAPシステムにマッピングすると、ONTAPはそのアレイLUNをフォーマットされていないrawディスクとして扱います。アレイLUNをONTAPシステムに割り当てるときは、チェックサム方式を指定して、rawアレイLUNのフォーマット方法をONTAPに指定します。チェックサム方式が使用可能なスペースに与える影響は、LUNに指定するチェックサム方式によって異なります。

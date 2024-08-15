@@ -1,0 +1,20 @@
+---
+permalink: install/concept_sharing_storage_arrays_among_hosts.html 
+sidebar: sidebar 
+keywords: share, storage, arrays, hosts 
+summary: 一般的なストレージアレイは、異なるベンダーのホストにストレージを提供します。ただし、ONTAPでは、一部のストレージアレイをONTAPシステム専用にする必要があります。 
+---
+= ホスト間でのストレージ アレイの共有
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+一般的なストレージアレイは、異なるベンダーのホストにストレージを提供します。ただし、ONTAPでは、一部のストレージアレイをONTAPシステム専用にする必要があります。
+
+ご使用のベンダーのストレージアレイをONTAPシステム専用にする必要があるかどうかを確認するには、_Interoperability Matrix_を参照してください。
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

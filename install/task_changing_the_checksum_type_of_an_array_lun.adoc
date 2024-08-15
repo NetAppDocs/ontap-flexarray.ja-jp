@@ -1,0 +1,48 @@
+---
+permalink: install/task_changing_the_checksum_type_of_an_array_lun.html 
+sidebar: sidebar 
+keywords: change, checksum, type, array, lun 
+summary: チェックサム方式が異なるアグリゲートにアレイLUNを追加する場合は、アレイLUNのチェックサム方式を変更する必要があります。 
+---
+= アレイLUNのチェックサム方式の変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+チェックサム方式が異なるアグリゲートにアレイLUNを追加する場合は、アレイLUNのチェックサム方式を変更する必要があります。
+
+* 必要なもの *
+
+特定のワークロードにおけるパフォーマンスと各チェックサム方式のストレージ容量利用率のトレードオフを確認しておく必要があります。
+
+チェックサムの使用方法の詳細については、セールスエンジニアにお問い合わせください。
+
+* AZCS（アドバンスドゾーンチェックサム）アグリゲートに追加するアレイLUNには、* zoned *チェックサム方式を割り当てる必要があります。ゾーンチェックサム方式のアレイLUNをAZCS方式のアグリゲートに追加すると、そのアレイLUNはアドバンスドゾーンチェックサム方式のアレイLUNになります。同様に、ゾーンチェックサム方式のアレイLUNをゾーン方式のアグリゲートに追加すると、アレイLUNはゾーンチェックサム方式になります。
+* 所有権を割り当てる際にアレイLUNのチェックサムを変更することはできません。チェックサムは、割り当て済みのアレイLUNでのみ変更できます。
+
+
+.手順
+. 次のコマンドを入力して、チェックサム方式を変更します。 `storage disk assign -disk disk name -owner owner -c new_checksum_type`
++
+_disk name_は、チェックサム方式を変更するアレイLUNです。
+
++
+_owner_は、アレイLUNが割り当てられているノードです。
+
++
+_new_checksum_type_には、blockまたはzonedを指定できます。
+
++
+`storage disk assign -disk EMC-1.1 -owner system147b -c block`
+
++
+アレイLUNのチェックサム方式が指定した新しいチェックサム方式に変更されます。
+
+. 次のコマンドを入力して、ノードシェルにアクセスします。 `system node run -node node_name`
++
+_node_name_は、このシステムの名前です。
+
+. 次のコマンドを入力して、ノードシェルを終了します。 `exit`
+

@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/reference_emc_symmetrix_storage_arrays.html 
+sidebar: sidebar 
+keywords: emc, symmetrix, storage, arrays 
+summary: アレイLUNを使用するONTAPシステムと連携するようにストレージアレイを設定するには、いくつかの要件を満たす必要があります。たとえば、ストレージアレイに構成パラメータを設定する、サポート対象の構成のみを導入するなどの要件があります。 
+---
+= EMCSymmetrixストレエシアレイ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するONTAPシステムと連携するようにストレージアレイを設定するには、いくつかの要件を満たす必要があります。たとえば、ストレージアレイに構成パラメータを設定する、サポート対象の構成のみを導入するなどの要件があります。

@@ -1,0 +1,18 @@
+---
+permalink: implement-third-party/concept_requirements_for_configuring_the_hp_eva_storage_management_server.html 
+sidebar: sidebar 
+keywords: requirements, configuring, hp, eva, storage, management, server 
+summary: ONTAPシステムのFCイニシエータポートおよびHP EVAストレージ管理サーバのイニシエータポートをEVAの共通のターゲットポートと共有すると、互換性の問題が発生します。 
+---
+= HP EVA Storage Management Serverの設定要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムのFCイニシエータポートおよびHP EVAストレージ管理サーバのイニシエータポートをEVAの共通のターゲットポートと共有すると、互換性の問題が発生します。
+
+互換性の問題は、ONTAPシステム上のFCイニシエータポートとEVAストレージ管理サーバのイニシエータポートのホスト設定が異なることが原因で発生します。
+
+HPでは、ファブリック内に存在するHP EVA Storage Management Serverは、すべてのオペレーティングシステムとは別のゾーンに構成することを推奨しています。

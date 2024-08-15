@@ -1,0 +1,28 @@
+---
+permalink: install/reference_reasons_storage_arrays_are_missing_from_command_output.html 
+sidebar: sidebar 
+keywords: reasons, storage, arrays, miss, command, output 
+summary: ONTAPシステムに接続されていないストレージアレイは、storage array config showの出力に表示されません。ケーブル接続、ゾーニング、およびホストグループ構成に問題があると、2つのデバイス間の接続が妨げられることがあります。 
+---
+= コマンド出力にストレージ アレイが表示されない理由
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムに接続されていないストレージアレイは出力に表示されません `storage array config show` 。ケーブル接続、ゾーニング、およびホストグループ構成に問題があると、2つのデバイス間の接続が妨げられることがあります。
+
+
+
+== 問題の解決
+
+. ケーブル接続、ホストグループの構成、ゾーニングを次のように確認します。
++
+** ケーブルが接続されていることを確認します。
+** ONTAPシステム上のFCイニシエータのWWPNがホストグループに含まれていることを確認します。
+** ストレージアレイとFCイニシエータが同じゾーンにあることを確認します。
+
+
+. 問題を修正したら、ONTAPでを実行して、 `storage array config show` 問題が修正されたことを確認します。
+

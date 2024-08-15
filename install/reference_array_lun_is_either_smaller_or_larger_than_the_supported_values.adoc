@@ -1,0 +1,69 @@
+---
+permalink: install/reference_array_lun_is_either_smaller_or_larger_than_the_supported_values.html 
+sidebar: sidebar 
+keywords: array, lun, size, smaller, larger, supported, values, show, message, storage, errors 
+summary: アレイLUNのサイズを計画する際は、ONTAPのアレイLUNの最小サイズと最大サイズの制限に従う必要があります。これらの制限はONTAPのリリースによって異なります。storage errors showの出力に、サイズの要件を満たしていないアレイLUNが表示されます。 
+---
+= アレイLUNのサイズがサポートされる値以下です
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNのサイズを計画する際は、ONTAPのアレイLUNの最小サイズと最大サイズの制限に従う必要があります。これらの制限はONTAPのリリースによって異なります。の出力には、サイズの要件を満たしていないアレイLUNが表示され `storage errors show` ます。
+
+サイズに問題があるアレイLUNをONTAPシステムに割り当てることはできません。
+
+
+
+== storage errors showのメッセージ
+
+[listing]
+----
+NAME (Serial #): This array LUN is too large and is not usable. The maximum array LUN size supported is xTB
+----
+または
+
+[listing]
+----
+NAME (Serial #): This array LUN is too small and is not usable. The minimum array LUN size supported is xGB.
+----
+
+
+== 説明
+
+このメッセージは、アレイLUNがONTAPでサポートされるアレイLUNの最小サイズより小さい場合、または最大サイズを超えた場合に生成されます。アレイLUNのサイズがサポートされる値よりも大きくなったり小さくなったりする主な理由は次のとおりです。
+
+* ストレージアレイ管理者が、ONTAPアレイLUNのサイズ制限を、ベンダーが定義している測定単位に変換しなかった。
++
+一部のベンダーでは、アレイLUNのサイズ制限をONTAPとは異なる方法で計算し、アレイLUNの最小サイズと最大サイズの制限を決定しています。
+
++
+_ lun _に、サポートされるアレイHardware Universeの最大サイズと最小サイズの制限値を示します。
+
+* アレイLUNが、ONTAPとサイズ制限が異なる別のホスト用である。
++
+オープンSANでは、他のホスト用のアレイLUNがマスクされていない場合、ONTAPが認識されます。
+
++
+認識されているアレイLUNのサイズに問題がある場合、ONTAPでエラーメッセージが生成されます。
+
+
+
+
+
+== トラブルシューティングと問題解決
+
+. の出力を確認して `storage errors show` 、サイズに問題があるアレイLUNを特定します。
++
+** サイズに問題があるアレイLUNがONTAP用である場合、ストレージアレイ管理者はONTAPの要件に合わせてアレイLUNのサイズを変更し、ONTAPに再度提供する必要があります。
+** サイズに問題があるアレイLUNが別のホスト用である場合、ストレージアレイ管理者はそのアレイLUNをマスキングしてONTAPで認識されないようにする必要があります。
+
+
+. 問題を修正したら、を再度実行して `storage array config show` エラーが解消されたことを確認します。
+
+
+* 関連情報 *
+
+https://hwu.netapp.com["NetApp Hardware Universe"]

@@ -1,0 +1,36 @@
+---
+permalink: install/task_changing_array_lun_size_or_composition.html 
+sidebar: sidebar 
+keywords: change, array, lun, size, composition 
+summary: アレイLUNのサイズや構成の再設定はストレージアレイで行う必要があります。アレイLUNがすでにONTAPシステムに割り当てられている場合は、ストレージアレイ管理者が再設定を行う前に、ONTAPを使用してアレイLUNを未使用の状態に変更する必要があります。 
+---
+= アレイLUNのサイズまたは構成の変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNのサイズや構成の再設定はストレージアレイで行う必要があります。アレイLUNがすでにONTAPシステムに割り当てられている場合は、ストレージアレイ管理者が再設定を行う前に、ONTAPを使用してアレイLUNを未使用の状態に変更する必要があります。
+
+* 必要なもの *
+
+未使用の状態に変更するには、アレイLUNがスペアアレイLUNである必要があります。
+
+.手順
+. ONTAPシステムで、次のコマンドを入力して所有権情報を削除します。 `storage disk removeowner  -disk arrayLUNname`
+. ストレージアレイで、次の手順を実行します。
++
+.. アレイLUNのマッピングを解除し、ONTAPシステムから認識されないようにします。
+.. アレイLUNのサイズまたは構成を変更します。
+.. アレイLUNをONTAPで再び使用できるようにするには、アレイLUNをONTAPシステムに再度マッピングします。
++
+この時点で、アレイLUNの提供先のFCイニシエータポートからは認識されますが、どのONTAPシステムでもまだ使用できません。
+
+
+
+. アレイLUNの所有者に設定するONTAPシステムで、次のコマンドを入力します。 `storage disk assign -disk arrayLUNname -owner nodename`
++
+所有権情報を削除したアレイLUNは、割り当てを再設定するまでどのONTAPシステムでも使用できません。アレイLUNはスペアのままにしておくことも、アグリゲートに追加することもできます。アレイLUNをストレージに使用するには、アグリゲートにアレイLUNを追加する必要があります。
+
+

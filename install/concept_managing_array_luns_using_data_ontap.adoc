@@ -1,0 +1,14 @@
+---
+permalink: install/concept_managing_array_luns_using_data_ontap.html 
+sidebar: sidebar 
+keywords: manage, array, luns, ontap 
+summary: ノードに割り当てられたアレイLUNに対してストレージアレイ管理者が設定の変更（サイズの変更など）を行う場合は、ストレージアレイでLUNを再設定する前にONTAPでいくつかの作業を実行しなければならないことがあります。 
+---
+= ONTAPによるアレイLUNの管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ノードに割り当てられたアレイLUNに対してストレージアレイ管理者が設定の変更（サイズの変更など）を行う場合は、ストレージアレイでLUNを再設定する前にONTAPでいくつかの作業を実行しなければならないことがあります。

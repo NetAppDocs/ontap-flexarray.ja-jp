@@ -1,0 +1,42 @@
+---
+permalink: implement-e-series/concept_eight_port_array_lun_group_configuration.html 
+sidebar: sidebar 
+keywords: eight-port, array, lun group, configuration, crossed, back-end, connections, not 
+summary: 8ポートのLUNグループ構成は、clustered Data ONTAPのVシリーズシステムと、アレイLUNを使用可能なONTAPシステムでサポートされます。 
+---
+= 8ポートのアレイLUNグループ構成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+8ポートのLUNグループ構成は、clustered Data ONTAPのVシリーズシステムと、アレイLUNを使用可能なONTAPシステムでサポートされます。
+
+この構成は、お使いのシステムで実行されているONTAPのリリースのサポート対象としてInteroperability Matrixに記載されているすべてのストレージアレイで使用できます。
+
+この構成を導入するには、クロスさせるバックエンド接続とクロスさせないバックエンド接続の2つの方法があります。
+
+
+
+== クロスさせるバックエンド接続
+
+バックエンド接続をクロスさせる構成では、同じストレージアレイコントローラから両方のファブリックスイッチ（冗長）にFC接続を設定します。
+
+次の図はバックエンド接続をクロスさせた構成を示しています。ノードがスイッチおよびストレージアレイにどのように接続されているかに注目してください。vs1は、ストレージアレイコントローラ1のポート1Aとコントローラ2のポート2Cに接続する場合はスイッチ1を使用し、コントローラ2のポート2Aとコントローラ1のポート1Cに接続する場合はスイッチ2を使用します。これにより、スイッチポートとアレイポートの使用が最適化され、スイッチやストレージアレイコントローラで障害が発生した場合の影響を軽減できます。
+
+image::../media/eight_port_array_lun_group_configuration_crossed.gif[8ポートのアレイLUNグループ構成をクロスさせる場合]
+
+
+
+== クロスさせないバックエンド接続
+
+バックエンド接続をクロスさせない構成では、同じストレージアレイコントローラからのFC接続を1つのファブリックスイッチにのみ設定します。
+
+クロスさせないバックエンド接続の構成を次の図に示します。
+
+image::../media/eight_port_array_lun_group_configuration.gif[8ホオトノアレイLUNクルウフコウセイ]
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

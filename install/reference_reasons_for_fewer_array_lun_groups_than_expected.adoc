@@ -1,0 +1,54 @@
+---
+permalink: install/reference_reasons_for_fewer_array_lun_groups_than_expected.html 
+sidebar: sidebar 
+keywords: reasons, fewer, array, lun, groups, expected, resolve, issue 
+summary: バックエンド構成を検証する際には、storage array config showの出力をチェックして、アレイLUNグループの数が想定どおりであるかどうかを確認する必要があります。 
+---
+= アレイLUNグループが想定よりも少ない理由
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+バックエンド構成を検証する際には、の出力をチェックして、アレイLUNグループの数が想定どおりであるかどうかを確認する必要が `storage array config show` あります。
+
+
+
+== 説明
+
+LUNグループが想定より少ない代表的な原因は、ONTAPシステムの両方のFCイニシエータポートペアでLDEVとLUNのマッピングが同じになっていることです。両方のFCイニシエータポートペアでLDEVとLUNのマッピングが同じ場合 `storage array config show` 、の出力に表示されるLUNグループが想定より1つ少なくなります。
+
+次 `storage array config show` の出力では、両方のFCイニシエータポートペアが同じターゲットポートペアにマッピングされているためにアレイLUNグループが1つしか示されていません。
+
+[listing]
+----
+
+mysystem1::> storage array config show
+
+         LUN   LUN
+Node     Group Count Array Name  Array Target Ports      Switch Port    Initiator
+------   ----- ----- ---------- -------------------      -----------    ---------
+
+mysystem1  0     2   DGC_RAID5_1  20:1A:00:a0:b8:0f:ee:04  vnbr200es25:5   0a
+                                  20:2A:00:a0:b8:0f:ee:04  vnci9124s53:6   0c
+                                  20:1A:00:a0:b8:0f:ee:04  vnbr200es25:5   0b
+                                  20:2A:00:a0:b8:0f:ee:04  vnci9124s53:6   0d
+----
+[Array Target Ports]列を見ると、LUNグループ内で同じターゲットポートが複数表示され、それぞれに異なるイニシエータが割り当てられていることがわかります。
+
+* イニシエータ0aと0bはどちらもストレージアレイポート1Aにアクセスしています。
+* イニシエータ0cと0dはどちらもストレージアレイポート2Aにアクセスしています。
+
+
+
+
+== 問題の解決
+
+両方のFCイニシエータポートペアでLDEVとLUNのマッピングが同じであってもONTAPシステムは動作するため、ONTAPではこの状況はエラーとみなされません。ただし、同じターゲットポートに複数のFCイニシエータを接続することはサポートされていません。ONTAPシステムがサポートされる構成に従ってLUNグループを意図した数にするには、マッピングを修正する必要があります。
+
+この問題を修正するには、次の手順を実行します。
+
+. ストレージアレイで、ONTAPシステムの両方のFCイニシエータポートペアでマッピングが同じにならないようにマッピングを修正します。
+. ONTAPシステムでを再度実行し `storage array config show` 、想定した数のLUNグループが表示されること、およびFCイニシエータポートペアが同じターゲットポートにアクセスしていないことを確認します。
+

@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/reference_emc_vnx_storage_arrays.html 
+sidebar: sidebar 
+keywords: emc, vnx, storage, arrays 
+summary: アレイLUNを使用するONTAPシステムと連携するようにEMC VNXストレージアレイを構成するには、特定の要件を満たす必要があります。たとえば、ストレージアレイに構成パラメータを設定する、サポート対象の構成のみを導入するなどの要件があります。 
+---
+= EMCVNXストレエシアレイ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するONTAPシステムと連携するようにEMC VNXストレージアレイを構成するには、特定の要件を満たす必要があります。たとえば、ストレージアレイに構成パラメータを設定する、サポート対象の構成のみを導入するなどの要件があります。

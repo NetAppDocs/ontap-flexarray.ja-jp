@@ -1,0 +1,33 @@
+---
+permalink: install/concept_multiple_paths_to_an_array_lun_can_be_used_to_distribute_load.html 
+sidebar: sidebar 
+keywords: multiple, paths, array, lun, used, distribute, load, commands 
+summary: 特定のLUNに対するI/O要求を、そのLUNへの使用可能なすべての最適パスに分散できます。これは、複数のパスが使用可能であるにもかかわらず、特定のLUNに対するI/O要求が単一のアクティブな最適パス経由でのみ送信されていた以前のリリースとは異なります。 
+---
+= アレイLUNへの複数のパスを使用した負荷の分散
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+特定のLUNに対するI/O要求を、そのLUNへの使用可能なすべての最適パスに分散できます。これは、複数のパスが使用可能であるにもかかわらず、特定のLUNに対するI/O要求が単一のアクティブな最適パス経由でのみ送信されていた以前のリリースとは異なります。
+
+特定のLUNに対するI/O要求を複数のパスに分散させると、次のようなメリットがあります。
+
+* 使用可能な最適パスすべてを最大限に利用できるため、効率が向上
+* 複数パスでのロードバランシングによるパフォーマンスの向上
+
+
+たとえば、アクティブ/アクティブアレイでは、特定のLUNに対するI/O要求を、そのLUNで使用可能な4つのターゲットポートすべてに分散できます。非対称アクティブ/アクティブアレイLUNの場合は、I/O要求を特定のLUNのすべての最適パスに分散できます。
+
+
+
+== 特定のLUNの複数パス間のロードバランシングを表示するコマンド
+
+特定のLUNの負荷が複数のパスに分散されている状況を確認するには、次のコマンドを実行します。
+
+* ``storage disk show -disk <LUN name>`` に、特定のアレイLUNの使用可能なパスにI/O負荷が分散されている状況を示します。
+* ``storage path show-by-initiator -array-name <array name>`` では、特定のストレージアレイに接続されたONTAPシステム上のすべてのイニシエータポートにI/O負荷が分散されている状況が表示されます。
+* ``storage path show -by-target -array-name <array name>`` では、特定のストレージアレイ上のすべてのターゲットポートにI/O負荷が分散されている状況が表示されます。
+

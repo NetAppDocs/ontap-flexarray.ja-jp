@@ -1,0 +1,27 @@
+---
+permalink: install/reference_requirements_for_zoning_in_a_configuration_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: requirements, zone, configuration, storage, arrays 
+summary: ストレージアレイを使用するONTAP構成のゾーニング要件に従って、ONTAPシステムが正しいLUNセットにアクセスできるようにする必要があります。 
+---
+= ストレージアレイを使用した構成でのゾーニングの要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージアレイを使用するONTAP構成のゾーニング要件に従って、ONTAPシステムが正しいLUNセットにアクセスできるようにする必要があります。
+
+* Interoperability Matrix _で、スイッチとスイッチファームウェアがONTAP構成でサポートされていることを確認する必要があります。
+* 各イニシエータポートを各ストレージアレイ上の単一のターゲットポートに制限するようにゾーニングを設定する必要があります。
+* スイッチで、ONTAPシステムのポートとストレージアレイのポートを同じゾーンに割り当てる必要があります。
++
+これにより、ONTAPシステムからストレージアレイ上のLUNにアクセスできるようになります。
+
+* ストレージアレイのポートを異機種のシステム間で共有する場合、ONTAPシステムのアレイLUNを他のシステムに公開することはできません。
++
+LUNセキュリティまたはアレイLUNマスキングを使用して、ONTAPストレージ用のアレイLUNがONTAPシステムでのみ認識されるようにする必要があります。
+
+* ホスト構成ポートは、ターゲットポートと同じゾーンに含めることはできません。
+

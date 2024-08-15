@@ -1,0 +1,24 @@
+---
+permalink: implement-third-party/concept_stand_alone_basic_configuration.html 
+sidebar: sidebar 
+keywords: stand-alone, basic, configuration 
+summary: アレイLUNを使用するONTAPシステムのスタンドアロンの基本的な構成は、1つのFCイニシエータポートペアが1つのLUNグループにアクセスする単純なファブリック接続構成です。 
+---
+= スタンドアロンの基本的な構成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するONTAPシステムのスタンドアロンの基本的な構成は、1つのFCイニシエータポートペアが1つのLUNグループにアクセスする単純なファブリック接続構成です。
+
+この構成は、お使いのシステムで実行されているONTAPのリリースのサポート対象としてInteroperability Matrixに記載されているすべてのストレージアレイで使用できます。
+
+この構成を次の図に示します。
+
+image::../media/one_standalone_2_port_array_lun_group_array_port_labels.gif[スタンドアロンシステムを使用する単一の2ポートアレイLUNグループ構成]
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

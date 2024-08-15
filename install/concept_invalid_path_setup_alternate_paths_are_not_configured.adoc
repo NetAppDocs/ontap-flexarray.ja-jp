@@ -1,0 +1,46 @@
+---
+permalink: install/concept_invalid_path_setup_alternate_paths_are_not_configured.html 
+sidebar: sidebar 
+keywords: invalid, path, setup, alternate, paths, configured 
+summary: ONTAPシステムの両方のFCイニシエータからすべてのアレイLUNへの代替パスを設定して、Single Point Of Failure（SPOF；単一点障害）を回避することが重要です。 
+---
+= 無効なパス設定：代替パスが設定されていません
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムの両方のFCイニシエータからすべてのアレイLUNへの代替パスを設定して、Single Point Of Failure（SPOF；単一点障害）を回避することが重要です。
+
+次の構成は無効です。ONTAPシステムの各FCイニシエータポートからストレージアレイの各LUNへの代替パスが提供されていません。同じONTAPシステムの両方のFCイニシエータポートが、同じスイッチを介してストレージアレイに接続されています。
+
+image::../media/invalid_config_no_alternate_paths.gif[この図には説明が付随しています。]
+
+この無効な例では、次のゾーニングが設定されているとします。
+
+* vs1の場合：
++
+** 0aは、コントローラ1のポートAを認識するようにゾーニングされています。
+** 0cは、コントローラ1のポートBを認識するようにゾーニングされています。
+
+
+* vs2の場合：
++
+** 0aは、コントローラ2のポートAを認識するようにゾーニングされています。
+** 0cは、コントローラ2のポートBを認識するようにゾーニングされています。
+
+
+
+
+この設定例では、各スイッチがSPOFになります。
+
+これを有効な設定にするには、次の変更を行う必要があります。
+
+* vs1のFCイニシエータポート0cをスイッチ2に接続する必要があります。
+* vs2のFCイニシエータポート0aをスイッチ1に接続する必要があります。
+* 適切なゾーニングを設定する必要があります。
++
+ストレージアレイで複数のポートを使用していて、選択したポートセットで特定のLUNセットを構成することがサポートされている場合は、特定のFCイニシエータポートがファブリック上で提供されているすべてのアレイLUNを認識できる必要があります。
+
+

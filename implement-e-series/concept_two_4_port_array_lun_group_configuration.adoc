@@ -1,0 +1,24 @@
+---
+permalink: implement-e-series/concept_two_4_port_array_lun_group_configuration.html 
+sidebar: sidebar 
+keywords: two, 4-port, array, lun, group, configuration 
+summary: この構成では、各ONTAP FCイニシエータポートペアは個別のアレイLUNグループにアクセスします。ゾーニングは、単一のONTAP FCイニシエータから単一のアレイターゲットポートです。 
+---
+= 2ツノ4ホオトノアレイLUNクルウフコウセイ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+この構成では、各ONTAP FCイニシエータポートペアは個別のアレイLUNグループにアクセスします。ゾーニングは、単一のONTAP FCイニシエータから単一のアレイターゲットポートです。
+
+この構成は、お使いのシステムで実行されているONTAPのリリースのサポート対象としてInteroperability Matrixに記載されているすべてのストレージアレイで使用できます。
+
+この構成のブロック図を次の図に示します。
+
+image::../media/two_4_port_array_lun_groups.gif[2つの4ポートのアレイLUNグループ]
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

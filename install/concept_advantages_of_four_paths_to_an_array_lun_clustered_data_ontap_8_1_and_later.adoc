@@ -1,0 +1,21 @@
+---
+permalink: install/concept_advantages_of_four_paths_to_an_array_lun_clustered_data_ontap_8_1_and_later.html 
+sidebar: sidebar 
+keywords: advantages, four, paths, array, lun 
+summary: ONTAP用のアレイLUNへのパスの数を計画する場合は、設定するパスを2つにするか4つにするかを検討する必要があります。 
+---
+= アレイLUNへのパスを4つ設定する利点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP用のアレイLUNへのパスの数を計画する場合は、設定するパスを2つにするか4つにするかを検討する必要があります。
+
+アレイLUNへのパスを4つ設定する利点は次のとおりです。
+
+* スイッチに障害が発生しても、両方のストレージアレイコントローラを引き続き使用できます。
+* ストレージアレイコントローラに障害が発生しても、両方のスイッチを引き続き使用できます。
+* パスが2つではなく4つに分散されるため、パフォーマンスが向上します。
+

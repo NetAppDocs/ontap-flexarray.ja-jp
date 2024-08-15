@@ -1,0 +1,27 @@
+---
+permalink: install/concept_planning_for_ontap_use_of_array_luns.html 
+sidebar: sidebar 
+keywords: plan, ontap, use, array, luns 
+summary: ONTAPでアレイLUNを使用するには、ストレージアレイ管理者がまずストレージアレイにLUNを作成し、LUNをONTAPで使用できるようにする必要があります。その後、ONTAP管理者は、ストレージアレイで使用可能になったアレイLUNを使用するようにONTAPを設定する必要があります。 
+---
+= ONTAPでアレイLUNを使用するための計画
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPでアレイLUNを使用するには、ストレージアレイ管理者がまずストレージアレイにLUNを作成し、LUNをONTAPで使用できるようにする必要があります。その後、ONTAP管理者は、ストレージアレイで使用可能になったアレイLUNを使用するようにONTAPを設定する必要があります。
+
+ONTAPで使用するアレイLUNのプロビジョニング方法を計画する際には、次の考慮事項を考慮する必要があります。
+
+* ONTAPでサポートされるアレイLUNのタイプ
+* ONTAPアレイLUNの最小サイズと最大サイズ
+* 必要なアレイLUNの数
+
+
+[NOTE]
+====
+ONTAPはアレイLUNを仮想ディスクと見なします。
+
+====

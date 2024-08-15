@@ -1,0 +1,40 @@
+---
+permalink: install/task_preparing_a_storage_array_for_use_with_ontap_systems.html 
+sidebar: sidebar 
+keywords: prepare, storage, array, use, ontap, systems 
+summary: アレイLUNを使用する構成でONTAPシステムのセットアップを開始するには、ONTAPで使用するストレージをストレージアレイ管理者が準備する必要があります。 
+---
+= ONTAP システムで使用するストレージアレイの準備
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用する構成でONTAPシステムのセットアップを開始するには、ONTAPで使用するストレージをストレージアレイ管理者が準備する必要があります。
+
+* 必要なもの *
+
+構成で使用するストレージアレイ、ファームウェア、およびスイッチが ONTAP の特定のバージョンでサポートされている必要があります。
+
+* https://mysupport.netapp.com/NOW/products/interoperability["NetAppの相互運用性"]
++
+IMTでは、[Storage Solution]フィールドを使用してMetroClusterソリューションを選択できます。検索を絞り込むには、 * 構成部品エクスプローラ * を使用して構成部品と ONTAP バージョンを選択します。[ 結果の表示（ Show Results ） ] をクリックすると、条件に一致するサポートされている構成のリストを表示できます。
+
+* https://hwu.netapp.com["NetApp Hardware Universe"]
+
+
+このタスクは、ストレージアレイ管理者と協力してストレージアレイで実行する必要があります。
+
+.手順
+. ストレージアレイ上にONTAPシステムで使用するLUNを少なくとも4つ作成します。
++
+HAペアの各ノードに、ルートボリューム用のアレイLUNとコアダンプ用のアレイLUNが必要です。
+
+. ONTAP と連携するために必要なストレージアレイのパラメータを設定します。
++
+** https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["サードパーティ製ストレージ向けのFlexArray仮想化の実装"]
+** https://docs.netapp.com/us-en/ontap-flexarray/implement-e-series/index.html["NetApp E-Seriesストレージ向けのFlexArray仮想化の実装"]
+
+
+

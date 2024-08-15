@@ -1,0 +1,20 @@
+---
+permalink: install/concept_zoning_recommendation_for_a_configuration_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: zone, recommendation, configuration, storage, arrays 
+summary: ストレージ アレイを使用した構成で推奨されるゾーニングは、1対1のゾーニングです。1対1のゾーニングでは、各ゾーンに1つのFCイニシエータポートと1つのストレージアレイターゲットポートが含まれます。 
+---
+= ストレージ アレイを使用した構成で推奨されるゾーニング
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージ アレイを使用した構成で推奨されるゾーニングは、1対1のゾーニングです。1対1のゾーニングでは、各ゾーンに1つのFCイニシエータポートと1つのストレージアレイターゲットポートが含まれます。
+
+1対1のゾーニングを作成する利点は次のとおりです。
+
+* 特定のアレイLUNにアクセスできるポートの数を制限します。
+* FCイニシエータONTAPシステムが相互の検出を試行しないため、検出とブートにかかる時間が短縮されます。
+

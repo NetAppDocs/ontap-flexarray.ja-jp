@@ -1,0 +1,20 @@
+---
+permalink: install/task_preparing_array_luns_before_removing_a_v_series_system_from_service.html 
+sidebar: sidebar 
+keywords: prepare, array, luns, before, remove, ontap, system, service 
+summary: ONTAPシステムをサービスから削除する前に、そのシステムに割り当てられているすべてのアレイLUNの永続的予約を解除する必要があります。 
+---
+= ONTAPシステムをサービスから削除する前のアレイLUNの準備
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムをサービスから削除する前に、そのシステムに割り当てられているすべてのアレイLUNの永続的予約を解除する必要があります。
+
+アレイLUNにONTAPの所有権を割り当てるとONTAP、そのアレイLUNには永続的予約（所有権ロック）が設定され、そのアレイLUNを所有するONTAPシステムが識別されます。他のタイプのホストでアレイLUNを使用できるようにするには、ONTAPによってアレイLUNに設定された永続的予約を削除する必要があります。 一部のアレイでは、ONTAPによってLUNに書き込まれた所有権と永続的予約を削除しないと、リザーブされたLUNを削除できません。
+
+たとえば、Hitachi USPストレージアレイには、LUNから永続的予約を削除するためのユーザコマンドがありません。ONTAPシステムをサービスから削除する前にONTAPで永続的予約を削除しない場合は、予約を削除するために日立のテクニカルサポートに連絡する必要があります。
+
+ナレッジベースの記事を参照 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/What_are_SCSI_Reservations_and_SCSI_Persistent_Reservations["SCSI予約とSCSI永続的予約とは"^]

@@ -1,0 +1,23 @@
+---
+permalink: install/concept_additional_tasks_after_installing_and_testing_a_ontap_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: additional, tasks, after, install, test, ontap, configuration, array, luns, netapp 
+summary: アレイLUNを使用するONTAP構成のインストールおよびテストが完了したら、ONTAPシステムにアレイLUNを追加で割り当て、ONTAPのさまざまな機能を設定できます。 
+---
+= アレイLUNを使用するONTAP構成のインストールおよびテスト後の追加作業
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するONTAP構成のインストールおよびテストが完了したら、ONTAPシステムにアレイLUNを追加で割り当て、ONTAPのさまざまな機能を設定できます。
+
+アレイLUNを使用するONTAPシステムのインストールおよびテストの完了後に実行できるタスクの一部を次に示します。
+
+* 必要に応じて、ONTAPシステムに追加のアレイLUNを割り当てます。
+* 必要に応じて、ONTAPのアグリゲートとボリュームを作成します。
+* 必要に応じて、ONTAPの追加機能（バックアップとリカバリの機能など）をシステムに設定します。
+
+
+ONTAPの各種機能の設定については、該当するONTAPガイドを参照してください。

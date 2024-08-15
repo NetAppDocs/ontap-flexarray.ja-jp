@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/reference_hp_eva_storage_arrays.html 
+sidebar: sidebar 
+keywords: hp, eva, storage, arrays 
+summary: ONTAPシステムと連携するようにストレージアレイを設定するには、一定の要件を満たす必要があります。たとえば、ストレージアレイに構成パラメータを設定する、サポート対象の構成のみを導入するなどの要件があります。 
+---
+= HPEVAストレエシアレイ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムと連携するようにストレージアレイを設定するには、一定の要件を満たす必要があります。たとえば、ストレージアレイに構成パラメータを設定する、サポート対象の構成のみを導入するなどの要件があります。

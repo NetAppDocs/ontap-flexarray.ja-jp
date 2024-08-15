@@ -1,0 +1,33 @@
+---
+permalink: install/concept_array_lun_name_format.html 
+sidebar: sidebar 
+keywords: array, lun, name, format 
+summary: アレイLUNに割り当てられる名前の形式が変更され、名前がクラスタ内で一意になるようになりました。 
+---
+= アレイLUN名の形式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNに割り当てられる名前の形式が変更され、名前がクラスタ内で一意になるようになりました。
+
+アレイLUN名は2つの要素で構成され、次のようになります。
+
+``<array_prefix>.<offset>``など `EMC-1.1`です。
+
+* は、 `array_prefix` ONTAPがデフォルトで各ストレージアレイに割り当てる一意のプレフィックスです。
++
+このフィールドはで構成され ``<array_name-array_instance> (EMC-1`` ます）。
+
++
+`array_name` には、ベンダー名の最初の3文字を指定します。
+
++
+同じベンダーのアレイが複数ある場合は、の値が `array_instance` 昇順に進みます。
+
+* offsetは、ONTAPが各LUNに割り当てる昇順の仮想ディスク番号です。ホストのLUN IDには依存しません。
+
+
+フィールドは、コマンドを使用して変更できます ``<array_prefix>`` `storage array modify -name -prefix` 。

@@ -1,0 +1,41 @@
+---
+permalink: implement-third-party/concept_configuring_fill_word_settings_for_8_gb_brocade_switch_ports_concept.html 
+sidebar: sidebar 
+keywords: required fill word, settings, 8 gb, brocade, switch, ports 
+summary: ストレージ環境でFOS 6.3.1以降のファームウェアバージョンを実行する8Gb Brocadeスイッチを使用している場合は、ONTAPシステムに接続されているスイッチポートに適切なフィルワードが設定されていること、およびスイッチポートがストレージアレイに接続されていることを確認する必要があります。フィルワードが正しくないと、スイッチポートでリンクの初期化に失敗する可能性があります。 
+---
+= 8Gb Brocadeスイッチポートの必須のフィルワード設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージ環境でFOS 6.3.1以降のファームウェアバージョンを実行する8Gb Brocadeスイッチを使用している場合は、ONTAPシステムに接続されているスイッチポートに適切なフィルワードが設定されていること、およびスイッチポートがストレージアレイに接続されていることを確認する必要があります。フィルワードが正しくないと、スイッチポートでリンクの初期化に失敗する可能性があります。
+
+ONTAPシステムの場合は、対応するスイッチポートのフィルワードを「3」に設定する必要があります。
+
+ストレージアレイの場合は、次の推奨値に従ってフィルワードを設定する必要があります。手順については、Brocadeスイッチのドキュメントを参照してください。
+
+[cols="2*"]
+|===
+| ストレージアレイ | Brocadeスイッチポートのフィルワード値 
+
+
+ a| 
+日立
+| 2 
+
+
+ a| 
+HP XP
+|  
+
+
+ a| 
+Data ONTAPシステムでサポートされている他のすべてのストレージアレイ
+| 3 
+|===
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

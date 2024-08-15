@@ -1,0 +1,33 @@
+---
+permalink: install/task_checking_the_checksum_type_of_spare_array_luns.html 
+sidebar: sidebar 
+keywords: check, checksum, type, spare, array, luns 
+summary: 名前を指定してスペアアレイLUNをアグリゲートに追加する場合は、追加するアレイLUNのチェックサム方式がアグリゲートのチェックサム方式と同じであることを確認する必要があります。 
+---
+= スペアアレイLUNのチェックサム方式の確認
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+名前を指定してスペアアレイLUNをアグリゲートに追加する場合は、追加するアレイLUNのチェックサム方式がアグリゲートのチェックサム方式と同じであることを確認する必要があります。
+
+1つのアレイLUNアグリゲートにチェックサム方式が異なるアレイLUNを混在させることはできません。チェックサム方式は、アグリゲートとアグリゲートに追加するアレイLUNで同じである必要があります。
+
+アグリゲートに追加するスペアアレイLUNの数を指定した場合、アグリゲートと同じチェックサム方式のアレイLUNがデフォルトでONTAPで選択されます。
+
+[NOTE]
+====
+ゾーンチェックサム方式のアレイLUNを使用して新規に作成したアグリゲートのチェックサム方式は、_advanced zoned checksum_（AZCS）になります。ゾーンチェックサム方式は、既存のゾーン方式のアグリゲートでも引き続きサポートされます。ゾーン チェックサム方式の既存のアグリゲートに追加したゾーン チェックサム方式のスペア アレイLUNは、ゾーン チェックサム方式のままです。AZCSチェックサム方式のアグリゲートにゾーンチェックサム方式のスペアアレイLUNを追加すると、チェックサムの管理にAZCSチェックサム方式が使用されます。
+
+====
+.ステップ
+. 次のコマンドを入力して、スペアアレイLUNのチェックサム方式を確認します。
++
+`storage disk show -fields checksum-compatibility -container-type spare`
+
++
+ブロックチェックサム方式のアレイLUNはブロックチェックサム方式のアグリゲートに、ゾーン方式のアレイLUNは_advanced zoned checksum_（AZCS）方式のアグリゲートに追加できます。
+
+

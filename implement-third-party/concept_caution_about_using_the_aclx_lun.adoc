@@ -1,0 +1,18 @@
+---
+permalink: implement-third-party/concept_caution_about_using_the_aclx_lun.html 
+sidebar: sidebar 
+keywords: caution, aclx, lun 
+summary: VMAXアレイでは、顧客がACLXの使用を要求した場合、初期化中にACLX（Access Control Logix）LUNが作成されます。ACLX LUNはストレージLUNではないため、ONTAPにマッピングしないでください。 
+---
+= ACLX LUNノシヨウニカンスルチユウイシコウ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VMAXアレイでは、顧客がACLXの使用を要求した場合、初期化中にACLX（Access Control Logix）LUNが作成されます。ACLX LUNはストレージLUNではないため、ONTAPにマッピングしないでください。
+
+ACLX LUNをONTAPシステムにマッピングすると、ACLX LUNが必要な最小サイズの要件を満たしていないことを示すメッセージがONTAPによって記録され、障害状態としてマークされます。このエラーメッセージが記録されたあともONTAPシステムは正常に機能しますが、このLUNを使用することはできません。
+
+ONTAPシステムのフロントエンドディレクタポートに対するACLX LUNのマッピングを解除する必要があります。

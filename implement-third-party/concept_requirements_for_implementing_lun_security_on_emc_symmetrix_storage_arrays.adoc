@@ -1,0 +1,32 @@
+---
+permalink: implement-third-party/concept_requirements_for_implementing_lun_security_on_emc_symmetrix_storage_arrays.html 
+sidebar: sidebar 
+keywords: requirements, implementing, lun, security, emc, symmetrix, storage, arrays 
+summary: LUNセキュリティを使用すると、ホストが所有していないLUNにホストがデータを書き込む可能性を排除できます。 
+---
+= EMC SymmetrixストレージアレイにLUNセキュリティを実装するための要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+LUNセキュリティを使用すると、ホストが所有していないLUNにホストがデータを書き込む可能性を排除できます。
+
+ONTAPシステムが所有するEMC SymmetrixアレイLUNに対するONTAP以外のホストによる上書き（またはその逆）を防ぐには、次のいずれかの方法で、ホスト（チャネル）ディレクタポートを通じてSymmetrix論理デバイスを提供する必要があります。
+
+* ONTAP専用の特定のSymmetrixホスト（チャネル）ダイレクタ・ポートでのみ'SymmetrixのONTAP論理デバイスを提供します
++
+ポートをONTAP専用にできない場合は、それらのポートを使用する他のすべてのホストがONTAPの要件に準拠していることを確認する必要があります。これは'Symmetrixアレイに接続されている各ホストには'異なるポート属性設定に対する要件があるためですSymmetrixストレージアレイに接続されている複数のホスト間でポートを共有すると、実装不可能な構成になる可能性があります。
+
+* VMAXストレージアレイの場合は、ポートグループ、ストレージグループ、およびイニシエータグループを作成して、必要なマッピングとマスキング用のマスキングビューを作成します。
++
+これを実現するには、まずVMAXストレージアレイポートでACLXポート属性を有効にする必要があります。
+
+
+
+[NOTE]
+====
+デフォルトでは、VCMDB LUNをすべてのホストに提供しないでください。特定のホストに特に表示されていない限り、VCMDBの表示を制限するようにグローバル設定を構成します。
+
+====

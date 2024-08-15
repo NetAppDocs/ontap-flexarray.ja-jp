@@ -1,0 +1,12 @@
+---
+permalink: implement-third-party/index.html 
+sidebar: sidebar 
+keywords: flexarray, virtualization, implementation, third-Party, storage 
+summary: ONTAP FlexArray情報ライブラリへようこそ。ここでは、サードパーティ製ストレージアレイをクラスタのバックエンドストレージとして使用する方法について説明します。 
+---
+= サードパーティ製ストレージ向けFlexArray®仮想化の実装
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+

@@ -1,0 +1,35 @@
+---
+permalink: install/task_obtaining_wwns_manually.html 
+sidebar: sidebar 
+keywords: obtain, wwpns, manually 
+summary: ONTAPシステムがSANスイッチに接続されていない場合は、スイッチへの接続に使用されるFCイニシエータポートのWorld Wide Port Name（WWPN；ワールドワイドポート名）を取得する必要があります。 
+---
+= 手動でのWWPNの取得
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムがSANスイッチに接続されていない場合は、スイッチへの接続に使用されるFCイニシエータポートのWorld Wide Port Name（WWPN；ワールドワイドポート名）を取得する必要があります。
+
+スイッチ構成にWWPNを入力するとエラーが発生する可能性があるため、スイッチで自動的にWWPNを検出することを推奨します。
+
+.手順
+. システムのコンソールをラップトップコンピュータに接続します。
+. システムの電源を入れます。
++
+コンソールに次のメッセージが表示されたら、Ctrl+Cキーを押してブートプロセスを中断します。
+
++
+[listing]
+----
+Press CTRL-C for boot menu
+----
+. ブートオプションメニューで[Maintenance Mode]オプションを選択します。
+. 次のコマンドを入力して、システムのFCイニシエータポートのWWPNの一覧を表示します。 `storage show adapter`
++
+特定のアダプタWWPNを表示するには、アダプタ名を追加します（例：storage show adapter 0a）。
+
+. 使用するWWPNを記録し、メンテナンスモードを終了します。
+

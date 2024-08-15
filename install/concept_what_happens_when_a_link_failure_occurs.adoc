@@ -1,0 +1,34 @@
+---
+permalink: install/concept_what_happens_when_a_link_failure_occurs.html 
+sidebar: sidebar 
+keywords: happens, link, failure, occurs 
+summary: ONTAPは、リンクの使用状況を定期的に監視します。リンク障害に対するONTAPの応答は、障害が発生した場所によって異なります。 
+---
+= リンク障害が発生した場合の動作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPは、リンクの使用状況を定期的に監視します。リンク障害に対するONTAPの応答は、障害が発生した場所によって異なります。
+
+次の表に、ファブリック接続構成で障害が発生した場合の動作を示します。
+
+|===
+| リンクで障害が発生した場合のリンク | 作業 
+
+
+ a| 
+ONTAPシステムとスイッチ
+ a| 
+ONTAPはすぐに通知を受信し、他のパスにトラフィックを送信します。
+
+
+
+ a| 
+スイッチとストレージアレイ
+ a| 
+ONTAPシステムとスイッチの間のリンクはまだ確立されているため、ONTAPはリンク障害の発生をすぐには認識しません。I/Oがタイムアウトすると、ONTAPは障害が発生したことを認識します。ONTAPは、元のパスでトラフィックの送信を3回再試行し、そのトラフィックを他のパスにフェイルオーバーします。
+
+|===

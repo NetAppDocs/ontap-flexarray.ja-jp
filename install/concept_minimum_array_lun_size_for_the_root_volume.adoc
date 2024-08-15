@@ -1,0 +1,20 @@
+---
+permalink: install/concept_minimum_array_lun_size_for_the_root_volume.html 
+sidebar: sidebar 
+keywords: array, lun, size, required, root, volume 
+summary: ルートボリュームにシステムファイル、ログファイル、コアファイル用の十分なスペースを確保するには、ルートボリュームのサイズをアレイLUNのサポートされる最小サイズよりも大きく設定する必要があります。これらのファイルは、システムに問題が発生した場合にテクニカルサポートに提供する必要があります。 
+---
+= ルートボリュームに必要なアレイLUNのサイズ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ルートボリュームにシステムファイル、ログファイル、コアファイル用の十分なスペースを確保するには、ルートボリュームのサイズをアレイLUNのサポートされる最小サイズよりも大きく設定する必要があります。これらのファイルは、システムに問題が発生した場合にテクニカルサポートに提供する必要があります。
+
+_ lun _には、ルートボリュームのアレイHardware Universeの最小サイズを示します。
+
+* 関連情報 *
+
+https://hwu.netapp.com["NetApp Hardware Universe"]

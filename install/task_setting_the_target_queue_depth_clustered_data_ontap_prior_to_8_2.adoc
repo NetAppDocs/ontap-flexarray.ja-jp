@@ -1,0 +1,20 @@
+---
+permalink: install/task_setting_the_target_queue_depth_clustered_data_ontap_prior_to_8_2.html 
+sidebar: sidebar 
+keywords: set, target, queue, depth, ontap, 8.2 
+summary: デフォルトのターゲットキュー深度はほとんどの環境に適していますが、必要に応じてデフォルト値を変更できます。 
+---
+= ターゲットキュー深度の設定（8.2より前のONTAP）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+デフォルトのターゲットキュー深度はほとんどの環境に適していますが、必要に応じてデフォルト値を変更できます。
+
+この設定はONTAPシステムごとに適用され、すべてのストレージアレイのすべてのターゲットポートに適用されます。このオプションは、8.2より前のバージョンを実行しているONTAPシステムで使用できます。
+
+.ステップ
+. ターゲットキュー深度を設定するには、次のオプションを使用します。 `options disk.target_port.cmd_queue_depth value`
+

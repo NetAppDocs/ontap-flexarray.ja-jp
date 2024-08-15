@@ -1,0 +1,14 @@
+---
+permalink: install/concept_factors_that_impact_the_number_and_size_of_array_luns_you_need.html 
+sidebar: sidebar 
+keywords: factors, impact, number, size, array, luns, need 
+summary: 必要なアレイLUNの数とサイズを決定する際は、LUNの使用可能スペースなど、いくつかの要因を考慮する必要があります。 
+---
+= 必要なアレイLUNの数とサイズに影響する要因
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必要なアレイLUNの数とサイズを決定する際は、LUNの使用可能スペースなど、いくつかの要因を考慮する必要があります。

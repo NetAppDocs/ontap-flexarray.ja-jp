@@ -1,0 +1,94 @@
+---
+permalink: install/reference_all_paths_to_an_array_lun_are_on_the_same_storage_array_controller.html 
+sidebar: sidebar 
+keywords: all, paths, array, lun, same, storage, array, controller, errors, message 
+summary: すべてのパスを同じストレージアレイコントローラに設定するとSingle Point Of Failure（SPOF；単一点障害）のある構成になるため、ONTAPではサポートされていません。storage errors showコマンドを使用すると、同じストレージアレイコントローラに接続するようにパスが設定されているアレイLUNを特定できます。 
+---
+= あるアレイLUNへのすべてのパスが同じストレージアレイコントローラにある
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+すべてのパスを同じストレージアレイコントローラに設定するとSingle Point Of Failure（SPOF；単一点障害）のある構成になるため、ONTAPではサポートされていません。コマンドは、 `storage errors show` 同じストレージアレイコントローラに接続するようにパスが設定されているアレイLUNを特定します。
+
+このエラーを修正するまで、ONTAPではアレイLUNをONTAPシステムに割り当てることはできません。
+
+
+
+== storage errors showのメッセージ
+
+[listing]
+----
+NAME (UID): All paths to this array LUN are connected to the same fault domain. This is a single point of failure
+----
+
+
+== 説明
+
+このエラーは、アレイLUNへのパスが同じストレージアレイコントローラまたはFRUに接続するように設定されていることが原因で発生します。
+
+[NOTE]
+====
+冗長性を確保するには、アレイLUNへの4つのパス、複数のダイレクタを搭載したFRUを搭載したストレージアレイ（EMC SymmetrixやHDS USPなど）、またはデュアルコントローラを搭載したストレージアレイ（EMC CX、HP EVAなど）を使用することを推奨します。ただし、パスを単一のストレージアレイコントローラまたはFRUを経由するように設定すると、そのような機能を使用してもSPOFを含む構成になります。アクティブ/アクティブストレージアレイでは、FRU全体が1つの障害ドメインとみなされます。たとえば、EMC Symmetrixストレージアレイでは、同じFEBEボード上に複数のチャネルディレクタがあります。すべてのパスが同じFEBEボードを通過すると、ボードを交換する必要がある場合にすべてのパスが失われるため、FEBEボードは1つのフォールトドメインと見なされます。
+
+====
+次の図は、単一の障害ドメインがないようにアレイLUNへの冗長パスを設定する場合の、正しいストレージアレイポートと間違ったストレージアレイポートの選択を示しています。左の例のパスは正しく設定されています。アレイLUNへのパスは冗長で、各接続がストレージアレイの別 々 のコントローラのポートに接続されているためです。右の例では、アレイLUNへの両方のパスが同じコントローラに接続されているため、SPOFが設定されます。
+
+image::../media/redundant_array_port_selection.gif[この図には説明が付随しています。]
+
+ `storage errors show`コマンドは、同じ障害ドメインにあるアレイLUNを表示します。この問題は、の出力で[TPGN]列（ターゲットポートグループ番号）でも確認できます `storage disk show` 。イニシエータポートペアの各イニシエータには、異なるTPGNが表示されます。ペアの両方のイニシエータでTPGNが同じである場合は、両方のイニシエータが同じ障害ドメインに属しています。
+
+次の `storage disk show` 例は、イニシエータ0aおよび0c経由でアクセスされるLUN 30のTPGN 1を示しています。パスが冗長構成の場合、各イニシエータに表示されるTPGNは異なります。
+
+[listing]
+----
+
+mysystem1::> storage disk show mysystem1:vgbr300s70:9.126L30
+                  Disk: HP-1.15
+        Container Type: unassigned
+            Owner/Home: -  / -
+               DR Home: -
+                 Array: HP_HSV450_1
+                Vendor: HP
+                 Model: HSV450
+         Serial Number: 600508B4000B63140000800001660000
+                   UID: 600508B4:000B6314:00008000:01660000:00000000:...
+                   BPS: 512
+         Physical Size: -
+              Position: present
+Checksum Compatibility: block
+             Aggregate: -
+                  Plex: -
+Paths:
+                     LUN Initiator Side   Target Side
+Controller Initiator ID  Switch Port      Switch Port     Acc Use  Target Port      TPGN...
+---------- --------- --- ---------------- --------------- --- ---  ---------------- -----
+mysystem1    0c      30  vgci9148s75:1-12 vgci9148s75:1-9 AO  RDY  50014380025d1509   1
+mysystem1    0a      30  vgbr300s70:12    vgbr300s70:9    AO  INU  50014380025d1508   1
+
+Errors:
+HP-1.15 (600508b4000b63140000800001660000): All paths to this array LUN are connected to the same fault domain. This is a single point of failure.
+----
+[NOTE]
+====
+この例の完全なUIDは、600508B4：000B6314：00008000：01660000：00000000：00000000：00000000：00000000：00000000：00000000：00000000です。スペースのため、この例では省略されています。
+
+====
+
+
+== トラブルシューティングと問題解決
+
+アレイLUNへのパスを再設定して、冗長なストレージアレイコントローラまたはFRUに接続する必要があります。
+
+. もう一方のコントローラの冗長ターゲットポートにケーブルを追加します。
++
+SPOFが発生しているコントローラからケーブルを取り外す前に、代替コントローラにケーブルを追加して、この問題を修正しながら冗長性を維持する必要があります。パスの数を1つに減らすのではなく、問題の修正中にパスの数を3つに一時的に増やすため、冗長性が確保されます。
+
+. SPOFを設定したコントローラからケーブルを1本取り外します。
++
+これで、アレイLUNへの2つの冗長パスが作成されました。
+
+. ONTAPコマンドラインから、次のコマンドをもう一度入力し、エラーが修正されたことを確認します。 `storage errors show`
+

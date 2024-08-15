@@ -1,0 +1,20 @@
+---
+permalink: install/concept_planning_a_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: plan, configuration, array, luns 
+summary: アレイLUNを使用するONTAP構成を計画する場合は、ストレージアレイが特定のONTAPリリースでサポートされているかどうかを確認する必要があります。また、相互運用性とサポート情報を確認して、すべてのシステムがアレイLUNを使用する構成の要件を満たしていることを確認する必要があります。 
+---
+= アレイLUNを使用する構成の計画
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するONTAP構成を計画する場合は、ストレージアレイが特定のONTAPリリースでサポートされているかどうかを確認する必要があります。また、相互運用性とサポート情報を確認して、すべてのシステムがアレイLUNを使用する構成の要件を満たしていることを確認する必要があります。
+
+* 関連情報 *
+
+https://mysupport.netapp.com/site/global/dashboard["NetAppのサポート"]
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

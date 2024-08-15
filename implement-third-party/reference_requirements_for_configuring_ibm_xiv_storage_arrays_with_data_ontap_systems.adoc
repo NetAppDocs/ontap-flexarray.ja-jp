@@ -1,0 +1,45 @@
+---
+permalink: implement-third-party/reference_requirements_for_configuring_ibm_xiv_storage_arrays_with_data_ontap_systems.html 
+sidebar: sidebar 
+keywords: requirements, configuring, ibm xiv, arrays, ontap, systems, parameter, settings 
+summary: ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。 
+---
+= ONTAPシステムと連携するためのIBM XIVアレイの設定に関する要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。
+
+
+
+== システムパラメータの設定
+
+次の表に、IBM XIV Gen3アレイのシステムパラメータ設定を示します。
+
+|===
+| パラメータ | 設定 
+
+
+ a| 
+`Type`
+ a| 
+デフォルト
+
+
+
+ a| 
+`Host`
+ a| 
+ユーザが指定したホスト名
+
+
+
+ a| 
+`Cluster`
+ a| 
+ユーザが指定したクラスタ名
+
+|===

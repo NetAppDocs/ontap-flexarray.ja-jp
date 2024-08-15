@@ -1,0 +1,86 @@
+---
+permalink: implement-third-party/reference_workaround_when_luns_are_not_visible_with_hp_xp_storage_arrays.html 
+sidebar: sidebar 
+keywords: workaround, luns, not, visible, hp xp, storage, arrays, aggregates, created, ontap, system 
+summary: アレイLUNを使用するONTAPシステムをHP XPストレージアレイに接続する場合は、スイッチのゾーニングを設定する前に、ストレージアレイパラメータ（「ONTAPシステムと連携するためのHP XPストレージアレイの必須パラメータ」を参照）を設定し、LUNをホストグループにマッピングしておく必要があります。 
+---
+= HP XPストレージアレイにLUNが表示されない場合の対処方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するONTAPシステムをHP XPストレージアレイに接続する場合は、スイッチのゾーニングを設定する前に、ストレージアレイパラメータ（「ONTAPシステムと連携するためのHP XPストレージアレイの必須パラメータ」を参照）を設定し、LUNをホストグループにマッピングしておく必要があります。
+
+xref:reference_required_parameters_for_hp_xp_storage_arrays_with_data_ontap_systems.adoc[ONTAPシステムと連携するためのHP XPストレージアレイの必須パラメータ]
+
+パラメータの設定およびLUNのホストグループへのマッピングを行う前にゾーニングの設定が行われた場合は、パスの再初期化を実行して、LUNが表示されない問題を解決できます。パスの再初期化を実行すると、HP XPストレージアレイからマッピングされたアレイLUNが再検出されます。
+
+使用する手順は、HP XPアレイLUNを含むアグリゲートがONTAPシステムですでに設定されているかどうかによって異なります。（次の手順では、ONTAPノードの名前をNode-1およびNode-2と想定しています）。
+
+
+
+== HP XPアレイLUNを含むアグリゲートが、アレイLUNを使用するONTAPシステムですでに作成されている場合
+
+. 次のコマンドを実行して、ONTAPシステムでHA構成が有効になっていることを確認し *`cluster ha show`ます。*
++
+次の出力が表示されます。
+
++
+[listing]
+----
+
+High Availability Configured: true
+----
+. 次のコマンドを実行して、ONTAPシステムでストレージフェイルオーバーが設定されていることを確認し *`storage failover show`ます。*
++
+次の出力が表示されます。
+
++
+[listing]
+----
+          Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+Node-1    Node-2    true     Connected to Node-2
+Node-2    Node-1    true     Connected to Node-1
+2 entries were displayed.
+----
+. 次のコマンドを実行して、Node-1に対してテイクオーバー処理を実行します *`storage failover takeover -ofnode Node-1`。*
+. 次のコマンドをもう一度実行して、Node-2がギブバック処理可能な状態になっていることを確認し *`storage failover show`ます。*
++
+次の出力が表示されます。
+
++
+[listing]
+----
+          Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+Node-2    Node-1    false    In takeover, Auto giveback will be
+                                      initiated in 348 seconds
+Node-1    Node-2    -        Waiting for giveback (HA mailboxes)
+2 entries were displayed.
+----
+. 次のコマンドを実行して、Node-1に対してギブバック処理を実行します *`storage failover giveback -ofnode Node-1 -require-partner-waiting true`。*
+. クラスタ内の他のノードについて、手順3~5を繰り返します。
+
+
+
+
+== HP XPアレイLUNを含むアグリゲートが、アレイLUNを使用するONTAPシステムでまだ作成されていない場合
+
+. 次のコマンドを実行して、HP XPストレージアレイに接続されているすべてのONTAP FCイニシエータポートの一覧を表示し *`system node run -node <node name> -command "sysconfig -v"`ます。*
++
+例： *`system node run -node Node-1 -command "sysconfig -v"`*
+
+. 次のコマンドを実行して、表示されたすべてのポートをオフラインにします *`system node run -node <node name> -command "priv set advanced;fcadmin offline <adapter>"`。*
++
+例： *`system node run -node Node-1 -command "priv set advanced;fcadmin offline 0a"`*
+
+. 次のコマンドを実行して、表示されたすべてのポートをオンラインにし *`system node run -node <node name> -command "priv set advanced;fcadmin online <adapter>"`ます。*
++
+例： *`system node run -node Node-1 -command "priv set advanced;fcadmin online 0a"`*
+
+

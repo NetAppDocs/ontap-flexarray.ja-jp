@@ -1,0 +1,14 @@
+---
+permalink: install/concept_planning_a_port_to_port_connectivity_scheme.html 
+sidebar: sidebar 
+keywords: plan, port to port, connectivity, scheme 
+summary: ONTAPシステムのFCイニシエータポートとストレージアレイポートの間の接続を計画するには、冗長性を確保する方法を決定し、アレイLUNへのパス数の要件を満たす必要があります。 
+---
+= ポート間の接続方法の計画
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムのFCイニシエータポートとストレージアレイポートの間の接続を計画するには、冗長性を確保する方法を決定し、アレイLUNへのパス数の要件を満たす必要があります。

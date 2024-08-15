@@ -1,0 +1,36 @@
+---
+permalink: install/task_modifying_assignment_of_spare_array_luns.html 
+sidebar: sidebar 
+keywords: modify, assignment, spare, array, luns 
+summary: スペアアレイLUNの所有権を別のノードに切り替えることができます。これは、ノード間で負荷を分散する場合に必要になることがあります。 
+---
+= スペアアレイLUNノワリアテノヘンコウ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+a_spare_array LUNの所有権を別のノードに変更できます。これは、ノード間で負荷を分散する場合に必要になることがあります。
+
+.手順
+. 再割り当てするアレイLUNを所有しているノードのコンソールで、次のコマンドを入力してノードのスペアアレイLUNのリストを表示します。 `storage disk show -owner local`
++
+ノードが所有するアレイLUN（スペアとアグリゲート内のLUNの両方）が表示されます。
+
+. 別のノードに再割り当てするLUNがスペアLUNであることを確認します。
+. 次のコマンドを入力して、アレイLUNの所有権を別のノードに割り当てます。 `storage disk assign arrayLUNname -owner new_owner_name -force`
++
+[NOTE]
+====
+forceオプションを使用しなかった場合や、アレイLUNがすでにアグリゲートに追加されている場合は、アレイLUNの所有権は変更されません。
+
+====
+. 次のコマンドを入力して、スペアアレイLUNの所有権がもう一方のノードに変更されたことを確認します。 `storage disk show -owner local`
++
+所有者を新しい所有者に変更したスペアアレイLUNがスペアのリストに表示されなくなります。アレイLUNが引き続き表示される場合は、コマンドを繰り返して所有権を変更してください。
+
+. デスティネーションノードで次のコマンドを入力して、所有権を変更したスペアアレイLUNがデスティネーションノードで所有されるスペアとして表示されることを確認します。 `storage disk show -owner local`
+
+
+アレイLUNをストレージに使用するには、アグリゲートに追加する必要があります。

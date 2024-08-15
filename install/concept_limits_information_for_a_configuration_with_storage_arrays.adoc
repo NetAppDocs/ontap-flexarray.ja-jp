@@ -1,0 +1,30 @@
+---
+permalink: install/concept_limits_information_for_a_configuration_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: limit, types, configurations, storage, arrays 
+summary: ONTAP構成を計画する際には、ストレージアレイの一定の制限を考慮する必要があります。 
+---
+= ストレージアレイを使用した構成の制限タイプ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP構成を計画する際には、ストレージアレイの一定の制限を考慮する必要があります。
+
+_ Hardware Universe _には、ストレージアレイとネイティブディスクの具体的な制限値が含まれています。
+
+次のタイプの制限はストレージアレイにのみ適用され、ネイティブディスクには適用されません。
+
+* ONTAPでサポートされるアレイLUNの最小サイズと最大サイズ
+* ルートボリュームのアレイLUNの最小サイズ
+* スペアコアアレイLUNの最小サイズ
+* アレイLUNを含むRAIDグループの制限
+* アレイLUNで構成されるアグリゲートの最小サイズ
+* アレイLUNとディスクの合計最大数（プラットフォームあたり）
+
+
+* 関連情報 *
+
+https://hwu.netapp.com["NetApp Hardware Universe"]

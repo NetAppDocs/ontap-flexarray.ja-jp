@@ -1,0 +1,18 @@
+---
+permalink: install/concept_required_number_of_paths_to_an_array_lun.html 
+sidebar: sidebar 
+keywords: required, number, paths, array, lun 
+summary: ONTAPは、アレイLUNへのパスを4つまたは2つサポートします。 
+---
+= 必要なアレイLUNへのパス数
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPは、アレイLUNへのパスを4つまたは2つサポートします。
+
+ONTAPは、ストレージアレイが少なくとも2つの冗長ストレージアレイポートで（つまり少なくとも2つの冗長パスを介して）特定のアレイLUNにアクセスを提供することを前提かつ必須の条件としています。
+
+ある特定のLUNにアクセスするために選択するストレージアレイ上のポートには、単一点障害（Single Point of Failure）を回避するために、別のコンポーネント（代替のコントローラ、クラスタ、エンクロージャなど）が含まれていることを確認してください。これは、1つのコンポーネントで障害が発生してもアレイLUNへのすべてのアクセスが失われないようにするためです。

@@ -1,0 +1,41 @@
+---
+permalink: install/task_setting_the_target_queue_depth_clustered_data_ontap_8_2_and_later.html 
+sidebar: sidebar 
+keywords: set, target, queue, depth 
+summary: デフォルトのターゲットキュー深度はほとんどの環境に適していますが、パフォーマンスに問題が発生した場合は変更できます。 
+---
+= ターゲットキュー深度の設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+デフォルトのターゲットキュー深度はほとんどの環境に適していますが、パフォーマンスに問題が発生した場合は変更できます。
+
+ターゲットキュー深度は、ストレージアレイ単位またはターゲットポート単位で設定できます。
+
+.ステップ
+. ストレージアレイのすべてのターゲットポートまたは特定のターゲットポートにターゲットポートキュー深度を設定するには、次のいずれかのコマンドを使用します。
++
+|===
+| 状況 | 使用するコマンド 
+
+
+ a| 
+ストレージアレイのすべてのターゲットポートにターゲットポートキュー深度を設定する
+ a| 
+`set advanced` `storage array port modify -name array_name -max-queue-depth value`
+
+
+
+ a| 
+ストレージアレイの特定のターゲットポートに対するターゲットポートキュー深度を設定する
+ a| 
+`set advanced` `storage array port modify -name array_name -wwnn value -wwpn value -max-queue-depth value`
+
+|===
++
+これらのコマンドの詳細については、マニュアルページを参照してください。
+
+

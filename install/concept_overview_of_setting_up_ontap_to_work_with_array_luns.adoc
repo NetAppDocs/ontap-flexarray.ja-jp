@@ -1,0 +1,18 @@
+---
+permalink: install/concept_overview_of_setting_up_ontap_to_work_with_array_luns.html 
+sidebar: sidebar 
+keywords: set, up, ontap, work, array, luns 
+summary: アレイLUNを使用するためのONTAPシステムのセットアッププロセスは、ONTAPシステムをディスクと一緒に購入したかどうかによって異なります。 
+---
+= アレイLUNと連携するためのONTAPのセットアップ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するためのONTAPシステムのセットアッププロセスは、ONTAPシステムをディスクと一緒に購入したかどうかによって異なります。
+
+ディスクシェルフと一緒に購入したONTAPシステムは、ONTAPソフトウェアがインストールされた状態で出荷されます。このような構成では、ルートボリュームを作成したり、ライセンスとONTAPソフトウェアをインストールしたりする必要はありません。
+
+ディスクシェルフと一緒に購入しなかったシステムには、ONTAPソフトウェアをインストールできます。このようなシステムでは、まずONTAPをインストールしてからクラスタをセットアップする必要があります。

@@ -1,0 +1,41 @@
+---
+permalink: install/task_checking_the_number_of_array_luns_visible_on_an_fc_initiator_port.html 
+sidebar: sidebar 
+keywords: check, number, array, luns, visible, fc initiator, port 
+summary: FCイニシエータポートで認識されるアレイLUNの数を確認できます。1つのFCイニシエータポートで認識できるアレイLUN数は、ONTAPのリリースによって異なります。 
+---
+= FCイニシエータポートで認識されるアレイLUN数の確認
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+FCイニシエータポートで認識されるアレイLUNの数を確認できます。1つのFCイニシエータポートで認識できるアレイLUN数は、ONTAPのリリースによって異なります。
+
+.手順
+. FCイニシエータポートで認識される番号を確認します。 `storage array config show -initiator initiator_number`
++
+`storage array config show -initiator 0a`
+
+. あるノードに対してアレイLUNグループが複数ある場合は、そのノードのすべてのLUNグループのアレイLUN数を合計し、そのノードに指定されたFCイニシエータで認識されるアレイLUNの総数を算出します。
++
+次の例は、すべてのノードのFCイニシエータ0aの出力を示しています。特定のFCイニシエータで認識される_particulary_nodeのアレイLUN数を確認するには、そのノードについて表示されるすべてのターゲットポートの値を確認する必要があります。たとえば、vgv3070f51-01：0aで認識されるアレイLUN数を確認するには、LUNグループ1（HP）のLUN数24をLUNグループ2（DGC_RAID5_1）のLUN数1に加算します。これにより、vgv3070f51-01：0aで認識されるアレイLUN数は合計25個になります。
+
++
+LUNグループ0とLUNグループ2についても、vgv3070f51-02：0aで認識されるアレイLUN数を同じ手順で確認します（同じく25）。
+
++
+[listing]
+----
+
+vgv3070f51::> storage array config show -initiator 0a
+             LUN   LUN
+Node         Group Count    Array Name     Array Target Port Initiator
+------------ ----- -----    -----------  ------------------  -------
+vgv3070f51-01    1    24             HP    50014380025d1508     0a
+                 2     1    DGC_RAID5_1    200600a0b819e16f     0a
+vgv3070f51-02    0    24             HP    50014380025d1508     0a
+                 2     1    DGC_RAID5_1    200600a0b819e16f     0a
+----
+

@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/concept_general_configuration_guidelines_for_all_storage_arrays.html 
+sidebar: sidebar 
+keywords: configuration, guidelines, storage, arrays 
+summary: ここでは、ONTAPでサポートされるストレージアレイの設定に関する一定のガイドラインに従う必要があります。 
+---
+= すべてのストレージアレイの構成に関する一般的なガイドライン
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ここでは、ONTAPでサポートされるストレージアレイの設定に関する一定のガイドラインに従う必要があります。

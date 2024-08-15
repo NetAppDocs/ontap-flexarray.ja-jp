@@ -1,0 +1,58 @@
+---
+permalink: install/task_checking_for_back_end_configuration_errors_preventing_system_operation.html 
+sidebar: sidebar 
+keywords: check, back-end, configuration, errors, prevent, system, operation 
+summary: ストレージ アレイとONTAPシステムの正常な連携に支障をきたすバックエンド構成の代表的なエラーは修正する必要があります。storage array config showコマンドを使用すると、バックエンド構成エラーの有無を確認できます。 
+---
+= システムの動作を妨げるバックエンド構成エラーの確認
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージ アレイとONTAPシステムの正常な連携に支障をきたすバックエンド構成の代表的なエラーは修正する必要があります。コマンドを使用 `storage array config show` すると、バックエンド構成にエラーがないかどうかを確認できます。
+
+.手順
+. 次のコマンドを入力します。 `storage array config show`
++
+インストールの検証（およびトラブルシューティング）では、最初にコマンドを実行し `storage array config show` ます。バックエンド構成のエラーがONTAPで検出されると、出力の下部に次のメッセージが表示され `storage array config show` ます。
+
++
+[listing]
+----
+Warning: Configuration errors were detected.  Use 'storage errors show' for detailed information.
+----
+. 次の表に従って適切な処理を実行します。
++
+|===
+| 状況 | 作業 
+
+
+ a| 
+`storage array config show` を実行するように指示されます。 `storage errors show`
+ a| 
+手順3に進みます。
+
+
+
+ a| 
+`storage array config show` を実行するように指示されていない `storage errors show`
+ a| 
+出力を確認して `storage array config show` 、想定していた構成が出力に反映されていることを確認します。「想定するバックエンド構成かどうかの確認」セクションを参照してください（この手順の次の手順に進む必要はありません）。 xref:task_verifying_if_the_back_end_configuration_matches_the_expected_output.adoc[想定するバックエンド構成かどうかの確認]
+
+|===
+. 次のコマンドを入力します。 `storage errors show`
++
+ `storage errors show`コマンドを使用すると、問題の詳細をアレイLUNレベルで確認できます。
+
+. エラー メッセージを確認し、表示されたエラーをすべて修正します。
++
+に表示されたエラーを修正する必要があります `storage errors show`。で検出された各問題の原因と解決方法については、メッセージとその解決方法を参照してください `storage errors show` `storage errors show` 。 xref:reference_the_storage_errors_show_messages_and_their_resolution.adoc[storage errors showのメッセージとその解決方法]
+
+. 問題を修正したら、を再度実行して `storage errors show` エラーが修正されたことを確認します。
++
+に引き続き問題が表示される場合 `storage errors show` は、対処方法の詳細をドキュメントでもう一度確認するか、テクニカルサポートにお問い合わせください。
+
+. バックエンド構成エラーを解決したら、をもう一度実行して、 `storage array config show` 想定される構成と一致することを確認します。
+

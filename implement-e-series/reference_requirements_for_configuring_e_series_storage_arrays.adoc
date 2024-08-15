@@ -1,0 +1,14 @@
+---
+permalink: implement-e-series/reference_requirements_for_configuring_e_series_storage_arrays.html 
+sidebar: sidebar 
+keywords: requirements, configure, e-series, storage, arrays 
+summary: ONTAPシステムと連携するようにストレージアレイを構成する場合は、設定する必要があるシステムパラメータ、および考慮事項があります。 
+---
+= E-Seriesストレージアレイの設定に関する要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムと連携するようにストレージアレイを構成する場合は、設定する必要があるシステムパラメータ、および考慮事項があります。

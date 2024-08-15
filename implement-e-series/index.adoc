@@ -1,0 +1,12 @@
+---
+permalink: implement-e-series/index.html 
+sidebar: sidebar 
+keywords: flexarray, virtualization, implementation, NetApp, e-series, storage 
+summary: ONTAP FlexArray情報ライブラリへようこそ。ここでは、E-Seriesストレージアレイをクラスタのバックエンドストレージとして使用する方法について説明します。 
+---
+= NetApp®E-Seriesストレージ向けFlexArray®仮想化実装
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+

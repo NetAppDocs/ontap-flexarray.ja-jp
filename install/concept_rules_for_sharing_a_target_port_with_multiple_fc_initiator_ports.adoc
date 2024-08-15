@@ -1,0 +1,28 @@
+---
+permalink: install/concept_rules_for_sharing_a_target_port_with_multiple_fc_initiator_ports.html 
+sidebar: sidebar 
+keywords: rules, share, target, port, multiple, fc initiator 
+summary: ストレージアレイ上の単一のターゲットポートに最大2つのONTAP FCイニシエータポートを接続できます。各ターゲットポートは、2つのFCイニシエータポート（各クラスタノードから1つ）にゾーニングされます。ONTAPシステムに接続されたターゲットポートを他のホストと共有することはできません。 
+---
+= 複数のFCイニシエータ ポートでターゲット ポートを共有する際のルール
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージアレイ上の単一のターゲットポートに最大2つのONTAP FCイニシエータポートを接続できます。各ターゲットポートは、2つのFCイニシエータポート（各クラスタノードから1つ）にゾーニングされます。ONTAPシステムに接続されたターゲットポートを他のホストと共有することはできません。
+
+1つのターゲットポートを複数のイニシエータで共有すると、ONTAPシステムとの接続でのストレージアレイポートの使用を最適化できます。
+
+この構成でのルールは次のとおりです。
+
+* ONTAPシステムがHAペア構成の場合、各ノードが同じターゲットポートと共有できるFCイニシエータポートは1つです。
+* すべてのストレージ アレイが、同じベンダーまたは同じモデル ファミリーであることが必要です。
+* MetroCluster構成では、単一のターゲットポートを複数のFCイニシエータポートに接続できます。
+* ゾーニングのベストプラクティスは、FCイニシエータとターゲット ポートの各ペアを別々のゾーンに配置する構成（1:1）です。
+
+
+* 関連情報 *
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["ファブリック接続MetroClusterのインストールと設定"]

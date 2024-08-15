@@ -1,0 +1,14 @@
+---
+permalink: install/concept_planning_for_paths_to_array_luns.html 
+sidebar: sidebar 
+keywords: plan, paths, array, luns 
+summary: パスは、ONTAPシステムとストレージアレイ間の物理接続です。ONTAPシステムとストレージアレイの間にSingle Point Of Failure（SPOF；単一点障害）が発生しないようにするには、冗長パスが必要です。 
+---
+= アレイLUNへのパスの計画
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+パスは、ONTAPシステムとストレージアレイ間の物理接続です。ONTAPシステムとストレージアレイの間にSingle Point Of Failure（SPOF；単一点障害）が発生しないようにするには、冗長パスが必要です。

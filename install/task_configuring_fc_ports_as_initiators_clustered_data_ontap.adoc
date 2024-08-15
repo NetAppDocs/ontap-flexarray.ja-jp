@@ -1,0 +1,57 @@
+---
+permalink: install/task_configuring_fc_ports_as_initiators_clustered_data_ontap.html 
+sidebar: sidebar 
+keywords: configure, fc ports, initiators 
+summary: ONTAPシステムでは、個 々 のFCポートをイニシエータとして設定できます。イニシエータモードでは、ポートをストレージアレイに接続できます。 
+---
+= イニシエータとしてのFCポートの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでは、個 々 のFCポートをイニシエータとして設定できます。イニシエータモードでは、ポートをストレージアレイに接続できます。
+
+.手順
+. *オプション：*アダプタポートにすでにLIFが設定されている場合は、コマンドを使用してすべてのLIFを削除します `network interface delete` 。
++
+LIFがポートセットに含まれている場合、LIFを削除する前にポートセットからLIFを削除する必要があります。
+
++
+次の例は、SVM vs3のLIFを削除する方法を示しています。 `network interface delete -vserver vs3 -lif lif2,lif0`
+
+. コマンドを使用して、ポートをオフラインにし `network fcp adapter modify` ます。
++
+次の例は、ノードsysnodeのポート0cをオフラインにする方法を示しています。 `network fcp adapter modify -node sysnode1 -adapter 0c -state down`
+
+. コマンドを使用して `system hardware unified-connect modify` 、オフラインのポートをターゲットからイニシエータに変更します。
++
+次の例は、0cのポートタイプをターゲットからイニシエータに変更する方法を示しています。 `system node hardware unified-connect modify -node sysnode1 -adapter 0c -type initiator`
+
+. 変更したアダプタをホストしているノードをリブートします。
+. コマンドを使用し `system hardware unified-connect show` て、構成に対してFCポートが正しく設定されていることを確認します。
++
+次の例は、0cのポートタイプの変更を示しています。
+
++
+`system node hardware unified-connect show -node sysnode1`
+
++
+[listing]
+----
+
+
+                       Current  Current    Pending  Pending
+Node          Adapter  Mode     Type       Mode     Type       Status
+------------  -------  -------  ---------  -------  ---------  -----------
+sysnode1      0a       fc       target     -        -          online
+sysnode1      0b       fc       target     -        -          online
+sysnode1      0c       fc       initiator  -        -          offline
+sysnode1      0d       fc       target     -        -          online
+----
+. コマンドを使用して `storage enable adapter` 、オフラインのポートをオンラインに戻します。
++
+次の例は、ポート0cをオンラインにする方法を示しています。 `node run -node sysnode1 -command storage enable adapter -e 0c`
+
+

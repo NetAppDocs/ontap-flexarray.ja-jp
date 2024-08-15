@@ -1,0 +1,20 @@
+---
+permalink: install/concept_where_to_find_information_for_configurations_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: where, find, information, configurations, storage, arrays 
+summary: ストレージアレイを使用するONTAPシステムを使用する構成を計画する場合は、製品ドキュメントに加えて、さまざまなソースでアレイLUNの構成に関する情報を確認する必要があります。 
+---
+= ストレージアレイを使用した構成に関する情報の参照先
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージアレイを使用するONTAPシステムを使用する構成を計画する場合は、製品ドキュメントに加えて、さまざまなソースでアレイLUNの構成に関する情報を確認する必要があります。
+
+NetAppサポートサイトにあるツールを使用すると、特定のリリースでサポートされる機能、構成、およびストレージアレイモデルに関する具体的な情報をまとめて確認できます。
+
+* 関連情報 *
+
+https://mysupport.netapp.com/site/global/dashboard["NetAppのサポート"]

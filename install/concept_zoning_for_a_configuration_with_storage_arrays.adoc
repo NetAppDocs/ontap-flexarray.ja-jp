@@ -1,0 +1,16 @@
+---
+permalink: install/concept_zoning_for_a_configuration_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: zone, configuration, storage, arrays 
+summary: ゾーニングを使用すると、ストレージ管理者は、特定のONTAPシステムがアクセスできるアレイLUNを制限できます。ONTAPでは、アレイLUNが各イニシエータポートの1つのターゲットポートでのみ認識される必要があります。 
+---
+= ストレージアレイを使用した構成でのゾーニング
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ゾーニングを使用すると、ストレージ管理者は、特定のONTAPシステムがアクセスできるアレイLUNを制限できます。ONTAPでは、アレイLUNが各イニシエータポートの1つのターゲットポートでのみ認識される必要があります。
+
+Fibre Channel（FC）スイッチでゾーニングを設定すると、接続されているノード間のパスを定義して、共通のFC SANに接続されているデバイス間の認識や接続を制限できます。

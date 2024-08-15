@@ -1,0 +1,57 @@
+---
+permalink: install/reference_volume_set_addressing_is_inconsistent.html 
+sidebar: sidebar 
+keywords: volume, set, address, inconsistent, show, message, troubleshoot, problem, resolution 
+summary: ONTAPでは、ストレージアレイのパスセット全体で一貫性のないLUN IDを検出できます。Volume Set Addressingが設定されているストレージアレイでは、LUN IDの不一致を引き起こす問題の1つとして、LUNのマッピング先ポートの設定の不一致があります。 
+---
+= Volume Set Addressingに一貫性がない
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPでは、ストレージアレイのパスセット全体で一貫性のないLUN IDを検出できます。Volume Set Addressingが設定されているストレージアレイでは、LUN IDの不一致を引き起こす問題の1つとして、LUNのマッピング先ポートの設定の不一致があります。
+
+たとえば、EMC Symmetrixストレージアレイでは、LUNのマッピング先のチャネルディレクタポートでVolume Set Addressingパラメータの設定が一致していないと、LUNの不一致エラーが発生します。
+
+
+
+== storage errors showのメッセージ
+
+[listing]
+----
+
+EMC-1.128 (4849544143484920443630303035323430303132): This Array LUN is using multiple LUN IDs.  Only one LUN ID per serial number is supported.
+----
+
+
+== 説明
+
+このエラーメッセージの原因となる構成エラーは多数あります。ここでは、Volume Set Addressingの設定に一貫性がない場合に表示されるこのメッセージについて説明します。
+
+ONTAPは、LUNのマッピング先のポートでVolume Set Addressingパラメータの設定が一貫していないかどうかを明示的にチェックします。設定が異なる場合、ONTAPの出力およびEMSメッセージでLUN IDの不一致として報告され `storage errors show` ます。
+
+[NOTE]
+====
+ONTAPでは、Volume Set Addressingが想定どおりに設定されていない場合にはアラートが表示されません。アラートが表示されるのは、LUNのマッピング先のチャネルディレクタポート間で設定が一致していない場合だけです。
+
+====
+
+
+== トラブルシューティングと問題解決
+
+ `storage errors show`コマンドで特定のエラーメッセージが表示され、ストレージアレイがEMC Symmetrixである場合は、次のいずれかの処理を実行すると、問題の原因がVolume Set Addressingの不整合であるかどうかを特定できます。
+
+* ONTAPで、特定したアレイLUNに対してを実行し `storage disk show -disk` ます。
++
+このコマンドは、アレイLUNへのすべてのパスと各パスに割り当てられているLUN IDを表示します。
+
+* ストレージアレイで、特定されたLUNのマッピング先のチャネルディレクタポートのVolume Set Addressing設定を確認します。
+
+
+設定が一貫していないことが判明した場合は、ストレージアレイで構成の問題を修正し、両方のチャネルディレクタポートのパラメータをONTAPで必要な設定に設定します。
+
+* 関連情報 *
+
+https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["サードパーティ製ストレージ向けのFlexArray仮想化の実装"]

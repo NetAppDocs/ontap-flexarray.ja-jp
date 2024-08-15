@@ -1,0 +1,75 @@
+---
+permalink: install/concept_target_port_utilization_policy_settings.html 
+sidebar: sidebar 
+keywords: target, port, utilization, policy, settings, output, examples, array 
+summary: ONTAPでは、ターゲットポートでのリソース競合イベント（I/Oキューがいっぱいになった、コマンドがタイムアウトした、HBAリソースが不足しているなど）を検出できます。 
+---
+= ターゲットポート利用ポリシーの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPでは、ターゲットポートでのリソース競合イベント（I/Oキューがいっぱいになった、コマンドがタイムアウトした、HBAリソースが不足しているなど）を検出できます。
+
+特定のアレイターゲットポートでこのようなイベントが検出された場合は、コマンドを使用してターゲットポート利用ポリシーを設定できます `storage array port modify` 。
+
+次の表に、ターゲットポートに関連付けられた2つの利用ポリシーを示します。
+
+|===
+| ポリシー | 説明 
+
+
+ a| 
+*標準*
+ a| 
+特定のアレイターゲットポートでリソース競合を検出すると、ONTAPはターゲットポートのキュー深度を減らしてターゲットポートへのI/Oを調節します。ターゲットポートの各リソース競合イベントに対するターゲットポートキュー深度の削減量は* defer *ポリシーよりも少なくなります。その後、ターゲットポートキュー深度は* defer *ポリシーよりも速く増加します。*normal*はデフォルトポリシーです。
+
+
+
+ a| 
+*延期*
+ a| 
+特定のアレイターゲットポートでリソース競合を検出すると、ONTAPはターゲットポートのキュー深度を減らしてターゲットポートへのI/Oを調節します。ターゲットポートの各リソース競合イベントのターゲットポートキュー深度の削減量は* normal *ポリシーよりも大きくなります。その後、ターゲットポートキュー深度の増加は、* normal *利用率ポリシーよりも遅くなります。
+
+|===
+
+
+== アレイターゲットポート利用ポリシーを表示および変更する出力例
+
+次のコマンドは、アレイターゲットポートに関連付けられているターゲットポート利用ポリシーを表示します。
+
+[listing]
+----
+vgv3170_jon::> storage array port show -wwnn 2703750270235
+        Array Name: HITACHI_DF600F_1
+              WWNN: 2703750270235
+              WWPN: 2703750270235
+   Connection Type: fabric
+       Switch Port: vgbr300s89:9
+        Link Speed: 4 GB/s
+   Max Queue Depth: 1024
+Utilization Policy: defer
+                              LUN                                        Link
+Node              Initiator  Count   IOPS    KB/s    %busy    %waiting   Errs
+----------------  ---------  -----  ------  ------  -------  ----------  ----
+     vgv3170f54a         0a      2       50   1956       85           0     0
+     vgv3170f54b         0a      2      350  15366      100          40     0
+----
+デフォルトでは、特定のアレイターゲットポートのI/Oポリシーは* normal *です。ポートに関連付けられているI/Oポリシーを変更するには、次のコマンドを実行します。
+
+[listing]
+----
+vgv3070f50ab::> storage array port modify -wwpn 50014380025d1509 -utilization-policy ?
+
+
+
+normal      This policy aggressively competes for target port resources, in effect competing with other hosts.
+             (normal)
+
+defer      	This policy does not aggressively compete for target port resources, in effect deferring to other hosts.
+
+vgv3070f50ab::> storage array port modify -wwpn 50014380025d1509 -utilization-policy defer
+1 record updated.
+----

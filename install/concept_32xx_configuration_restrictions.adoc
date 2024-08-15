@@ -1,0 +1,16 @@
+---
+permalink: install/concept_32xx_configuration_restrictions.html 
+sidebar: sidebar 
+keywords: 32xx, system, configuration, restrictions 
+summary: 32xxシステムには、他のモデルには適用されない一部の制限事項があります。システムの構成時には、これらの点に注意する必要があります。 
+---
+= 32xxシステム構成の制限事項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+32xxシステムには、他のモデルには適用されない一部の制限事項があります。システムの構成時には、これらの点に注意する必要があります。
+
+0cおよび0dの2つのオンボードFCポートは、独立したバス上にありません。そのため、ストレージの冗長性は提供されません。一部のポート障害が原因でシステムがパニック状態になることがあります。冗長ポートペアを構成するには、使用可能な拡張スロットでFC HBAを使用する必要があります。

@@ -1,0 +1,33 @@
+---
+permalink: install/concept_support_for_metrocluster_configurations_that_can_use_array_luns.html 
+sidebar: sidebar 
+keywords: requirements, metrocluster, configurations, array, luns 
+summary: アレイLUNを使用するMetroCluster構成をセットアップする前に、その構成で使用するONTAPシステムおよびストレージが基本的なサポート要件を満たしていることを確認する必要があります。 
+---
+= アレイLUNを使用するMetroCluster構成の要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するMetroCluster構成をセットアップする前に、その構成で使用するONTAPシステムおよびストレージが基本的なサポート要件を満たしていることを確認する必要があります。
+
+アレイLUNを使用するMetroCluster構成をサポートするための基本的な要件は次のとおりです。
+
+* MetroCluster構成でアレイLUNをサポートするVシリーズシステムとFASシステムの両方を使用できます。
++
+ただし、MetroCluster構成で使用するすべてのONTAPシステムが同じモデルであることを確認する必要があります。
+
+* ONTAPシステムでは、ネイティブディスクのみ、ストレージアレイ上のLUNのみ、またはその両方を使用できます。
+* ネイティブディスクとアレイLUNの両方を使用するMetroCluster構成をセットアップする場合は、FC-to-SASブリッジとそれらのブリッジでサポートされるネイティブディスクを使用する必要があります。
+* ONTAPシステムとストレージアレイがMetroCluster構成でサポートされていることを_Interoperability Matrix_で確認しておく必要があります。
+
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["ファブリック接続MetroClusterのインストールと設定"]
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-stretch/index.html["Stretch MetroClusterのインストールと設定"]

@@ -1,0 +1,20 @@
+---
+permalink: implement-third-party/concept_guidelines_for_enabling_alua_on_emc_vnx_storrage_arrays.html 
+sidebar: sidebar 
+keywords: guidelines, enabling, alua, emc, vnx, storage arrays 
+summary: CLARiXおよびVNXアレイでAsymmetric Logical Unit Access（ALUA；非対称論理ユニットアクセス）がサポートされるようになりました。 
+---
+= EMC VNXストレージアレイでのALUAの有効化に関するガイドライン
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+CLARiXおよびVNXアレイでAsymmetric Logical Unit Access（ALUA；非対称論理ユニットアクセス）がサポートされるようになりました。
+
+ONTAPでは、ALUAのサポートがデフォルトで有効になっています。ただし、これを使用するには、ストレージアレイでALUAを有効にする必要があります。
+
+ALUAは新しい構成でのみ有効にしてください。既存の構成でALUAを有効にしないでください。
+
+ストレージアレイでALUAを設定する場合は、ストレージグループのすべてのホストでフェイルオーバーモード4（ALUA）を同じにする必要があります。

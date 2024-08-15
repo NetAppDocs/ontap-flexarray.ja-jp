@@ -1,0 +1,20 @@
+---
+permalink: install/concept_supported_methods_for_connecting_a_v_series_system_to_a_storage_array.html 
+sidebar: sidebar 
+keywords: supported, methods, connect, ontap, system, storage, array 
+summary: ONTAPシステムは、ストレージアレイとファブリック接続構成で接続できます。ファブリック接続構成は、スタンドアロンシステムとHAペアの両方でサポートされます。直接接続型の構成は、一部のストレージアレイおよび一部のONTAPリリースでのみサポートされます。 
+---
+= ONTAPシステムからストレージアレイへの接続でサポートされる方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムは、ストレージアレイとファブリック接続構成で接続できます。ファブリック接続構成は、スタンドアロンシステムとHAペアの両方でサポートされます。直接接続型の構成は、一部のストレージアレイおよび一部のONTAPリリースでのみサポートされます。
+
+特定のストレージアレイおよびONTAPを実行するプラットフォームでサポートされる接続方法については、Interoperability Matrixを参照してください。
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

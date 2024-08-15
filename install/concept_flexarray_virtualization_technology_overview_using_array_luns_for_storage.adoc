@@ -1,0 +1,20 @@
+---
+permalink: install/concept_flexarray_virtualization_technology_overview_using_array_luns_for_storage.html 
+sidebar: sidebar 
+keywords: flexarray, virtualization, technology, overview, use, array, luns, storage 
+summary: ONTAPソフトウェアが提供するユニファイドストレージソフトウェアプラットフォームでは、ストレージアレイ上のネイティブディスクシェルフとLUNの両方を簡単に管理できます。システムを停止することなく、必要なときに必要な場所にストレージを追加できます。この機能は、FlexArray仮想化ソフトウェア（旧称Vシリーズ）によって提供されます。 
+---
+= FlexArray仮想化テクノロジの概要—ストレージにアレイLUNを使用
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPソフトウェアが提供するユニファイドストレージソフトウェアプラットフォームでは、ストレージアレイ上のネイティブディスクシェルフとLUNの両方を簡単に管理できます。システムを停止することなく、必要なときに必要な場所にストレージを追加できます。この機能は、_ FlexArray仮想化ソフトウェア_（旧称Vシリーズ）によって提供されます。
+
+次の図の構成では、ストレージアレイへの接続ライセンスが設定されたONTAPシステムが、ストレージアレイのLUNをプールし、クライアントに提供しています。
+
+image::../media/how_v_series_uses_storage.gif[この図には説明が付随しています。]
+
+ONTAPシステムは、ONTAPファイルシステムボリュームの形式（ONTAP管理機能を使用して管理）、またはSCSIターゲット（クライアントが使用するLUNを作成）として、クライアントにストレージを提供します。どちらの場合も（ファイルシステムクライアントとLUNクライアント）、アレイLUNを使用できるシステムでは、複数のアレイLUNを1つ以上のアレイLUNアグリゲートにまとめます。ONTAP環境では、これらのアレイLUNアグリゲートをStorage Virtual Machine（SVM）に関連付け、ONTAPがファイルまたはLUNとしてクライアントに提供するONTAPボリュームを作成できます。

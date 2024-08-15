@@ -1,0 +1,41 @@
+---
+permalink: install/task_installing_the_license_for_using_array_luns.html 
+sidebar: sidebar 
+keywords: install, license, use, array, luns 
+summary: アレイLUNで使用する各ONTAPノードにV_StorageAttachライセンスをインストールする必要があります。クラスタ全体で1つのライセンスではありません。ライセンスをインストールするまで、アグリゲート内のアレイLUNは使用できません。 
+---
+= アレイLUNを使用するためのライセンスのインストール
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNで使用する各ONTAPノードにV_StorageAttachライセンスをインストールする必要があります。クラスタの単一ライセンスではありません。ライセンスをインストールするまで、アグリゲート内のアレイLUNは使用できません。
+
+* 必要なもの *
+
+* クラスタがインストールされている必要があります。
+* V_StorageAttach ライセンスのライセンスキーを用意しておく必要があります。
++
+https://mysupport.netapp.com/site/global/dashboard["NetAppのサポート"]
+
+
+
+V_StorageAttachパッケージのライセンスキーがすでにインストールされている場合は、この手順を実行する必要はありません。ONTAPシステムをディスクと一緒に購入した場合、通常はライセンスパッケージがインストールされた状態で出荷されます。また、多くのお客様は、インストールプロセスの早い段階で必要なすべてのライセンスをインストールします。
+
+.手順
+. アレイLUNで使用するクラスタ内のONTAPノードごとに、次のコマンドを入力します。 `system license add license key`
++
+[listing]
+----
+
+vgv3170f41a> license
+Serial Number: nnnnnnnn
+Owner: mysystem1a
+Package           Type    Description           Expiration
+----------------- ------- --------------------- --------------------
+V_StorageAttach   license Virtual Attached Storage
+----
+. 出力を参照して、V_StorageAttachパッケージが表示されていることを確認します。
+

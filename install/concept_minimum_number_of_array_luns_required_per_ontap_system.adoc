@@ -1,0 +1,18 @@
+---
+permalink: install/concept_minimum_number_of_array_luns_required_per_ontap_system.html 
+sidebar: sidebar 
+keywords: minimum, number, array, luns, required, ontap, system 
+summary: ONTAPシステムあたりの必要なアレイLUN数は、ルートボリュームの場所によって異なります。 
+---
+= 1つのONTAPシステムに必要なアレイLUNの最小数
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムあたりの必要なアレイLUN数は、ルートボリュームの場所によって異なります。
+
+ルートボリュームはディスクまたはアレイLUNのいずれかに配置できます。次に、ルートボリュームの場所によって、必要なアレイLUNの最小数が決まります。ルートボリュームがストレージアレイ上にある場合は、各スタンドアロンONTAPシステム、およびHAペア内の各ノードが少なくとも1つのアレイLUNを所有する必要があります。ルートボリュームがネイティブディスク上にある場合、必要なアレイLUNはデータストレージ用のアレイLUNだけです。
+
+アレイLUNを使用するMetroCluster構成で、ルートボリュームがストレージアレイ上にある場合は、アレイLUNが2つ（各サイトから1つ）必要です。ルートボリュームをミラーリングするには、2つのLUNが必要です。

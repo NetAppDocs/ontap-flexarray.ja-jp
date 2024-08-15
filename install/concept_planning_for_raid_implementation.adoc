@@ -1,0 +1,14 @@
+---
+permalink: install/concept_planning_for_raid_implementation.html 
+sidebar: sidebar 
+keywords: plan, raid, implementation 
+summary: ストレージアレイRAIDグループ内のLUNのサイズと数を計画し、ホスト間でRAIDグループを共有するかどうかを決定する必要があります。 
+---
+= RAID実装の計画
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージアレイRAIDグループ内のLUNのサイズと数を計画し、ホスト間でRAIDグループを共有するかどうかを決定する必要があります。

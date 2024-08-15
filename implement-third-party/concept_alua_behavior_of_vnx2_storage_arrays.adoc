@@ -1,0 +1,22 @@
+---
+permalink: implement-third-party/concept_alua_behavior_of_vnx2_storage_arrays.html 
+sidebar: sidebar 
+keywords: alua, behavior, vnx2, storage, arrays 
+summary: EMC CLARiXおよびVNXアレイはすべてALUA（非対称アクティブ/アクティブ）フェイルオーバーモードを使用しますが、VNX2ストレージアレイのALUAの動作は異なる場合があります。 
+---
+= VNX2ストレージアレイのALUAの動作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+EMC CLARiXおよびVNXアレイはすべてALUA（非対称アクティブ/アクティブ）フェイルオーバーモードを使用しますが、VNX2ストレージアレイのALUAの動作は異なる場合があります。
+
+他のすべてのEMCアレイLUNと同様に、動的ディスクプールからONTAPシステムに提供されるVNX2アレイLUNはALUAフェイルオーバーモードを使用します。ただし、従来のRAIDグループからONTAPシステムに提供されるVNX2アレイLUNは、アクティブ/アクティブフェイルオーバーモードを使用し、すべてのパスが*（アクティブ最適化済み）と報告されます *`AO`。このアレイLUNの動作は、バックエンドアレイでのSnapshot作成など、特定の処理中に変化します。
+
+したがって、VNX2アレイLUNの一貫した動作を維持するために、ONTAPでは、これらのアレイLUNが従来のRAIDグループから提供されるか、ダイナミックディスクプールから提供されるかに関係なく、これらのLUNをALUAとして扱います。
+
+このような場合、特定のVNX2 LUNに対するI/O要求は、*（使用中）状態であると報告されたパスにのみ分散され、*（アクティブ最適化済み）と報告されたすべてのパスには分散され *`INU`ません *`AO`。
+
+たとえば、従来のRAIDグループからONTAPシステムに提示されたVNX2アレイLUNへのパスが4つある場合、すべてのパスは*として報告され *`AO`ます。 ただし、状態が*のパスは2つだけで *`INU`、他の2つは使用されませんが*（ready）状態になっています *`RDY`。

@@ -1,0 +1,29 @@
+---
+permalink: implement-e-series/reference_required_host_type_for_e_series_storage_arrays_reference.html 
+sidebar: sidebar 
+keywords: required, host, type, e-series, storage, arrays 
+summary: E-SeriesストレージアレイがONTAPシステムと通信できるようにするには、適切なhost typeオプションを設定する必要があります。SANtricity Storage Managerを使用してホストタイプを設定できます。 
+---
+= E-Seriesストレージアレイの必須のホストタイプ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+E-SeriesストレージアレイがONTAPシステムと通信できるようにするには、適切なhost typeオプションを設定する必要があります。SANtricity Storage Managerを使用してホストタイプを設定できます。
+
+特定のONTAPリリースでは、ストレージアレイのファームウェアのバージョンに基づいてホストタイプを設定できます。
+
+ファームウェアのバージョンが08.10.15.00以降の場合は、ホストタイプを_ Data ONTAP（ALUA）_に設定します。
+
+[NOTE]
+====
+ファームウェアバージョン08.10.15.00以降でサポートされるSANtricity Storage Managerの最小バージョンは11.10.0G00.0026です。
+
+====
+E-Seriesコントローラファームウェア8.25を使用している場合、E-SeriesシステムでONTAP RDACがホストタイプとしてサポートされなくなりました。したがって、ONTAP RDACを使用している場合は、バックエンド アレイをCFW 8.25以降にアップグレードする前に、次のナレッジベースの記事に従ってONTAP ALUAに変換する必要があります。
+
+* 関連情報 *
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/E-Series_Storage_Array/How_to_non-disruptively_change_between_Active-Passive_and_ALUA_failover_modes["clustered Data ONTAPシステムに接続されているNetApp E-Seriesアレイで、アクティブ/パッシブフェイルオーバーモードとALUAフェイルオーバーモードを無停止で変更する方法"]

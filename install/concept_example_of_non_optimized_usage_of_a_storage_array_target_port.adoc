@@ -1,0 +1,40 @@
+---
+permalink: install/concept_example_of_non_optimized_usage_of_a_storage_array_target_port.html 
+sidebar: sidebar 
+keywords: example, non-optimized, usage, storage, array, target, port, errors, detect, output 
+summary: ストレージアレイの特定のターゲットポートでキューに登録されているI/O要求数がそのポートで処理可能な要求数を超えると、ターゲットポートの使用が最適化されません。 
+---
+= ストレージアレイターゲットポートの最適化されていない使用例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージアレイの特定のターゲットポートでキューに登録されているI/O要求数がそのポートで処理可能な要求数を超えると、ターゲットポートの使用が最適化されません。
+
+特定のターゲットポートのこのような最適化されていない使用状況は、コマンドの出力表示で検出できます `storage array show` 。
+
+
+
+== ターゲットポートの最適化されていない使用の検出時のエラーを表示する出力例
+
+次の例は、特定のターゲットポートの最適化されていない使用を検出した場合にコマンドで返されるエラーを示して `storage array show` います。
+
+[listing]
+----
+vgv3070f50ab::> storage array show -name HP_HSV450_2
+
+                Name: HP_HSV450_2
+              Prefix:
+              Vendor: HP
+               Model: HSV450
+             options:
+       Serial Number: 50014380025d1500
+ Optimization Policy: iALUA
+            Affinity: AAA
+
+
+Errors:
+Warning: HP_HSV450_2 Detected non optimized usage of a target port. WWPN: 2703750270235, average service time: 215ms, average latency: 30ms
+----

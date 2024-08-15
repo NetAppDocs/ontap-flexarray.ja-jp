@@ -1,0 +1,62 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_emc_vnx_storage_arrays_with_data_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameters, emc, vnx, storage, arrays, ontap, systems 
+summary: ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。 
+---
+= ONTAPシステムと連携するためのEMC VNXストレージアレイの必須パラメータ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。
+
+ストレージアレイで設定する必要があるホスト設定パラメータを次の表に示します。
+
+|===
+| パラメータ | 設定 
+
+
+ a| 
+`Initiator type`
+ a| 
+CLARiiON/VNX
+
+
+
+ a| 
+`Array Com Path`
+ a| 
+有効
+
+
+
+ a| 
+`Failover mode`
+ a| 
+4
+
+
+
+ a| 
+`Unit serial number`
+ a| 
+LUN
+
+
+
+ a| 
+`Host name`
+ a| 
+ユーザが指定したホスト名とポート番号
+
+
+
+ a| 
+`IP address`
+ a| 
+一意の偽装IPアドレスこのIPアドレスは、ストレージアレイ構成の他の場所で入力していないこと、およびネットワークに存在するIPアドレスでないことを確認する必要があります。
+
+|===

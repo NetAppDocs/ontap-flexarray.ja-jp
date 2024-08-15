@@ -1,0 +1,71 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_3par_arrays_with_data_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameters, 3par, arrays, ontap, systems, host, persona, settings, port, 
+summary: ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。 
+---
+= ONTAPシステムと連携するための3PARアレイの必須パラメータ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。
+
+
+
+== Host Personaの設定
+
+ファームウェア2.3.1以降の3PARアレイでは、Host Personaの値を次の表のように設定する必要があります。
+
+|===
+| 接続タイプ | ホストの役割 
+
+
+ a| 
+直接接続
+ a| 
+10
+
+
+
+ a| 
+ファブリック接続
+ a| 
+10
+
+|===
+ONTAPシステムを3PARストレージアレイに接続する場合は、スイッチのゾーニングを設定する前に、3PARストレージアレイでホストの定義を作成し、必要なホストの役割を設定しておく必要があります。ゾーニングの設定前にホストが定義されていないと、3PAR LUNがONTAP 254および製品タイプSESとして検出され、ONTAPで使用できません。その結果、新しくマッピングした3PAR LUNをONTAPシステムに割り当てることができなくなります。また、すでにアグリゲートに追加されている3PAR LUNについても、ONTAPで3PAR LUNではなくLUN 254と認識されるため、使用できなくなります。この問題が発生すると、ONTAPで次のEMSメッセージが生成されます。
+
+[listing]
+----
+mlm.array.unknown:warning - Array LUN XXXXXXXX.126L254 [S/N 'XXXXXXX' vendor '3PARdata' product 'SES'] is unknown and is not supported in this version of Data ONTAP.
+----
+ホストの定義前にゾーニングの設定が行われた場合は、パスの再初期化を実行して3PARストレージアレイからマッピングされたアレイLUNを再検出することで、問題を解決できます。この問題の対処方法については、「3PARストレージアレイの不明なデバイス（L254 / SES）の問題に対する対処方法」を参照してください。
+
+xref:reference_workaround_for_the_unknown_device_l254_ses_problem_with_3par_storage_arrays.adoc[3PARストレージアレイの不明なデバイス（L254 / SES）の問題に対する対処方法]
+
+
+
+== Port Personaの設定
+
+ファームウェア2.2.xの3PARアレイでは、Port Personaの値を次の表のように設定する必要があります。
+
+|===
+| 接続タイプ | ポートの役割 
+
+
+ a| 
+直接接続
+ a| 
+18
+
+
+
+ a| 
+ファブリック接続
+ a| 
+19
+
+|===

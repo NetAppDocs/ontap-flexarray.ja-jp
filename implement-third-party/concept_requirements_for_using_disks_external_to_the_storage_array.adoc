@@ -1,0 +1,30 @@
+---
+permalink: implement-third-party/concept_requirements_for_using_disks_external_to_the_storage_array.html 
+sidebar: sidebar 
+keywords: requirements, using, disks, external, storage, array 
+summary: ONTAPでは、ストレージアレイの背後でベンダーがサポートするディスク（ストレージアレイの外付けディスク）を使用できます。外付けディスクを使用するストレージアレイを導入する場合、ONTAPはストレージアレイと外付けディスクの間の構成を受け入れます。 
+---
+= ストレージ アレイの外付けディスクとしてのディスクの使用に関する要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPでは、ストレージアレイの背後でベンダーがサポートするディスク（ストレージアレイの外付けディスク）を使用できます。外付けディスクを使用するストレージアレイを導入する場合、ONTAPはストレージアレイと外付けディスクの間の構成を受け入れます。
+
+外付けディスクを使用するストレージアレイの導入に関する制限事項と推奨されるベストプラクティスを次に示します。
+
+* 外部ディスクでは、ルートボリュームとスペアコアLUNがサポートされます。
+* 外付けディスクのアレイLUNと内蔵ディスクのアレイLUNを同じONTAPアグリゲートに含めることはできません。
+* SATAドライブのアレイLUNとFCドライブのアレイLUNを同じアグリゲートに含めることはできません。
+* 外付けディスク上のアレイLUNへのパスの数に関するルールは、ストレージアレイ上のディスク上のアレイLUNと同じです。
++
+外付けディスクの場合、ONTAPシステムからストレージアレイを経由して外付けディスクへのパスが表示されます。
+
+* 外付けディスクのアレイLUNではブロックチェックサムのみがサポートされます。
+
+
+* 関連情報 *
+
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["FlexArray仮想化のインストール要件とリファレンス"]

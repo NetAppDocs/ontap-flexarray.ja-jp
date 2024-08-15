@@ -1,0 +1,41 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_hp_eva_storage_arrays_with_data_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameters, hp, eva, arrays, ontap, systems 
+summary: ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。 
+---
+= ONTAPシステムと連携するためのHP EVAアレイの必須パラメータ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでストレージアレイを使用するには、ストレージアレイに対して設定が必要なパラメータがいくつかあります。
+
+システムパラメータの設定を次の表に示します。
+
+|===
+| パラメータ | 設定 
+
+
+ a| 
+`Redundancy`
+ a| 
+Vraid0以外の任意のRAIDレベル
+
+
+
+ a| 
+`Preferred path/mode`
+ a| 
+No Preference（デフォルト）
+
+
+
+ a| 
+`Host type`
+ a| 
+SUN Solaris
+
+|===

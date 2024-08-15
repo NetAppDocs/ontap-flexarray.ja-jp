@@ -1,0 +1,41 @@
+---
+permalink: implement-third-party/concept_sharing_a_target_port_with_two_fc_initiator_ports.html 
+sidebar: sidebar 
+keywords: share, target, port, two fc initiator, ports 
+summary: ノード間で最大2つのONTAP FCイニシエータポートをストレージアレイ上の単一のターゲットポートに接続できます。この構成は、ONTAPのMetroCluster構成でサポートされます。 
+---
+= 2つのFCイニシエータ ポートでのターゲット ポートの共有
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ノード間で最大2つのONTAP FCイニシエータポートをストレージアレイ上の単一のターゲットポートに接続できます。この構成は、ONTAPのMetroCluster構成でサポートされます。
+
+この構成は、お使いのシステムで実行されているONTAPのリリースのサポート対象としてInteroperability Matrixに記載されているすべてのストレージアレイで使用できます。
+
+次の図は、HAペアを使用した共有ターゲットポート構成を示しています。ターゲットポートの2つのFCイニシエータポートでの共有は、スタンドアロンシステムとHAペアのどちらでもサポートされます。
+
+[NOTE]
+====
+FCイニシエータポートの複数のターゲットポートでの共有およびゾーニングの詳細については、_ FlexArray仮想化インストール要件およびリファレンス_
+
+====
+
+
+== FCイニシエータポートに接続された共有ターゲットポート
+
+次の例は、単一のターゲットポートが2つのFCイニシエータポートに接続するHAペアを示しています。
+
+image::../media/shared_target_ports.gif[この図には説明が付随しています。]
+
+コントローラvs1およびvs2のイニシエータポート0aはストレージアレイポート1Aに接続され、コントローラのポート0cはストレージアレイポート2Aに接続されています。
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]
+
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["FlexArray仮想化のインストール要件とリファレンス"]
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["ファブリック接続MetroClusterのインストールと設定"]

@@ -1,0 +1,36 @@
+---
+permalink: install/concept_valid_pathing_a_single_4_port_array_lun_group_in_a_fabric_attached_configuration.html 
+sidebar: sidebar 
+keywords: valid, path, single, 4, port, array, lun, group, fabric attached, configuration 
+summary: 単一の4ポートアレイLUNグループ構成は、ONTAPのすべてのリリースのすべてのストレージアレイで使用できます。 
+---
+= 有効なパス設定：ファブリック接続構成における単一の4ポートアレイLUNグループ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+単一の4ポートアレイLUNグループ構成は、ONTAPのすべてのリリースのすべてのストレージアレイで使用できます。
+
+次の図は、単一の4ポートアレイLUNグループを含む構成でのパス設定を示しています。
+
+image::../media/one_4_port_array_lun_gp.gif[この図には説明が付随しています。]
+
+この単一の4ポートLUNグループ構成では、アレイLUNがストレージアレイ上の4つのポートにマッピングされます。アレイLUNグループは、HAペアの両方のノードに対して、異なるアレイターゲットポートで提供されます。ただし、各ノードは2つのパスを介してのみエンドツーエンドでアレイLUNを認識できます。ゾーニングは、ノード上の各FCイニシエータポートが単一のターゲットアレイポートにのみアクセスできるように設定されています。
+
+想定数のLUNグループが設定されたかどうかを確認する場合は、出力を有効な出力と比較すること `storage array config show` を推奨します。次の `storage array config show` 出力例は、この構成（単一のアレイLUNグループ）で想定されるの出力を示しています。
+
+[listing]
+----
+vs::> storage array config show
+             LUN   LUN
+Node         Group Count  Array Name     Array Target Port     Initiator
+------------ ----- ----- ------------- ----------------------- ---------
+vs1            1    10   DGC_RAID5_1      50050763030301241A     0a
+                                          50050763031301242A     0c
+vs2            1    10   DGC_RAID5_1      50050763030881241B     0a
+                                          50050763031881242B     0c
+
+4 entries were displayed.
+----

@@ -1,0 +1,26 @@
+---
+permalink: implement-third-party/concept_emc_symmetrix_storage_array_families.html 
+sidebar: sidebar 
+keywords: emc, symmetrix, storage, array, families 
+summary: ONTAPでは、異なる種類のストレージをアグリゲート内に混在させることはサポートされていません。アグリゲート内に混在できるアレイLUNを判別できるように、各ベンダーのストレージアレイはファミリーにグループ化されています。アグリゲートを作成するときは、ベンダーやストレージアレイファミリーが異なるアレイLUNを同じアグリゲート内に混在させることはできません。 
+---
+= EMC Symmetrixストレージ アレイ ファミリー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPでは、異なる種類のストレージをアグリゲート内に混在させることはサポートされていません。アグリゲート内に混在できるアレイLUNを判別できるように、各ベンダーのストレージアレイはファミリーにグループ化されています。アグリゲートを作成するときは、ベンダーやストレージアレイファミリーが異なるアレイLUNを同じアグリゲート内に混在させることはできません。
+
+ONTAPシステムでサポートされるEMC Symmetrixストレージアレイファミリーは次のとおりです。
+
+* ファミリー1：VMAX
+* ファミリー2：VMAX3
+
+
+各ベンダーでサポートされているストレージアレイについては、Interoperability Matrixを参照してください。
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

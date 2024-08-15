@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/concept_requirements_for_creating_luns_in_dynamic_pools.html 
+sidebar: sidebar 
+keywords: requirements, creating, luns, dynamic pools 
+summary: 動的プールでLUNを作成する場合は、プール容量をオーバープロビジョニングしないでください。 
+---
+= 動的プールでLUNを作成するための要件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+動的プールでLUNを作成する場合は、プール容量をオーバープロビジョニングしないでください。

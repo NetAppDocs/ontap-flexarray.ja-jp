@@ -1,0 +1,20 @@
+---
+permalink: implement-third-party/concept_guidelines_for_configuring_ports_on_hitachi_storage_arrays.html 
+sidebar: sidebar 
+keywords: guidelines, configuring, ports, hitachi, storage, arrays 
+summary: Hitachiストレージアレイにポートを設定するときは、一定のガイドラインに従う必要があります。 
+---
+= Hitachiストレージアレイでのポートの設定に関するガイドライン
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Hitachiストレージアレイにポートを設定するときは、一定のガイドラインに従う必要があります。
+
+Hitachiストレージアレイにポートを設定する際のガイドラインは次のとおりです。
+
+* ポートごとに追加するホストグループは1つだけにしてください。
+* アレイLUNネイバーフッドにあるVシリーズシステムのすべてのFCイニシエータポートをホストグループに含める必要があります。
+

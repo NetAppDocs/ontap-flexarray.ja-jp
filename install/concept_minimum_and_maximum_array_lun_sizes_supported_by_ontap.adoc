@@ -1,0 +1,47 @@
+---
+permalink: install/concept_minimum_and_maximum_array_lun_sizes_supported_by_ontap.html 
+sidebar: sidebar 
+keywords: minimum, maximum, array, lun, sizes, supported, ontap, configurations 
+summary: ストレージアレイから提供されるアレイLUNは、アレイLUNを使用するONTAP構成の最小サイズと最大サイズの要件の範囲内である必要があります。最小サイズまたは最大サイズの要件を満たしていないアレイLUNがONTAPによって検出されると、エラーメッセージが表示されます。 
+---
+= ONTAP構成でサポートされるアレイLUNの最小サイズと最大サイズ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージアレイから提供されるアレイLUNは、アレイLUNを使用するONTAP構成の最小サイズと最大サイズの要件の範囲内である必要があります。最小サイズまたは最大サイズの要件を満たしていないアレイLUNがONTAPによって検出されると、エラーメッセージが表示されます。
+
+アレイLUNの最小サイズと最大サイズは、ONTAPで定義される測定単位に従って計算されます。ONTAPでのGBとTBの定義は次のとおりです。
+
+[cols="2*"]
+|===
+| 1つ... | 等しい... 
+
+
+ a| 
+GB
+ a| 
+1000 x 1024 x 1024バイト（1000 MB）
+
+
+
+ a| 
+TB
+ a| 
+1000 x 1000 x 1024 x 1024バイト（1000 GB）
+
+|===
+測定単位の計算式は、ストレージアレイベンダーによって異なります。ベンダーの測定単位を使用して、ONTAP構成でサポートされる最小サイズと最大サイズに相当するアレイLUNサイズを計算する必要があります。
+
+ONTAPでサポートされるLUNの最大サイズは、ONTAPのリリースによって異なります。アレイHardware Universeの最小サイズと最大サイズについては、_ LUN_を参照してください。
+
+[NOTE]
+====
+データ（ストレージ）LUNのアレイLUNの最小サイズは、ルートボリュームのアレイLUNの最小サイズとは異なります。
+
+====
+* 関連情報 *
+
+https://hwu.netapp.com["NetApp Hardware Universe"]

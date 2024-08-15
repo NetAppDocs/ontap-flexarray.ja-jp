@@ -1,0 +1,39 @@
+---
+permalink: install/concept_valid_pathing_standalone_system_with_a_single_2_port_array_lun_group.html 
+sidebar: sidebar 
+keywords: valid, path, stand-alone, system, single, 2-port, array, lun, group 
+summary: 単一の2ポートアレイLUNグループを含むファブリック接続スタンドアロンシステムは、すべてのONTAPリリースのほとんどのストレージアレイでサポートされます。 
+---
+= 有効なパス設定：単一の2ポートアレイLUNグループを含むスタンドアロンシステム
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+単一の2ポートアレイLUNグループを含むファブリック接続スタンドアロンシステムは、すべてのONTAPリリースのほとんどのストレージアレイでサポートされます。
+
+[NOTE]
+====
+ストレージアレイが異なれば、たとえ同じベンダーのものであっても、例とは異なるラベルがポートに付けられている場合があります。ストレージアレイで、選択するポートが代替コントローラのポートであることを確認する必要があります。
+
+====
+次の図は、スタンドアロンONTAPシステムにおける単一の2ポートアレイLUNグループを示しています。
+
+image::../media/one_standalone_2_port_array_lun_group_array_port_labels.gif[スタンドアロンシステムを使用する単一の2ポートアレイLUNグループ構成]
+
+インストールを検証する際に、コマンド出力を以下の例と照合して、LUNグループの数が想定どおりであること、および冗長パスがあることを確認できます。
+
+.例
+次の例は、図の構成（各アレイLUNへの2つの冗長パスを含む単一のLUNグループ（LUNグループ0））で想定されるの出力を示しています `storage array config show` 。（図に一致する出力内の冗長パスは、アレイターゲットポート名20** 1A** 00a0b80fee04および20** 2A** 00a0b80fee0420です）。
+
+[listing]
+----
+
+vs1::> storage array config show
+             LUN   LUN
+Node         Group Count     Array Name    Array Target Port   Initiator
+------------ ----- ----- ----------------- ------------------- ----------
+vs1           0    50        DGC_RAID5_1	 201A00a0b80fee04     0a
+                                             202A00a0b80fee04     0h
+----

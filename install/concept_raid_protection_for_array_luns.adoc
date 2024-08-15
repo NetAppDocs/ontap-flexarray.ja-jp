@@ -1,0 +1,29 @@
+---
+permalink: install/concept_raid_protection_for_array_luns.html 
+sidebar: sidebar 
+keywords: raid, protection, array, luns 
+summary: ONTAPで使用できるアレイLUNのRAID保護は、ストレージアレイによって提供されます。ONTAPはRAID保護を提供しません。 
+---
+= アレイLUNのRAID保護
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPで使用できるアレイLUNのRAID保護は、ストレージアレイによって提供されます。ONTAPはRAID保護を提供しません。
+
+ONTAPはアレイLUNにRAID 0（ストライピング）を使用します。ONTAPは、ストレージアレイでさまざまなRAIDタイプをサポートしていますが、ストレージ保護を提供しないRAID0を除きます。
+
+ストレージアレイで_raid groups_onを作成する場合は、ディスク障害によってデータが失われたりデータへのアクセスが失われたりしないように、ストレージアレイのベンダーのベストプラクティスに従って、ストレージアレイに対する十分なレベルの保護を確保する必要があります。
+
+[NOTE]
+====
+* ストレージアレイ上の_raid group_は、定義されたRAIDレベルを形成するディスクの配列です。
++
+各RAIDグループがサポートするRAIDタイプは1つだけです。RAIDグループに対して選択するディスクの数によって、そのRAIDグループがサポートするRAIDタイプが決まります。このエンティティを表す用語は、ストレージアレイベンダーによって異なります（RAIDグループ、パリティグループ、ディスクグループ、パリティRAIDグループなど）。
+
+* ONTAPのネイティブディスクシェルフではRAID 4とRAID-DPがサポートされますが、アレイLUNではRAID 0のみがサポートされます。
+
+
+====

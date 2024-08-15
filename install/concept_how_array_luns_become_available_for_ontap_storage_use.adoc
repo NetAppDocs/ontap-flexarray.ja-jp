@@ -1,0 +1,28 @@
+---
+permalink: install/concept_how_array_luns_become_available_for_ontap_storage_use.html 
+sidebar: sidebar 
+keywords: how, array, luns, available, ontap, storage, use 
+summary: ONTAPシステムに提供されたアレイLUNは、そのアレイLUNを使用するようにONTAPを設定するまで使用できません。 
+---
+= アレイLUNをONTAPストレージで使用できるようにする方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムに提供されたアレイLUNは、そのアレイLUNを使用するようにONTAPを設定するまで使用できません。
+
+ストレージアレイ管理者がアレイLUNをONTAPからアクセスできるように設定しても、次の両方のタスクが完了するまでONTAPでアレイLUNをストレージに使用することはできません。
+
+. 1つのONTAPシステム（アレイLUNの使用ライセンスあり）をアレイLUNの_owner_に割り当てておく必要があります。
+. アレイLUNをアグリゲートに追加する必要があります。
+
+
+アレイLUNをONTAPシステムに割り当てると、割り当てられたシステムを所有者として識別するためのデータがONTAPからアレイLUNに書き込まれます。この論理的な関係は、_disk ownership _と呼ばれます。
+
+アレイLUNをONTAPシステムに割り当てると、そのLUNはそのシステムが所有するスペアLUNになり、他のONTAPシステムでは使用できなくなります。
+
+スペアアレイLUNは、アグリゲートに追加するまでストレージに使用できません。以降、ONTAPでは、アレイLUNの所有者のみがLUNに対してデータの書き込みと読み取りを実行できるようになります。
+
+HAペアでは、両方のノードが同じストレージを認識できる必要がありますが、アレイLUNの所有者となるのは一方のノードだけです。所有者ノードに障害が発生した場合は、パートナーノードがアレイLUNへの読み取り/書き込みアクセスをテイクオーバーします。元の所有者ノードを使用できなくなった問題が解決すると、元の所有者ノードが所有権を再開します。

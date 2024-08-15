@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/concept_limitation_on_array_lun_numbering_with_emc_and_vnx_arrays.html 
+sidebar: sidebar 
+keywords: limitation, array, lun, numbering, emc, vnx, array 
+summary: EMC VNXストレージアレイでは、0~255のアレイLUN番号のみがサポートされます。この範囲を超える番号のアレイLUNはONTAPで認識されません。 
+---
+= EMC VNXアレイでのアレイLUNの番号に関する制限
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+EMC VNXストレージアレイでは、0~255のアレイLUN番号のみがサポートされます。この範囲を超える番号のアレイLUNはONTAPで認識されません。

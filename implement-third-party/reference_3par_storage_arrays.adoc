@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/reference_3par_storage_arrays.html 
+sidebar: sidebar 
+keywords: 3par, storage, arrays 
+summary: アレイLUNを使用するONTAPシステムと連携するようにストレージアレイを設定するには、一定の要件を満たす必要があります。たとえば、ストレージアレイに構成パラメータを設定する、サポート対象の構成のみを導入するなどの要件があります。 
+---
+= 3PARストレージアレイ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNを使用するONTAPシステムと連携するようにストレージアレイを設定するには、一定の要件を満たす必要があります。たとえば、ストレージアレイに構成パラメータを設定する、サポート対象の構成のみを導入するなどの要件があります。

@@ -1,0 +1,20 @@
+---
+permalink: implement-third-party/reference_supported_fabric_attached_configurations_for_storage_arrays.html 
+sidebar: sidebar 
+keywords: support, fabric-attached, configurations 
+summary: 特に記載がないかぎり、さまざまなファブリック接続構成がストレージアレイベンダーすべてでサポートされます。 
+---
+= サポートされるファブリック接続構成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+特に記載がないかぎり、さまざまなファブリック接続構成がストレージアレイベンダーすべてでサポートされます。
+
+特定のアレイモデルに関する追加情報については、Interoperability Matrixを参照してください。
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

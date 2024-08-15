@@ -1,0 +1,88 @@
+---
+permalink: install/concept_example_of_zoning_in_a_configuration_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: example, zone, configuration, storage, arrays, single, 4-port, lun, group 
+summary: ゾーニング用にスイッチを設定するときにLUNセキュリティを使用すると、別のホストにマッピングされたLUNが別のホストで認識されなくなります。 
+---
+= ストレージ アレイを使用した構成のゾーニング例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ゾーニング用にスイッチを設定するときにLUNセキュリティを使用すると、別のホストにマッピングされたLUNが別のホストで認識されなくなります。
+
+
+
+== 単一の4ポートLUNグループ構成でのゾーニング
+
+image::../media/one_4_port_array_lun_gp.gif[この図には説明が付随しています。]
+
+次の表に、HAペアのONTAPシステム構成例に対応するゾーニングを示します。推奨されるゾーニング方法は、シングルイニシエータゾーニングです。
+
+|===
+| ゾーン | ONTAP システムを入力 |  | ストレージアレイ |  
+
+
+ a| 
+スイッチ1
+
+
+
+ a| 
+z1
+ a| 
+vs1
+ a| 
+ポート0a
+ a| 
+コントローラ1
+ a| 
+ポート 1A
+
+
+
+ a| 
+z2
+ a| 
+vs2
+ a| 
+ポート0a
+ a| 
+コントローラ1
+ a| 
+ポート1B
+
+
+
+ a| 
+スイッチ2
+
+
+
+ a| 
+z3
+ a| 
+vs1
+ a| 
+ポート0c
+ a| 
+コントローラ2
+ a| 
+ポート 2A
+
+
+
+ a| 
+z4
+ a| 
+vs2
+ a| 
+ポート0c
+ a| 
+コントローラ2
+ a| 
+ポート2B
+
+|===

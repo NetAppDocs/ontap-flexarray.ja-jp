@@ -1,0 +1,39 @@
+---
+permalink: install/concept_number_of_storage_arrays_supported_with_a_ontap_system.html 
+sidebar: sidebar 
+keywords: considerations, connect, multiple, storage, arrays, ontap, system 
+summary: ONTAPシステムでサポートされるストレージアレイモデルに応じて、ONTAPシステムに複数のストレージアレイまたは単一のストレージアレイを接続できます。 
+---
+= ONTAPシステムに複数のストレージアレイを接続する場合の考慮事項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPシステムでサポートされるストレージアレイモデルに応じて、ONTAPシステムに複数のストレージアレイまたは単一のストレージアレイを接続できます。
+
+[NOTE]
+====
+ONTAPシステムでストレージアレイが1つしかサポートされないストレージアレイモデルは、Interoperability Matrixで確認できます。
+
+====
+複数のストレージアレイをONTAPシステムに接続する場合は、次の点を考慮してください。
+
+* サポートされている同じストレージアレイモデルの複数のアレイをONTAPシステムに接続できる場合、導入できるストレージアレイの数に制限はありません。
+* サポートされているベンダーと同じストレージアレイでも異なるベンダーのストレージアレイでもかまいません。
++
+同じベンダーのストレージアレイの場合は、すべて同じファミリーのストレージアレイでも異なるファミリーのストレージアレイでもかまいません。
+
+
+
+[NOTE]
+====
+パフォーマンスとフェイルオーバーの仕様が共通する、ストレージ アレイの分類。たとえば、同じファミリーのメンバーは、すべてアクティブ/アクティブフェイルオーバーを実行するか、またはすべてアクティブ/パッシブフェイルオーバーを実行します。ストレージアレイファミリーを決定するには、複数の要因が使用される場合があります。たとえば、アーキテクチャが異なるストレージ アレイは、他の特徴が同じでも別のファミリーになります。
+
+====
+* 関連情報 *
+
+https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["サードパーティ製ストレージ向けのFlexArray仮想化の実装"]
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

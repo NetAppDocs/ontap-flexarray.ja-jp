@@ -1,0 +1,50 @@
+---
+permalink: install/reference_an_access_control_lun_is_presented_to_ontap.html 
+sidebar: sidebar 
+keywords: access, control, lun, presented, ontap 
+summary: ONTAPでは、アクセス制御アレイLUNはサポートされません。アクセス制御LUNが提供されている場合は、storage errors showの出力にアラートが表示されます。 
+---
+= アクセス制御LUNがONTAPに提供される
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPでは、アクセス制御アレイLUNはサポートされません。アクセス制御LUNが提供されている場合は、の出力にアラートが表示され `storage errors show` ます。
+
+
+
+== storage errors showのメッセージ
+
+[listing]
+----
+
+NAME (UID): This array LUN is an access control LUN. It is not supported and should be masked off or disabled.
+----
+
+
+== 説明
+
+ONTAPではストレージアレイLUNのみがサポートされます。E-Seriesアクセス制御LUNなどのアレイLUNがONTAPに提供された場合 `storage array config show` 、の出力は正常な状態で、アクセス制御LUNは次の例のようにLUNグループ内に表示されます。画面下部の警告メッセージに問題があることが示されます。を実行して、アクセス制御LUNが提供されたこと、およびアクセス制御LUNがどのLUNであるかを確認する必要があり `storage errors show` ます。
+
+[listing]
+----
+
+mysystem1::> storage array config show
+
+          LUN     LUN
+Node      Group   Count  Array Name    Array Target Port       Initiator
+------    ------  -----  ------------ ------------------       --------
+mysystem1   0       1    NETAPP_INF_1  20:1A:00:a0:b8:0f:ee:04   0a
+                                       20:2A:00:a0:b8:0f:ee:04   0c
+
+Warning: Configuration errors were detected.  Use 'storage errors show' for detailed information.
+----
+
+
+== トラブルシューティングと問題解決
+
+. ストレージアレイで、アクセス制御LUNをマスクします。
+. ONTAPでを再度実行し、 `storage errors show` アクセス制御LUNがONTAPに提供されなくなったことを確認します。
+

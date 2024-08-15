@@ -1,0 +1,18 @@
+---
+permalink: implement-third-party/concept_use_of_storage_array_advanced_features.html 
+sidebar: sidebar 
+keywords: support, advanced, features, storage, arrays 
+summary: ONTAPでは、Interoperability Matrixで特に指定がないかぎり、ストレージアレイの高度な機能はサポートされません。 
+---
+= ストレージアレイの高度な機能のサポート
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAPでは、Interoperability Matrixで特に指定がないかぎり、ストレージアレイの高度な機能はサポートされません。
+
+* 関連情報 *
+
+https://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool"]

@@ -1,0 +1,112 @@
+---
+permalink: install/reference_fewer_than_two_paths_to_an_array_lun.html 
+sidebar: sidebar 
+keywords: fewer, two, paths, array, lun 
+summary: アレイLUNへのパスが複数ない主な原因は、マッピングエラー、ゾーニングエラー、ケーブルの脱落です。storage errors showの出力から、パスが1つしかないアレイLUNを特定できます。 
+---
+= アレイLUNへのパスが複数ない
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+アレイLUNへのパスが複数ない主な原因は、マッピングエラー、ゾーニングエラー、ケーブルの脱落です。の出力から、 `storage errors show` パスが1つしかないアレイLUNを特定できます。
+
+ONTAPでは、デバイスで障害が発生しても引き続きアレイLUNにアクセスできるように、アレイLUNへのパスを冗長化する必要があります。各アレイLUNへのパスが2つ必要です。
+
+
+
+== storage errors showのメッセージ
+
+[listing]
+----
+
+NAME (UID):  This Array LUN is only available on one path.  Proper configuration requires two paths.
+----
+
+
+== 説明
+
+アレイLUNへのパスが複数表示されない理由は次のとおりです。
+
+* LDEVが1つのストレージアレイポートにのみマッピングされている。
+* アレイLUNへの2番目のパスがゾーニングされていません。
+* ホストグループマッピングに問題があります。
+* スイッチの接続に問題があります。
+* ケーブルが脱落した。
+* アダプタでSFPに障害が発生しました。
+
+
+[NOTE]
+====
+実行中のシステムでパスがドロップアウトすると、EMSメッセージが生成されます。
+
+====
+
+
+== 問題のシナリオ
+
+マッピングエラーの例では、ストレージ管理者が新しいLDEV Zを作成したとします。LDEV ZをLUN ID 3としてターゲットポート1Aにマッピングしました。次の図に示すように、ターゲットポート2AにLDEVをマッピングしませんでした。その結果、アレイLUNへのパスが1つだけになります。
+
+image::../media/ldev_mapped_on_only_one_array_port.gif[この図には説明が付随しています。]
+
+このエラーが発生すると `storage array config show` 、次の例のように、の出力にLUNへのパスが1つしか表示されません。
+
+[listing]
+----
+
+mysystem1::> storage array config show
+           LUN     LUN
+Node       Group   Count  Array Name    Array Target Ports      Switch Port   Initiator
+-------   -------  -----  ----------   -------------------      -----------    ---------
+mysystem1a    0      1    DGC_RAID5_1  20:1A:00:a0:b8:0f:ee:04  vnbr20es25:5   0a
+
+Warning: Configuration errors were detected.  Use 'storage errors show' for detailed information.
+----
+ `storage errors show`コマンドの詳細情報から、パスが複数ないLUNを特定することができます。
+
+[listing]
+----
+
+mysystem1a::> storage errors show
+Disk: EMC-1.2
+UID: 600508B4:000B6314:00008000:00200000:00000000:00000000:00000000:...
+--------------------
+EMC-1.2 (600508b4000b63140000800000200000): This array LUN is only available on one path. Proper configuration requires two paths.
+----
+[NOTE]
+====
+この例のUIDは、600508B4：000B6314：00008000：00200000：00000000：00000000：00000000：00000000：00000000：00000000：00000000です。スペースが原因で切り捨てられます。
+
+====
+
+
+== トラブルシューティングと問題解決
+
+の出力とstorage errors showの出力の両方を確認する `storage array config show` と、アレイLUNへのパスが複数ない場合のトラブルシューティングに役立ちます。
+
+. の出力を確認して、1つのパスでのみ使用可能なアレイLUNのシリアル番号を確認し `storage errors show` ます。
+. 出力を確認し `storage array config show` て、問題の原因を切り分けます。
++
+|===
+|  `storage array config show`出力の内容 | 原因は最も可能性が高いです... 
+
+
+ a| 
+他のアレイLUN
+ a| 
+マッピングエラー
+
+
+
+ a| 
+他のアレイLUNがない
+ a| 
+ケーブル接続エラー、ゾーニングエラー、またはハードウェアの問題
+
+|===
+. マッピングエラーが原因である場合は、特定されたアレイLUNを2つの冗長ストレージアレイポートにマッピングするよう、ストレージアレイ管理者に依頼してください。
+. マッピング以外の問題が原因と考えられる場合は、ゾーニング、ホストグループのマッピング、ケーブル接続、および接続を確認します。
+. 問題を修正したら、を再度実行して `storage array config show` エラーが修正されたことを確認します。
+

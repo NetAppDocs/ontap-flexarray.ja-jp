@@ -1,0 +1,14 @@
+---
+permalink: install/concept_array_lun_assignment_changes.html 
+sidebar: sidebar 
+keywords: array, lun, assignment, changes 
+summary: スペアアレイLUNの割り当てをONTAPシステム間で変更することができます。所有権の変更は、ノード間で負荷を分散するために必要になる場合があります。 
+---
+= アレイLUNの割り当て変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+_spare_array LUNの割り当ては、あるONTAPシステムから別のシステムに変更できます。所有権の変更は、ノード間で負荷を分散するために必要になる場合があります。
